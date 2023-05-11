@@ -1,5 +1,9 @@
-import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
+const HomeView = import('@/views/HomeView/HomeView.vue')
+const ActivityView = import('@/views/ActivityView/ActivityView.vue')
+const GameView = import('@/views/GameView/GameView.vue')
+const UserCenterView = import('@/views/UserCenterView/UserCenterView.vue')
+const BetView = import('@/views/BetView/BetView.vue')
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -10,12 +14,24 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      path: '/activity',
+      name: 'activity',
+      component: ActivityView
+    },
+    {
+      path: '/game',
+      name: 'game',
+      component: GameView
+    },
+    {
+      path: '/user-center',
+      name: 'user-center',
+      component: UserCenterView
+    },
+    {
+      path: '/bet',
+      name: 'bet',
+      component: BetView
     }
   ]
 })

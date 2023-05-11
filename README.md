@@ -1,35 +1,35 @@
 # sports
 
-This template should help get you started developing with Vue 3 in Vite.
+项目帮助文档
 
-## Recommended IDE Setup
+## 推荐安装工具链
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+VSCode、Volar、ESLint、prettier、Vue VSCode Snippets
 
-## Customize configuration
+## 自定义配置文件
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+参考 [Vite 配置](https://vitejs.dev/config/).
 
-## Project Setup
+## 安装
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 启动开发模式
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### 打包
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+<!-- ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
 npm run lint
-```
+``` -->
