@@ -1,9 +1,11 @@
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
-const HomeView = import('@/views/HomeView/HomeView.vue')
-const ActivityView = import('@/views/ActivityView/ActivityView.vue')
-const GameView = import('@/views/GameView/GameView.vue')
-const UserCenterView = import('@/views/UserCenterView/UserCenterView.vue')
-const BetView = import('@/views/BetView/BetView.vue')
+import { createRouter, createWebHashHistory } from 'vue-router'
+const HomeView = () => import('@/views/HomeView/HomeView.vue')
+const ActivityView = () => import('@/views/ActivityView/ActivityView.vue')
+const GameView = () => import('@/views/GameView/GameView.vue')
+const UserCenterView = () => import('@/views/UserCenterView/UserCenterView.vue')
+const BetView = () => import('@/views/BetView/BetView.vue')
+const ServiceView = () => import('@/views/ServiceView/ServiceView.vue')
+
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -32,7 +34,12 @@ const router = createRouter({
       path: '/bet',
       name: 'bet',
       component: BetView
-    }
+    },
+    {
+      path: '/service',
+      name: 'service',
+      component: ServiceView
+    },
   ]
 })
 
