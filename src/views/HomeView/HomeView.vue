@@ -34,6 +34,52 @@
         </span>
       </div>
     </van-notice-bar>
+    <!-- 用户中心精简版 -->
+    <div class="user-center-simple">
+      <div class="info">
+        <div class="user">
+          <span class="username">ryder999</span>
+          <van-tag style="margin-left: 5px" type="primary">VIP9</van-tag>
+        </div>
+        <h3 class="amount">￥999.99</h3>
+      </div>
+      <div class="fast-way">
+        <div
+          @click="router.push(item.path)"
+          class="item"
+          v-for="item in fastWayList"
+          :key="item.title"
+        >
+          <p>
+            <van-icon name="photo-o" size="24" />
+          </p>
+          <p>
+            <span>{{ item.title }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- 游戏大厅 -->
+    <div class="game-lobby">
+      <div class="tab">
+        <div class="item" v-for="item in tabList" :key="item.name">
+          <p>
+            <van-icon name="photo-o" size="24" />
+          </p>
+          <p>
+            <span>{{ item || '体育' }}</span>
+          </p>
+        </div>
+      </div>
+      <div class="scroll-wrapper">
+        <div class="game-list">
+          <div class="item" v-for="item in gameList" :key="item.name">
+            <div class="img-box"></div>
+            <h4>{{ item.name }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- 侧边设置菜单 -->
   <van-popup v-model:show="showMenu" position="left" :style="{ width: '70%', height: '100%' }">
@@ -78,6 +124,7 @@
 </template>
 <script setup>
 import IconSport from '@/components/icons/IconSport.vue'
+import gameData from './gameList'
 import { ref, reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { resolvePath } from '@/utils'
@@ -120,6 +167,31 @@ const selectBanner = (item) => {
 const selectNotice = (item) => {
   console.log(item)
 }
+
+// 快捷通道
+const fastWayList = [
+  {
+    title: '存款',
+    path: '/deposit'
+  },
+  {
+    title: '取款',
+    path: '/withdraw'
+  },
+  {
+    title: '转账',
+    path: '/transfer'
+  },
+  {
+    title: 'VIP',
+    path: '/vip-center'
+  }
+]
+// 游戏列表
+const tabList = gameData.map((item) => item.name)
+const gameList = gameData.reduce((accumulator, item) => {
+  return [...accumulator, ...item.gameList]
+}, [])
 </script>
 
 <style lang="stylus" scoped>
@@ -163,6 +235,62 @@ header{
   margin-right 20px
   &:last-child{
     margin-right 0
+  }
+}
+
+.user-center-simple{
+  // background #ddd
+  display flex
+  justify-content space-between
+  align-items center
+  padding 10px 0
+  height 80px
+  span.username{
+    margin-right 5px
+    font-size 16px
+  }
+  .amount{
+    font-weight 600
+  }
+  .fast-way{
+    display flex
+    .item{
+      margin-right 10px
+      text-align center
+      &:last-child{
+        margin-right 0
+      }
+    }
+
+  }
+}
+.game-lobby{
+  .tab{
+    display flex
+    justify-content space-between
+    .item{
+      text-align center
+      width 50px
+      height 50px
+    }
+  }
+  .scroll-wrapper{
+    overflow auto
+    height calc(100vh - 50px - 144px - 40px - 80px - 50px - 50px)
+    background #eee
+    .game-list{
+      // overflow-y scroll
+      // overscroll-behavior: none;
+      .item{
+        height 100px
+        width @height
+        border 1px solid red
+        margin-bottom 10px
+        display flex
+        align-items center
+        justify-content center
+      }
+  }
   }
 }
 .menu-content{

@@ -6,4 +6,5 @@ import { RouterView } from 'vue-router'
   <Tabbar />
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
