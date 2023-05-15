@@ -7,18 +7,18 @@
         class="item"
         v-for="(item, idx) in tabList"
         :key="item.name"
-        @click="setGameType(idx)"
+        @click="chooseGameType(idx)"
       >
         <p>
           <van-icon name="photo-o" size="24" />
         </p>
         <p>
-          <span>{{ item || '体育' }}</span>
+          <span>{{ item.name || '体育' }}</span>
         </p>
       </div>
     </div>
-    <div class="game-view">
-      <div class="scroll-wrapper" @scroll.stop="handleScroll">
+    <div class="game-view"  @touchstart="touchstart">
+      <div ref="scrollWrapper" class="scroll-wrapper" @scroll.stop="handleScroll">
         <div class="game-list">
           <div
             ref="itemRefs"
@@ -45,7 +45,7 @@ import { ref, computed, watch } from 'vue'
 import { debounce, throttle } from 'lodash'
 console.log(gameData)
 // 游戏列表
-const tabList = gameData.map((item) => item.name)
+const tabList = [...gameData]
 const gameList = gameData.reduce((accumulator, item) => {
   item.gameList.forEach((g) => {
     if (g.gameType === 4) {
@@ -60,13 +60,17 @@ const currentGameTypeIdx = ref(0) // 当前游戏分类索引
 const currentGameIdx = ref(0) // 当前游戏索引
 const currentGame = computed(() => gameList[currentGameIdx.value]) // 当前游戏
 const delayCurrentGameIdx = ref(0) // 延迟选中游戏效果的索引
+let isClickSelected = false// 是否为用户点选游戏分类导致的滚动
 watch(
   currentGameIdx,
   debounce(async () => {
     delayCurrentGameIdx.value = currentGameIdx.value
   }, 300)
 )
-
+// 标识用户触发滚动
+const touchstart = ()=>{
+  isClickSelected = false
+}
 // 滚动回调
 const handleScroll = throttle(($event) => {
   const scrollTop = $event.target.scrollTop
@@ -74,29 +78,52 @@ const handleScroll = throttle(($event) => {
   itemRefs.value.forEach((item, idx) => {
     const offsetTop = item.offsetTop
     if (scrollTop > offsetTop) {
-      currentGameIdx.value = idx + 1
+      setGameItemSelected(idx + 1)
     } else if (scrollTop === offsetTop) {
-      currentGameIdx.value = idx
+      setGameItemSelected(idx)
     }
   })
   // 处理最后一个游戏边界
   if (currentGameIdx.value === itemRefs.value.length) {
-    currentGameIdx.value = itemRefs.value.length - 1
+    setGameItemSelected(itemRefs.value.length - 1)
   }
   // 设置游戏分类
   const typeIdx = gameData.findIndex((item) => item.gameType === currentGame.value.gameType)
   setGameType(typeIdx)
+
   // 选中第一个游戏或最后一个游戏时，不需要延迟选中
   const firstGame = !currentGameIdx.value
   const lastGame = currentGameIdx.value === itemRefs.value.length - 1
-  if (firstGame || lastGame) {
+  const noNeedDelay = [firstGame, lastGame, isClickSelected].some((bool) => bool)
+  if(noNeedDelay){
     delayCurrentGameIdx.value = currentGameIdx.value
   }
 }, 0)
-
+// 设置游戏选中项
+const setGameItemSelected = (idx) => {
+  currentGameIdx.value = idx
+}
 // 设置游戏分类
 const setGameType = (idx) => {
   currentGameTypeIdx.value = idx
+}
+// 点选游戏分类
+const chooseGameType = (idx) => {
+  isClickSelected = true
+  setGameType(idx)
+  // 滚动到指定位置
+  scrollToThere(idx)
+}
+// 根据游戏分类索引滚动到指定位置
+const scrollWrapper = ref(null)
+const scrollToThere = (idx) => {
+  const firstGameIdx = gameList.findIndex((item) => item.gameType === tabList[idx].gameType)
+  const firstGameDom = itemRefs.value[firstGameIdx]
+  scrollWrapper.value.scrollTo({
+    left: 0,
+    top: firstGameDom.offsetTop
+    // behavior: 'smooth'
+  })
 }
 </script>
 
@@ -110,6 +137,7 @@ const setGameType = (idx) => {
       text-align center
       width 50px
       height 50px
+      border-radius 5px
       &.active{
         background #333
         color #fff
