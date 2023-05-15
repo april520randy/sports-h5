@@ -1,14 +1,14 @@
 <template>
   <van-tabbar route v-model="active">
-    <van-tabbar-item to="/" icon="home-o">首页</van-tabbar-item>
-    <van-tabbar-item to="/activity" icon="point-gift-o">优惠</van-tabbar-item>
-    <van-tabbar-item to="/game" icon="star-o">Z体育</van-tabbar-item>
-    <van-tabbar-item to="/bet" icon="star-o">注单</van-tabbar-item>
+    <van-tabbar-item to="/" icon="photo-o">首页</van-tabbar-item>
+    <van-tabbar-item to="/activity" icon="photo-o">优惠</van-tabbar-item>
+    <van-tabbar-item to="/game" icon="photo-o">Z体育</van-tabbar-item>
+    <van-tabbar-item to="/bet" icon="photo-o">注单</van-tabbar-item>
     <van-tabbar-item to="/user-center" dot>
       <span>我的</span>
       <template #icon="props">
         <!-- <img :src="props.active ? icon.active : icon.inactive" /> -->
-        <van-icon name="manager-o" :color="props.active ? '#1989fa' : '#000'" />
+        <van-icon name="photo-o" :color="props.active ? '#1989fa' : '#000'" />
       </template>
     </van-tabbar-item>
   </van-tabbar>
