@@ -138,6 +138,7 @@ const scrollToThere = (idx) => {
       width 50px
       height 50px
       border-radius 5px
+      transition all .2s ease-in
       &.active{
         background #333
         color #fff

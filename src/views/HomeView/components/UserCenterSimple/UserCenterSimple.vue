@@ -26,6 +26,8 @@
 </template>
 
 <script setup>
+import {useRouter} from 'vue-router'
+const router = useRouter()
 // 快捷通道
 const fastWayList = [
   {
@@ -42,7 +44,7 @@ const fastWayList = [
   },
   {
     title: 'VIP',
-    path: '/vip-center'
+    path: '/vip'
   }
 ]
 </script>
