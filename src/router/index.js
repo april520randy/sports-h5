@@ -11,7 +11,6 @@ const WithdrawView = () => import('@/views/WithdrawView/WithdrawView.vue')
 const TransferView = () => import('@/views/TransferView/TransferView.vue')
 const VIPView = () => import('@/views/VIPView/VIPView.vue')
 
-
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [

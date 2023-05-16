@@ -14,8 +14,5 @@
 .demo-nav__back {
   width: 24px;
   height: 24px;
-  // position: absolute;
-  // top:16px;
-  // left:16px;
 }
 </style>
