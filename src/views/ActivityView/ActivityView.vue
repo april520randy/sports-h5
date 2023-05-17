@@ -18,9 +18,8 @@ import activityImg from './img/activity.png'
 import { groupBy } from 'lodash'
 import { ref } from 'vue'
 // import { jumpExternalLink } from '@/utils'
-import { showToast } from 'vant'
-import 'vant/es/toast/style'
-console.log(activityList)
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const getName = (num) => {
   switch (num) {
     case 7:
@@ -49,8 +48,7 @@ tabs.unshift({ name: '全部', list: activityList })
 const active = ref(0)
 
 const onClickActivity = (item) => {
-  console.log('123')
-  showToast('跳转详情')
+  router.push(`/activity/${item.actId}`)
   // jumpExternalLink({
   //   url:`https://m-w9.btyyl1.com/${item.pcUrl}`
   // })
@@ -72,6 +70,6 @@ const onClickActivity = (item) => {
 </style>
 <style lang="scss">
 .van-tab__panel {
-  min-height: calc(100vh - 44px);
+  min-height: calc(100vh - 44px - 55px);
 }
 </style>

@@ -1,8 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 const HomeView = () => import('@/views/HomeView/HomeView.vue')
 const ActivityView = () => import('@/views/ActivityView/ActivityView.vue')
+const ActivityDetailView = () => import('@/views/ActivityDetailView/ActivityDetailView.vue')
 const GameView = () => import('@/views/GameView/GameView.vue')
 const UserCenterView = () => import('@/views/UserCenterView/UserCenterView.vue')
+const SponsorView = () => import('@/views/SponsorView/SponsorView.vue')
 const ServiceView = () => import('@/views/ServiceView/ServiceView.vue')
 const DepositView = () => import('@/views/DepositView/DepositView.vue')
 const WithdrawView = () => import('@/views/WithdrawView/WithdrawView.vue')
@@ -20,7 +22,8 @@ const InviteView = () => import('@/views/InviteView/InviteView.vue')
 const AgentView = () => import('@/views/AgentView/AgentView.vue')
 const AboutUsView = () => import('@/views/AboutUsView/AboutUsView.vue')
 const LoginView = () => import('@/views/LoginView/LoginView.vue')
-
+const RegisterView = () => import('@/views/RegisterView/RegisterView.vue')
+const ForgetView = () => import('@/views/ForgetView/ForgetView.vue')
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -29,6 +32,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterView
     },
     {
       path: '/',
@@ -45,6 +53,19 @@ const router = createRouter({
       meta: {
         isShowTabbar: true
       }
+    },
+    {
+      path: '/sponsor',
+      name: 'sponsor',
+      component: SponsorView,
+      meta: {
+        isShowTabbar: true
+      }
+    },
+    {
+      path: '/activity/:actId',
+      name: 'activity-detail',
+      component: ActivityDetailView
     },
     {
       path: '/game',
@@ -138,6 +159,11 @@ const router = createRouter({
       path: '/about-us',
       name: 'about-us',
       component: AboutUsView
+    },
+    {
+      path: '/forget',
+      name: 'forget',
+      component: ForgetView
     }
   ]
 })

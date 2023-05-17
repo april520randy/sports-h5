@@ -1,26 +1,23 @@
 <template>
   <div class="wrapper">
-    <UserHeader />
-    <VIP />
-    <MyAssets />
-    <MyMenu />
+    <div class="header-wrapper">
+      <UserHeader />
+    </div>
+    <div class="scroll-view">
+      <VIP />
+      <MyAssets />
+      <MyMenu />
+      <van-cell-group>
+        <van-cell icon="photo-o">
+          <template #title>
+            <span class="custom-title">时区 GMT+08:00</span>
+          </template>
+        </van-cell>
 
-    <!-- <van-cell-group>
-      <van-cell title="单元格" value="内容" />
-      <van-cell title="单元格" value="内容" label="描述信息" />
-    </van-cell-group> -->
-
-    <van-cell-group>
-      <van-cell icon="photo-o">
-        <template #title>
-          <span class="custom-title">时区 GMT+08:00</span>
-        </template>
-      </van-cell>
-
-      <van-cell title="关于Z体育" icon="shop-o" is-link to="/about-us"> </van-cell>
-    </van-cell-group>
-
-    <van-button @click="confirmLogOut" type="default" block plain>退出登录</van-button>
+        <van-cell title="关于Z体育" icon="shop-o" is-link to="/about-us"> </van-cell>
+      </van-cell-group>
+      <van-button @click="confirmLogOut" type="default" block plain>退出登录</van-button>
+    </div>
   </div>
 </template>
 
@@ -46,5 +43,17 @@ const confirmLogOut = () => {
 <style lang="scss" scoped>
 .wrapper {
   padding: 10px 15px;
+}
+.header-wrapper {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width:100%;
+  padding: 10px 15px;
+  background:#fff;
+}
+.scroll-view{
+  padding-top:77px;
 }
 </style>

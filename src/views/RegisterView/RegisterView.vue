@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h2>登录</h2>
+    <h2>注册</h2>
     <van-form @submit="submit" @failed="onFailed">
       <van-cell-group inset>
         <!-- 用户名 -->
         <van-field
           v-model="username"
-          name="pattern"
+          name="username"
           label="用户名"
           placeholder="请输入用户名"
           :rules="[{ pattern: usernameReg, message: '用户名格式有误' }]"
@@ -20,21 +20,23 @@
           placeholder="请输入密码"
           :rules="[{ pattern: passwordReg, message: '密码格式有误' }]"
         />
+        <van-field
+          v-model="repassword"
+          type="password"
+          name="repassword"
+          label="确认密码"
+          placeholder="请重复输入密码"
+          :rules="[{ validator, message: '两次密码不一致' }]"
+        />
       </van-cell-group>
 
-      <div class="assist">
-        <van-checkbox v-model="remember" icon-size="16px" name="1" shape="square"
-          >记住密码</van-checkbox
-        >
-        <span @click="forget">忘了密码?</span>
-      </div>
       <div style="margin: 16px">
         <van-button round block type="danger" native-type="submit"> 登录 </van-button>
       </div>
     </van-form>
 
-    <!-- 去注册 -->
-    <div @click="register" class="register">没有账号？<span>立即注册</span></div>
+    <!-- 去登录 -->
+    <div @click="login" class="register login">已有账号？<span>立即登录</span></div>
 
     <div class="bottom">
       <span @click="router.push('/')"><van-icon name="photo-o" />先去逛逛</span>
@@ -49,15 +51,21 @@ import Reg from '@/utils/reg'
 import { useRouter } from 'vue-router'
 const { usernameReg, passwordReg } = Reg
 const router = useRouter()
-const username = ref('admin123')
-const password = ref('zzz111')
-const remember = ref(true)
+const username = ref('')
+const password = ref('')
+const repassword = ref('')
+
+// 验证确认密码
+const validator = (val) => {
+  return val === password.value
+}
+
 // 验证失败
 const onFailed = (errorInfo) => {
   console.log('failed', errorInfo)
 }
 
-// 登录提交
+// 提交注册
 const submit = () => {
   const data = {
     username: username.value,
@@ -71,8 +79,8 @@ const forget = () => {
   router.push('/forget')
 }
 
-const register = () => {
-  router.push('/register')
+const login = () => {
+  router.push('/login')
 }
 </script>
 

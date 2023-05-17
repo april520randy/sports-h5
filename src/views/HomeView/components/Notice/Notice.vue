@@ -1,6 +1,6 @@
 <template>
   <van-notice-bar
-    @click="router.push('/notice')"
+    @click="router.push('/message')"
     left-icon="volume-o"
     mode="link"
     color="#1989fa"
@@ -44,7 +44,6 @@ const list = [
 ]
 // 公告
 const selectNotice = (item) => {
-  console.log(item)
   showConfirmDialog({
     title: item.title,
     confirmButtonText: '查看全部',
@@ -53,7 +52,7 @@ const selectNotice = (item) => {
   })
     .then(() => {
       // on confirm
-      router.push('/notice')
+      router.push('/message')
     })
     .catch(() => {
       // on cancel
