@@ -19,6 +19,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const vip = () => {
+  console.log('ddd')
   router.push('/vip')
 }
 const value = ref(40)
@@ -33,6 +34,7 @@ const value = ref(40)
   padding: 0 10px;
   .van-tag {
     position: absolute;
+    z-index: 10;
     right: 0;
     top: 0;
     padding: 5px;
