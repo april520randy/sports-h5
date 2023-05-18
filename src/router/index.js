@@ -1,4 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import beforEach from './hooks/beforEach'
+// import afterEach from './hooks/afterEach'
+
 const HomeView = () => import('@/views/HomeView/HomeView.vue')
 const ActivityView = () => import('@/views/ActivityView/ActivityView.vue')
 const ActivityDetailView = () => import('@/views/ActivityDetailView/ActivityDetailView.vue')
@@ -180,4 +183,6 @@ const router = createRouter({
   ]
 })
 
+router.beforeEach(beforEach)
+// router.afterEach(afterEach)
 export default router
