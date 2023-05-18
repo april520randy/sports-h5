@@ -1,6 +1,6 @@
 <template>
   <div>
-    活动页
+    <NavBar :title="title"/>
   </div>
 </template>
 

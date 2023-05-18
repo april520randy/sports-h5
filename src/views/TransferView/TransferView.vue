@@ -1,6 +1,5 @@
 <template>
   <NavBar title="转账" />
-
 </template>
 
 <script setup>

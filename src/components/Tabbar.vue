@@ -16,16 +16,20 @@
 <script setup>
 import { ref } from 'vue'
 import { jumpExternalLink } from '@/utils'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const active = ref(0)
 // const icon = {
 //   active: 'https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png',
 //   inactive: 'https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png'
 // }
 const play = () => {
-  let url =
-    'https://gci.btyzrgame66.com/403.html?remote=116.50.224.222&params=NQiNCRBO6uUlCT+gL5n6Rb9lgM8Y3vLO6ViYyBaRvNbsy06dm8+XKvu2MzqOPpNfmSO3mzPLPTaLS2FMLnYvAhVq9zWdvO3IbdZ3WNZtRddGtVLODswcVYxy1lPNp7t7rD19MmTqn//XapSxFZrDRd4G0W6gQAHJ8/8DrxR9IJnC1txTzVGpIvwkMSZWir0FJeFeul3KEp3TFjwPmkPCC90BtswdvIiBIyleijvVCGDsy06dm8+XKlUnG4GwJQtaNRyos2l7Yxyj+HdzkrddYRwVdedy+AOlHWD3F5fPFSw=&key=e29d1791521382b10cbe369182ec4ed1'
+  let url = 'https://gci.btyzrgame66.com/403.html'
   jumpExternalLink({
-    url
+    url,
+    type: 1,
+    title: 'Z体育',
+    router
   })
 }
 </script>

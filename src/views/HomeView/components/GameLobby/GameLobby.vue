@@ -13,11 +13,11 @@
           <van-icon name="photo-o" size="24" />
         </p>
         <p>
-          <span>{{ item.name || '体育' }}</span>
+          <span>{{ item.name }}</span>
         </p>
       </div>
     </div>
-    <div class="game-view"  @touchstart="touchstart">
+    <div class="game-view" @touchstart="touchstart">
       <div ref="scrollWrapper" class="scroll-wrapper" @scroll.stop="handleScroll">
         <div class="game-list">
           <div
@@ -26,6 +26,7 @@
             class="item"
             v-for="(item, idx) in gameList"
             :key="item.name"
+            @click="play(item)"
           >
             <div class="img-box"></div>
             <h4>{{ item.name }}</h4>
@@ -35,6 +36,7 @@
       <div class="current-game-view">
         <h3 class="title">{{ currentGame.name }}</h3>
       </div>
+      <van-button size="small" @click="play(currentGame)" type="default">进入游戏</van-button>
     </div>
   </div>
 </template>
@@ -43,6 +45,9 @@
 import gameData from './gameList'
 import { ref, computed, watch } from 'vue'
 import { debounce, throttle } from 'lodash'
+import { useRouter } from 'vue-router'
+import { jumpExternalLink } from '@/utils'
+const router = useRouter()
 console.log(gameData)
 // 游戏列表
 const tabList = [...gameData]
@@ -60,7 +65,7 @@ const currentGameTypeIdx = ref(0) // 当前游戏分类索引
 const currentGameIdx = ref(0) // 当前游戏索引
 const currentGame = computed(() => gameList[currentGameIdx.value]) // 当前游戏
 const delayCurrentGameIdx = ref(0) // 延迟选中游戏效果的索引
-let isClickSelected = false// 是否为用户点选游戏分类导致的滚动
+let isClickSelected = false // 是否为用户点选游戏分类导致的滚动
 watch(
   currentGameIdx,
   debounce(async () => {
@@ -68,7 +73,7 @@ watch(
   }, 300)
 )
 // 标识用户触发滚动
-const touchstart = ()=>{
+const touchstart = () => {
   isClickSelected = false
 }
 // 滚动回调
@@ -95,7 +100,7 @@ const handleScroll = throttle(($event) => {
   const firstGame = !currentGameIdx.value
   const lastGame = currentGameIdx.value === itemRefs.value.length - 1
   const noNeedDelay = [firstGame, lastGame, isClickSelected].some((bool) => bool)
-  if(noNeedDelay){
+  if (noNeedDelay) {
     delayCurrentGameIdx.value = currentGameIdx.value
   }
 }, 0)
@@ -123,6 +128,17 @@ const scrollToThere = (idx) => {
     left: 0,
     top: firstGameDom.offsetTop
     // behavior: 'smooth'
+  })
+}
+
+// 进入游戏
+const play = (item) => {
+  console.log(item)
+  jumpExternalLink({
+    url: 'https://gci.btyzrgame66.com/403.html',
+    title: item.name,
+    type: 1,
+    router
   })
 }
 </script>
@@ -190,7 +206,12 @@ const scrollToThere = (idx) => {
       .title{
         font-size 40px
       }
-
     }
+    .van-button{
+        position absolute
+        z-index 999
+        bottom 30px
+        left 50%
+      }
 }
 </style>

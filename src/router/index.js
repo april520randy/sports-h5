@@ -5,6 +5,7 @@ const ActivityDetailView = () => import('@/views/ActivityDetailView/ActivityDeta
 const GameView = () => import('@/views/GameView/GameView.vue')
 const UserCenterView = () => import('@/views/UserCenterView/UserCenterView.vue')
 const SponsorView = () => import('@/views/SponsorView/SponsorView.vue')
+const WebView = () => import('@/views/WebView/WebView.vue')
 const ServiceView = () => import('@/views/ServiceView/ServiceView.vue')
 const DepositView = () => import('@/views/DepositView/DepositView.vue')
 const WithdrawView = () => import('@/views/WithdrawView/WithdrawView.vue')
@@ -24,9 +25,9 @@ const AboutUsView = () => import('@/views/AboutUsView/AboutUsView.vue')
 const LoginView = () => import('@/views/LoginView/LoginView.vue')
 const RegisterView = () => import('@/views/RegisterView/RegisterView.vue')
 const ForgetView = () => import('@/views/ForgetView/ForgetView.vue')
-
+const SponsorDetailView = () => import('@/views/SponsorDetailView/SponsorDetailView.vue')
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/login',
@@ -61,6 +62,17 @@ const router = createRouter({
       meta: {
         isShowTabbar: true
       }
+    },
+    {
+      path: '/sponsor/:id',
+      name: 'sponsor-detail',
+      component: SponsorDetailView,
+    },
+    {
+      path: '/webview',
+      name: 'webview',
+      component: WebView,
+      meta: {}
     },
     {
       path: '/activity/:actId',
