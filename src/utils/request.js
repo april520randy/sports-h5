@@ -1,8 +1,6 @@
 import axios from 'axios'
 import { ERR_EXPIRED, ERR_OK } from '@utils/config'
-import { getPageOpenedCurrentTimestamp } from '@/utils/cache'
 const service = axios.create()
-
 // 请求拦截器
 service.interceptors.request.use(
   (config) => {
@@ -22,8 +20,7 @@ service.interceptors.response.use(
     // 登录状态已失效
     if (code === ERR_EXPIRED) {
       executeExpiredLogic()
-    }
-    if (code !== ERR_OK) {
+    } else if (code !== ERR_OK) {
       Toast(msg)
     }
     return data
@@ -52,11 +49,11 @@ const executeExpiredLogic = () => {
       于是问题迎刃而解，只要判断当前应用是处于一个长期在运行状态还是重新开启运行状态即可
 
     */
-   // 判断如果当前应用处于长期运行状态
-    if(window.isAppLongRunStatus){
+    // 如果当前应用处于长期运行状态
+    if (window.isAppLongRunStatus) {
       // 弹框提示登录失效
       loginStatusExpired(Dialog, store, Router)
-    }else{
+    } else {
       // 执行退出
       dispatch('logOut')
       // 刷新页面

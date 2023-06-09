@@ -47,6 +47,7 @@
 import { ref } from 'vue'
 import Reg from '@/utils/reg'
 import { useRouter } from 'vue-router'
+import {useUserStore} from '@/stores/user'
 const { usernameReg, passwordReg } = Reg
 const router = useRouter()
 const username = ref('admin123')

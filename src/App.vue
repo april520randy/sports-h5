@@ -7,7 +7,6 @@
 <script setup>
 import { computed } from 'vue'
 import { RouterView, useRoute } from 'vue-router'
-import { setPageOpenedCurrentTimestamp } from '@/utils/cache'
 const currentRoute = useRoute()
 const isShowTabbar = computed(() => currentRoute.meta && currentRoute.meta.isShowTabbar)
 const styles = computed(() => ({
