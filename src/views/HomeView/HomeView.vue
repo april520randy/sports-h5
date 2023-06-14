@@ -18,7 +18,6 @@ import Banner from '@/components/Banner/Banner.vue'
 import Notice from './components/Notice/Notice.vue'
 import UserCenterSimple from './components/UserCenterSimple/UserCenterSimple.vue'
 import GameLobby from './components/GameLobby/GameLobby.vue'
-
 </script>
 
 <style lang="stylus" scoped>
@@ -38,6 +37,4 @@ import GameLobby from './components/GameLobby/GameLobby.vue'
     margin-right 0
   }
 }
-
-
 </style>

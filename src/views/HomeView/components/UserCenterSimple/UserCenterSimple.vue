@@ -2,10 +2,10 @@
   <div class="user-center-simple">
     <div class="info">
       <div class="user">
-        <span class="username">ryder999</span>
-        <van-tag style="margin-left: 5px" type="primary">VIP9</van-tag>
+        <span class="username">{{ user.userInfo.username }}</span>
+        <van-tag style="margin-left: 5px" type="primary">VIP{{ user.userInfo.level }}</van-tag>
       </div>
-      <h3 class="amount">￥999.99</h3>
+      <h3 class="amount">￥{{ user.userInfo.balance }}</h3>
     </div>
     <div class="fast-way">
       <div
@@ -26,8 +26,10 @@
 </template>
 
 <script setup>
-import {useRouter} from 'vue-router'
+import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
 const router = useRouter()
+const user = useUserStore()
 // 快捷通道
 const fastWayList = [
   {

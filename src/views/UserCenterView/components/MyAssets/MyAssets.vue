@@ -22,8 +22,11 @@
 
 <script setup>
 import IconRefresh from '@/components/icons/IconRefresh.vue'
+
 import { showLoadingToast } from 'vant'
 import { ref, computed } from 'vue'
+import { useUserStore } from '@/stores/user'
+const user = useUserStore()
 // 一键回收
 const oneKeyRecevie = () => {
   showLoadingToast({
@@ -37,7 +40,7 @@ const toggle = () => {
 }
 const isShowAmount = ref(true)
 const filterAmount = computed(() => {
-  return isShowAmount.value ? '￥999.99' : '******'
+  return isShowAmount.value ? `￥${user.userInfo.balance || 0}` : '******'
 })
 
 let angle = 0
@@ -77,7 +80,7 @@ const refresh = ($event) => {
     align-items: center;
     h3 {
       font-weight: 600;
-      line-height:30px
+      line-height: 30px;
     }
     .svg-icon {
       width: 22px;

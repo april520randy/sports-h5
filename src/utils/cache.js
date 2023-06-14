@@ -5,8 +5,8 @@ const CURRENT_TIME_STAMP = '__CURRENT_TIME_STAMP__'
 export function getToken() {
   return storage.get(TOKEN, '')
 }
-export function setToken() {
-  return storage.set(TOKEN, '')
+export function setToken(flag) {
+  return storage.set(TOKEN, flag)
 }
 export function removeToken() {
   return storage.remove(TOKEN)

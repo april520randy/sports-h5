@@ -2,13 +2,13 @@
   <div class="vip">
     <van-tag @click="vip" type="primary">进入VIP中心</van-tag>
     <div class="slider-wrapper">
-      <span>VIP9</span>
+      <span>VIP{{ user.userInfo.level }}</span>
       <van-slider readonly bar-height="6px" v-model="value">
         <template #button>
           <div class="custom-button">{{ value }}</div>
         </template>
       </van-slider>
-      <span>VIP10</span>
+      <span>VIP{{ user.userInfo.level + 1 }}</span>
     </div>
     <div class="upgrade">晋级流水：4000/10000元</div>
   </div>
@@ -17,9 +17,10 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+const user = useUserStore()
 const router = useRouter()
 const vip = () => {
-  console.log('ddd')
   router.push('/vip')
 }
 const value = ref(40)
@@ -44,9 +45,9 @@ const value = ref(40)
   display: flex;
   align-items: center;
   padding-top: 45px;
-  &>span{
-    font-weight:600;
-    font-size:18px;
+  & > span {
+    font-weight: 600;
+    font-size: 18px;
   }
   .van-slider {
     margin: 0 10px;

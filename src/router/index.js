@@ -100,7 +100,8 @@ const router = createRouter({
       name: 'bet-record',
       component: BetRecordView,
       meta: {
-        isShowTabbar: true
+        isShowTabbar: true,
+        isAuth:true,
       }
     },
     {
@@ -111,43 +112,67 @@ const router = createRouter({
     {
       path: '/deposit',
       name: 'deposit',
-      component: DepositView
+      component: DepositView,
+      meta:{
+        isAuth:true,
+      }
     },
     {
       path: '/withdraw',
       name: 'withdraw',
-      component: WithdrawView
+      component: WithdrawView,
+      meta:{
+        isAuth:true,
+      }
     },
     {
       path: '/transfer',
       name: 'transfer',
-      component: TransferView
+      component: TransferView,
+      meta:{
+        isAuth:true,
+      }
     },
     {
       path: '/vip',
       name: 'vip',
-      component: VIPView
+      component: VIPView,
+      meta:{
+        isAuth:true,
+      }
     },
     {
       path: '/personal-center',
       name: 'personal-center',
-      component: PersonalCenterView
+      component: PersonalCenterView,
+      meta:{
+        isAuth:true,
+      }
     },
 
     {
       path: '/message',
       name: 'message',
-      component: MessageView
+      component: MessageView,
+      meta:{
+        isAuth:true,
+      }
     },
     {
       path: '/transaction-record',
       name: 'transaction-record',
-      component: TransactionRecordView
+      component: TransactionRecordView,
+      meta:{
+        isAuth:true,
+      }
     },
     {
       path: '/welfare',
       name: 'welfare',
-      component: WelfareView
+      component: WelfareView,
+      meta:{
+        isAuth:true,
+      }
     },
     {
       path: '/help',
@@ -162,13 +187,19 @@ const router = createRouter({
     {
       path: '/invite',
       name: 'invite',
-      component: InviteView
+      component: InviteView,
+      meta:{
+        isAuth:true,
+      }
     },
 
     {
       path: '/agent',
       name: 'agent',
-      component: AgentView
+      component: AgentView,
+      meta:{
+        isAuth:true,
+      }
     },
     {
       path: '/about-us',

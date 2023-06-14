@@ -4,7 +4,7 @@
       <UserHeader />
     </div>
     <div class="scroll-view">
-      <VIP />
+      <VIP v-if="user.isLogin" />
       <MyAssets />
       <MyMenu />
       <van-cell-group>
@@ -16,7 +16,9 @@
 
         <van-cell title="关于Z体育" icon="shop-o" is-link to="/about-us"> </van-cell>
       </van-cell-group>
-      <van-button @click="confirmLogOut" type="default" block plain>退出登录</van-button>
+      <van-button v-if="user.isLogin" @click="confirmLogOut" type="default" block plain
+        >退出登录</van-button
+      >
     </div>
   </div>
 </template>
@@ -27,12 +29,15 @@ import VIP from './components/VIP/VIP.vue'
 import MyAssets from './components/MyAssets/MyAssets.vue'
 import MyMenu from './components/MyMenu/MyMenu.vue'
 import { showConfirmDialog } from 'vant'
+import { useUserStore } from '@/stores/user'
+const user = useUserStore()
 const confirmLogOut = () => {
   showConfirmDialog({
     title: '确定退出当前账号吗?'
   })
     .then(() => {
       // on confirm
+      user.logOutAction()
     })
     .catch(() => {
       // on cancel
@@ -49,11 +54,11 @@ const confirmLogOut = () => {
   z-index: 999;
   top: 0;
   left: 0;
-  width:100%;
+  width: 100%;
   padding: 10px 15px;
-  background:#fff;
+  background: #fff;
 }
-.scroll-view{
-  padding-top:77px;
+.scroll-view {
+  padding-top: 77px;
 }
 </style>

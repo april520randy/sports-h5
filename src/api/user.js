@@ -6,6 +6,14 @@ export function login({ username, password }) {
       } else {
         rej({ code: 2, data: null, msg: '账号密码错误' })
       }
-    }, 1000)
+    }, 10)
+  })
+}
+
+export function getUserInfo() {
+  return new Promise((res) => {
+    setTimeout(() => {
+      res({ code: 0, data: { username: 'ryder888', balance: 888, level: 9 }, msg: '成功' })
+    }, 10)
   })
 }

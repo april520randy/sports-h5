@@ -48,11 +48,13 @@ import { ref } from 'vue'
 import Reg from '@/utils/reg'
 import { useRouter } from 'vue-router'
 import {useUserStore} from '@/stores/user'
+const store = useUserStore()
 const { usernameReg, passwordReg } = Reg
 const router = useRouter()
 const username = ref('admin123')
 const password = ref('zzz111')
 const remember = ref(true)
+
 // 验证失败
 const onFailed = (errorInfo) => {
   console.log('failed', errorInfo)
@@ -64,6 +66,7 @@ const submit = () => {
     username: username.value,
     password: password.value
   }
+  store.loginAction(data)
   console.log(data)
 }
 

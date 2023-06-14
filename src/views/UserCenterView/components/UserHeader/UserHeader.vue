@@ -10,7 +10,7 @@
         />
       </div>
       <div class="info">
-        <h4>Hi ryder999</h4>
+        <h4>Hi {{ user.userInfo.username }}</h4>
         <p>加入Z体育第100天</p>
       </div>
     </div>
@@ -21,7 +21,9 @@
 </template>
 
 <script setup>
+import { useUserStore } from '@/stores/user'
 import { useRouter } from 'vue-router'
+const user = useUserStore()
 const router = useRouter()
 const service = () => {
   router.push('/service')
