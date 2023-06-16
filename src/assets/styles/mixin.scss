@@ -1,6 +1,7 @@
 @mixin mobile-padding(){
   padding: 0 15px;
 }
-.mobile-padding{
-  padding:0 15px;
+
+@mixin linear-gradient($directions,$color1,$color2){
+  background: linear-gradient($directions, $color1, $color2);
 }

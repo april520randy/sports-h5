@@ -35,12 +35,18 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+      meta: {
+        isLoginedBlackList: true // 已登录黑名单
+      }
     },
     {
       path: '/register',
       name: 'register',
-      component: RegisterView
+      component: RegisterView,
+      meta: {
+        isLoginedBlackList: true // 已登录黑名单
+      }
     },
     {
       path: '/',
@@ -69,7 +75,7 @@ const router = createRouter({
     {
       path: '/sponsor/:id',
       name: 'sponsor-detail',
-      component: SponsorDetailView,
+      component: SponsorDetailView
     },
     {
       path: '/webview',
@@ -101,7 +107,7 @@ const router = createRouter({
       component: BetRecordView,
       meta: {
         isShowTabbar: true,
-        isAuth:true,
+        isAuth: true
       }
     },
     {
@@ -113,40 +119,40 @@ const router = createRouter({
       path: '/deposit',
       name: 'deposit',
       component: DepositView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
     {
       path: '/withdraw',
       name: 'withdraw',
       component: WithdrawView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
     {
       path: '/transfer',
       name: 'transfer',
       component: TransferView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
     {
       path: '/vip',
       name: 'vip',
       component: VIPView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
     {
       path: '/personal-center',
       name: 'personal-center',
       component: PersonalCenterView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
 
@@ -154,24 +160,24 @@ const router = createRouter({
       path: '/message',
       name: 'message',
       component: MessageView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
     {
       path: '/transaction-record',
       name: 'transaction-record',
       component: TransactionRecordView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
     {
       path: '/welfare',
       name: 'welfare',
       component: WelfareView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
     {
@@ -188,8 +194,8 @@ const router = createRouter({
       path: '/invite',
       name: 'invite',
       component: InviteView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
 
@@ -197,8 +203,8 @@ const router = createRouter({
       path: '/agent',
       name: 'agent',
       component: AgentView,
-      meta:{
-        isAuth:true,
+      meta: {
+        isAuth: true
       }
     },
     {

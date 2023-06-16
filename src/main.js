@@ -1,13 +1,14 @@
-import './assets/main.css'
 import 'vant/es/toast/style'
 import 'vant/es/dialog/style'
+import './assets/styles/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
-// 创建Pinia实例
+import registerComponents from '@/utils/registerComponents'
 const pinia = createPinia()
 const app = createApp(App)
+registerComponents(app)
 app.use(pinia)
 app.use(router)
 

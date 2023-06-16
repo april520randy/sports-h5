@@ -24,3 +24,9 @@ export function jumpExternalLink({ url, type, title, router }) {
       window.location.href = url
   }
 }
+
+// 获取:root下的css变量值
+export function getCssVariableValue(variable){
+  return getComputedStyle(document.documentElement)
+    .getPropertyValue(variable);
+}

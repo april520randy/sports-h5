@@ -13,23 +13,18 @@ export default defineConfig({
     Components({
       resolvers: [VantResolver()]
     }),
-    // styleImport({
-    //   // 需要全局导入的 SCSS 文件路径
-    //   libs: [
-    //     {
-    //       libraryName: 'scss',
-    //       esModule: true,
-    //       resolveStyle: (name) => {
-    //         return `@import "./src/assets/styles/${name}.scss";`;
-    //       },
-    //     },
-    //   ],
-    // }),
-  ],
+  ], 
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
-  }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/assets/styles/mixin.scss";`,
+      },
+    },
+  },
 })

@@ -20,34 +20,3 @@ export default async (to) => {
   }
 }
 
-// function addUrlParams(to, from, next, path) {
-//   if (to.query.code) {
-//     if (path) {
-//       next({ path })
-//     } else {
-//       next()
-//     }
-//     return
-//   }
-//   if (from.query.code) {
-//     let toQuery = JSON.parse(JSON.stringify(to.query))
-//     toQuery.code = from.query.code
-//     if (path) {
-//       next({
-//         path,
-//         query: toQuery
-//       })
-//     } else {
-//       next({
-//         path: to.path,
-//         query: toQuery
-//       })
-//     }
-//   } else {
-//     if (path) {
-//       next({ path })
-//     } else {
-//       next()
-//     }
-//   }
-// }

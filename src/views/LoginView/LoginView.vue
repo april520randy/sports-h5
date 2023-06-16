@@ -1,60 +1,53 @@
 <template>
-  <div>
-    <h2>登录</h2>
-    <van-form @submit="submit" @failed="onFailed">
-      <van-cell-group inset>
-        <!-- 用户名 -->
-        <van-field
-          v-model="username"
-          name="pattern"
-          label="用户名"
-          placeholder="请输入用户名"
-          :rules="[{ pattern: usernameReg, message: '用户名格式有误' }]"
-        />
-        <!-- 通过 validator 进行函数校验 -->
-        <van-field
-          v-model="password"
-          type="password"
-          name="validator"
-          label="密码"
-          placeholder="请输入密码"
-          :rules="[{ pattern: passwordReg, message: '密码格式有误' }]"
-        />
-      </van-cell-group>
+  <div class="wrapper login">
+    <Head />
 
-      <div class="assist">
-        <van-checkbox v-model="remember" icon-size="16px" name="1" shape="square"
-          >记住密码</van-checkbox
-        >
-        <span @click="forget">忘了密码?</span>
-      </div>
-      <div style="margin: 16px">
-        <van-button round block type="danger" native-type="submit"> 登录 </van-button>
-      </div>
-    </van-form>
+    <h3 class="tit">欢迎来到C体育</h3>
 
+    <!-- 登录方式 -->
+    <van-tabs
+      title-inactive-color="#BBB"
+      :title-active-color="primaryColor"
+      v-model:active="activeName"
+      line-width="28px"
+      swipeable
+      shrink
+    >
+      <van-tab title="账号登录" name="username">
+        <UsernameLogin />
+      </van-tab>
+      <van-tab title="手机验证码登录" name="phone">
+        <PhoneLogin />
+      </van-tab>
+    </van-tabs>
     <!-- 去注册 -->
-    <div @click="register" class="register">没有账号？<span>立即注册</span></div>
+    <div @click="register" class="register">还没有账号？<span>立即注册</span></div>
 
-    <div class="bottom">
-      <span @click="router.push('/')"><van-icon name="photo-o" />先去逛逛</span>
-      <span @click="router.push('/service')"><van-icon name="photo-o" />联系客服</span>
-    </div>
+    <Bottom/>
   </div>
 </template>
 
 <script setup>
+import Head from './components/head.vue'
 import { ref } from 'vue'
 import Reg from '@/utils/reg'
+import { getCssVariableValue } from '@/utils'
 import { useRouter } from 'vue-router'
-import {useUserStore} from '@/stores/user'
+import { useUserStore } from '@/stores/user'
+import UsernameLogin from './components/UsernameLogin.vue'
+import PhoneLogin from './components/PhoneLogin.vue'
+import Bottom from './components/Bottom'
+const primaryColor = getCssVariableValue('--van-primary-color')
 const store = useUserStore()
 const { usernameReg, passwordReg } = Reg
 const router = useRouter()
-const username = ref('admin123')
-const password = ref('zzz111')
-const remember = ref(true)
-
+let username = ref('')
+let password = ref('')
+let remember = ref(true)
+const activeName = ref('username')
+const clear = () => {
+  console.log('test')
+}
 // 验证失败
 const onFailed = (errorInfo) => {
   console.log('failed', errorInfo)
@@ -81,35 +74,38 @@ const register = () => {
 </script>
 
 <style lang="scss" scoped>
-h2 {
-  padding: 50px 0 25px;
-  text-align: center;
-}
-.assist {
-  padding: 0 25px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-.register {
-  text-align: center;
-  color: #999;
-  span {
-    color: #1989fa;
+.wrapper {
+  padding: 25px;
+  background: #fefdfc;
+  .tit {
+    font-size: 25px;
+    font-weight: 600;
+    color: #111;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  .register {
+    text-align: center;
+    margin-top: 15px;
+    span {
+      color: var(--color-primary);
+    }
   }
 }
-.bottom {
-  position: fixed;
-  bottom: 30px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  span:first-child {
-    margin-right: 100px;
+</style>
+<style lang="scss">
+.login {
+  .van-tabs__nav--line.van-tabs__nav--shrink,
+  .van-tabs__nav--line.van-tabs__nav--complete {
+    padding-left: 0;
+    padding-right: 0;
   }
-  .van-icon {
-    margin-right: 4px;
+  .van-tab--shrink {
+    padding: 0;
+    margin-right: 25px;
+  }
+  .van-tabs__content--animated {
+    padding-top: 40px;
   }
 }
 </style>

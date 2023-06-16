@@ -1,5 +1,6 @@
+@import './var.css';
 @import './base.css';
-
+@import './custom-vant.scss';
 #app {
   max-width: 100vh;
   font-weight: normal;
