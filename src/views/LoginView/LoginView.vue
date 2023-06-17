@@ -23,7 +23,9 @@
     <!-- 去注册 -->
     <div @click="register" class="register">还没有账号？<span>立即注册</span></div>
 
-    <Bottom/>
+    <div class="bottom-wrapper">
+      <Bottom />
+    </div>
   </div>
 </template>
 
@@ -91,6 +93,14 @@ const register = () => {
       color: var(--color-primary);
     }
   }
+}
+.bottom-wrapper{
+  margin-top:50px;
+  // position: fixed;
+  // width:100%;
+  // left:0;
+  // bottom :20px;
+
 }
 </style>
 <style lang="scss">

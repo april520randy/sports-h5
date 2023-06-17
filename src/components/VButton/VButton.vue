@@ -1,9 +1,16 @@
 <template>
-  <button @click="emit('click')"><slot /></button>
+  <button :class="{disabled:disabled}" @click="emit('click')"><slot /></button>
 </template>
 
 <script setup>
 const emit = defineEmits(['click'])
+defineProps({
+  disabled: {
+    type: Boolean,
+    default: false
+  }
+})
+
 </script>
 
 <style lang="scss" scoped>
@@ -18,5 +25,8 @@ button {
   @include linear-gradient(90deg, #ff9000 16%, #ff5000 87.23%);
   color: #fff;
   font-size: 15px;
+  &[disabled],&.disabled{
+    background: rgba(187, 187, 187, 0.5);
+  }
 }
 </style>

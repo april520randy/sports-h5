@@ -1,42 +1,70 @@
 <template>
   <form class="form" @submit="submit">
-    <div class="input-wrapper">
-      <input type="text" placeholder="请输入账号 " name="username" />
-      <IconClear class="icon-clear" />
+    <CustomInput
+      clearable
+      v-model="username"
+      placeholder="请输入账号"
+      :rule="{
+        reg: Reg.usernameReg,
+        errorMessage: '账号由6-16位数字+字母组成!'
+      }"
+    />
+    <div class="split"></div>
+    <CustomInput
+      clearable
+      isPwd
+      v-model="password"
+      placeholder="请输入密码"
+      :rule="{
+        reg: Reg.passwordReg,
+        errorMessage: '密码由6-16位数字+字母组成!'
+      }"
+    />
+
+    <div class="auxfun">
+      <p>
+        <van-checkbox v-model="remember"><span>记住密码</span></van-checkbox>
+      </p>
+      <p>忘了密码？</p>
     </div>
 
-    <div class="input-wrapper">
-      <input autocomplete type="password" placeholder="请输入账号 " name="password" />
-      <IconClear class="icon-clear" />
-    </div>
-    <VButton>登录</VButton>
+    <VButton :disabled="!isValided">登录</VButton>
   </form>
 </template>
 
 <script setup>
-import IconClear from '@/components/icons/IconClear'
+import CustomInput from '@/components/CustomInput/CustomInput'
+import { ref, computed } from 'vue'
+import Reg from '@/utils/reg'
+const username = ref('')
+const password = ref('')
+const remember = ref(true)
+const isValided = computed(() => {
+  return Reg.usernameReg.test(username.value) && Reg.passwordReg.test(password.value)
+  // return username.value && password.value
+})
 const submit = (event) => {
   event.preventDefault()
-  console.log(456)
+  // 验证数据
+  if (isValided.value) {
+    // 验证通过 发送请求
+    console.log('验证通过')
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.input-wrapper {
-  position: relative;
-  margin-bottom: 30px;
-  input {
-    width: 100%;
-    border: none;
-    font-size: 16px;
-    color: #111;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-  }
-  .icon-clear {
-    position: absolute;
-    right: 3px;
-    top: 5px;
+.split {
+  padding: 10px 0;
+}
+.auxfun {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  color: #888;
+  span {
+    color: #888;
   }
 }
 </style>
