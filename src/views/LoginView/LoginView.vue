@@ -32,43 +32,12 @@
 <script setup>
 import Head from './components/head.vue'
 import { ref } from 'vue'
-import Reg from '@/utils/reg'
 import { getCssVariableValue } from '@/utils'
-import { useRouter } from 'vue-router'
-import { useUserStore } from '@/stores/user'
 import UsernameLogin from './components/UsernameLogin.vue'
 import PhoneLogin from './components/PhoneLogin.vue'
 import Bottom from './components/Bottom'
 const primaryColor = getCssVariableValue('--van-primary-color')
-const store = useUserStore()
-const { usernameReg, passwordReg } = Reg
-const router = useRouter()
-let username = ref('')
-let password = ref('')
-let remember = ref(true)
 const activeName = ref('username')
-const clear = () => {
-  console.log('test')
-}
-// 验证失败
-const onFailed = (errorInfo) => {
-  console.log('failed', errorInfo)
-}
-
-// 登录提交
-const submit = () => {
-  const data = {
-    username: username.value,
-    password: password.value
-  }
-  store.loginAction(data)
-  console.log(data)
-}
-
-// 忘了密码
-const forget = () => {
-  router.push('/forget')
-}
 
 const register = () => {
   router.push('/register')
@@ -94,13 +63,12 @@ const register = () => {
     }
   }
 }
-.bottom-wrapper{
-  margin-top:50px;
+.bottom-wrapper {
+  margin-top: 50px;
   // position: fixed;
   // width:100%;
   // left:0;
   // bottom :20px;
-
 }
 </style>
 <style lang="scss">

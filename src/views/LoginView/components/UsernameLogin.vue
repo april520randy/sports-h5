@@ -11,7 +11,6 @@
     />
     <div class="split"></div>
     <CustomInput
-      clearable
       isPwd
       v-model="password"
       placeholder="请输入密码"
@@ -36,8 +35,10 @@
 import CustomInput from '@/components/CustomInput/CustomInput'
 import { ref, computed } from 'vue'
 import Reg from '@/utils/reg'
-const username = ref('')
-const password = ref('')
+import { useUserStore } from '@/stores/user'
+const user = useUserStore()
+const username = ref('admin123')
+const password = ref('zzz111')
 const remember = ref(true)
 const isValided = computed(() => {
   return Reg.usernameReg.test(username.value) && Reg.passwordReg.test(password.value)
@@ -49,6 +50,11 @@ const submit = (event) => {
   if (isValided.value) {
     // 验证通过 发送请求
     console.log('验证通过')
+    const data = {
+      username: username.value,
+      password: password.value
+    }
+    user.loginAction(data)
   }
 }
 </script>
