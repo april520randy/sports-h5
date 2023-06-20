@@ -2,7 +2,12 @@
   <div class="send-code">
     <span @click="sendCode" v-if="available">获取验证码</span>
     <p v-else>
-      <van-count-down @finish="onFinish" :time="time" format="sss" />
+      <!-- <van-count-down @finish="onFinish" :time="time" format="sss" /> -->
+      <van-count-down @finish="onFinish"  :time="time">
+        <template #default="timeData">
+          <span class="block">{{ timeData.seconds }}s后重发</span>
+        </template>
+      </van-count-down>
     </p>
   </div>
 </template>
