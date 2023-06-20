@@ -2,6 +2,7 @@
   <form class="form" @submit="submit">
     <CustomInput
       clearable
+      hasErrorTip
       v-model="username"
       placeholder="请输入账号"
       :rule="{
@@ -12,6 +13,7 @@
     <div class="split"></div>
     <CustomInput
       isPwd
+      hasErrorTip
       v-model="password"
       placeholder="请输入密码"
       :rule="{
@@ -42,7 +44,6 @@ const password = ref('zzz111')
 const remember = ref(true)
 const isValided = computed(() => {
   return Reg.usernameReg.test(username.value) && Reg.passwordReg.test(password.value)
-  // return username.value && password.value
 })
 const submit = (event) => {
   event.preventDefault()
@@ -61,12 +62,12 @@ const submit = (event) => {
 
 <style lang="scss" scoped>
 .split {
-  padding: 10px 0;
+  padding: 6px 0;
 }
 .auxfun {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 40px;
   color: #888;
   span {

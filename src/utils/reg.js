@@ -3,7 +3,7 @@ export default {
   passwordReg: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/,//密码
   oldUsernameReg: /^[A-Za-z0-9]+$/,
   phoneReg: /^\d{11}$/,
-  codeReg: /^\d{4}$/,
+  codeReg: /^\d{4,6}$/,
   phoneCodeReg: /^\d{6}$/,
   withdrawPwdReg: /^\d{6}$/,
   chineseReg: /^[\u4e00-\u9fa5]+$/,//中文姓名

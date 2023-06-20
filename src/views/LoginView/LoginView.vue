@@ -37,7 +37,7 @@ import UsernameLogin from './components/UsernameLogin.vue'
 import PhoneLogin from './components/PhoneLogin.vue'
 import Bottom from './components/Bottom'
 const primaryColor = getCssVariableValue('--van-primary-color')
-const activeName = ref('username')
+const activeName = ref('phone')
 
 const register = () => {
   router.push('/register')
@@ -46,7 +46,7 @@ const register = () => {
 
 <style lang="scss" scoped>
 .wrapper {
-  padding: 25px;
+  padding: 20px 25px 0;
   background: #fefdfc;
   .tit {
     font-size: 25px;

@@ -7,17 +7,14 @@
       :placeholder="placeholder"
       :maxlength="maxlength"
       :type="type"
+      :class="{ phone: isPhone }"
       autocomplete
       name="username"
     />
-    <p v-if="errorMessage" class="error-tip">{{ errorMessage }}</p>
+    <p v-if="hasErrorTip" class="error-tip">{{ errorMessage }}</p>
 
     <div class="icon-wrapper">
-      <IconClear
-        v-if="modelValue && clearable"
-        @click="clear"
-        class="icon"
-      />
+      <IconClear v-if="modelValue && clearable" @click="clear" class="icon" />
       <span v-if="modelValue && isPwd" @click="toggle">
         <IconEyeClose v-show="type === 'password'" class="icon" />
         <IconEyeOpen v-show="type === 'text'" class="icon" />
@@ -40,11 +37,23 @@ const props = defineProps({
     type: Object,
     default: () => ({})
   },
+  hasErrorTip: {
+    type: Boolean,
+    default: false
+  },
   labelWidth: {
     type: Number,
     default: 0
   },
+  indent: {
+    type: [String, Number],
+    default: ''
+  },
   isPwd: {
+    type: Boolean,
+    default: false
+  },
+  isPhone: {
     type: Boolean,
     default: false
   },
@@ -83,14 +92,16 @@ const input = (e) => {
   errorMessage.value = ''
 }
 const verify = (e) => {
-  if (!props.rule.reg.test(e.target.value)) {
+  if (!e.target.value) {
+    errorMessage.value = props.placeholder
+  } else if (!props.rule.reg.test(e.target.value)) {
     errorMessage.value = props.rule.errorMessage
   }
 }
-const clear = ()=>{
+const clear = () => {
   emit('update:modelValue', '')
-   // 重置表单验证状态
-   errorMessage.value = ''
+  // 重置表单验证状态
+  errorMessage.value = ''
 }
 
 const toggle = () => {
@@ -116,6 +127,9 @@ if (props.isPwd) {
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     padding-right: 30px;
+    &.phone {
+      text-indent: 90px;
+    }
   }
   .icon-wrapper {
     position: absolute;
@@ -129,11 +143,12 @@ if (props.isPwd) {
     input {
       border-bottom-color: var(--color-danger);
     }
-    .error-tip {
-      color: var(--color-danger);
-      font-size: 12px;
-      margin-top: 4px;
-    }
+  }
+  .error-tip {
+    color: var(--color-danger);
+    font-size: 12px;
+    margin-top: 4px;
+    height: 20px;
   }
 }
 </style>
