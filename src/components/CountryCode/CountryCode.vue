@@ -1,9 +1,9 @@
 <template>
-  <div class="country-code" @click="open = true">
+  <div class="country-code" @click="openDialog">
     <div class="icon">
-      <img src="./img/china.png" alt="" />
+      <img :src="currentCountry.icon" alt="" />
     </div>
-    <span>+{{ 86 }}</span>
+    <span>+{{ currentCountry.code }}</span>
   </div>
 
   <Teleport to="body">
@@ -14,11 +14,16 @@
           <IconClose @click="open = false" class="close" />
         </div>
         <div class="content">
-          <Search @onSearch="onSearch" />
+          <Search ref="searchRef" @onSearch="onSearch" />
 
           <div class="list-wrapper">
             <div class="list">
-              <div class="item" v-for="item in list" :key="item.title">
+              <div
+                @click="selectCountry(item)"
+                class="item"
+                v-for="item in filterList"
+                :key="item.title"
+              >
                 <div class="left">
                   <p><img :src="item.icon" alt="" /></p>
                   <span>{{ item.title }}</span>
@@ -37,57 +42,50 @@
 import { ref } from 'vue'
 import IconClose from '@/components/icons/IconClose'
 import Search from '@/components/Search/Search'
-import { resolvePath } from '@/utils'
-const open = ref(true)
+import list from './list'
+const open = ref(false)
+const currentCountry = ref({})
+const filterList = ref(JSON.parse(JSON.stringify(list)))
+const searchRef = ref(null) // 搜索组件
+const emit = defineEmits(['getCountryCode'])
+// 触发搜索
 const onSearch = (query) => {
-  console.log(query)
+  filterList.value = list.filter((item) => item.title.includes(query))
 }
 
-const list = [
-  {
-    title: '中国',
-    icon: resolvePath('./img/china.png', import.meta.url),
-    code: '86'
-  },
-  {
-    title: '菲律宾',
-    icon: resolvePath('./img/php.png', import.meta.url),
-    code: '63'
-  },
-  {
-    title: '安道尔',
-    icon: resolvePath('./img/other1.png', import.meta.url),
-    code: '376'
-  },
-  {
-    title: '阿联酋',
-    icon: resolvePath('./img/other2.png', import.meta.url),
-    code: '376'
-  },
-  {
-    title: '阿富汗',
-    icon: resolvePath('./img/other3.png', import.meta.url),
-    code: '376'
-  },
-  {
-    title: '安提瓜和巴布达',
-    icon: resolvePath('./img/other4.png', import.meta.url),
-    code: '376'
-  },
-  {
-    title: '安圭拉',
-    icon: resolvePath('./img/other1.png', import.meta.url),
-    code: '376'
-  }
-]
+// 选择国家
+const selectCountry = (item) => {
+  setCurrentCountry(item)
+  closeDialog()
+}
+// 设置当前国家
+const setCurrentCountry = (item) => {
+  currentCountry.value = item
+  emit('getCountryCode', item.code)
+}
+const closeDialog = () => {
+  open.value = false
+  clearSearch()
+}
+const openDialog = () => {
+  open.value = true
+}
+// 清空搜索框
+const clearSearch = () => {
+  searchRef.value.clear()
+}
+// 初始化当前国家
+setCurrentCountry(list[0])
 </script>
 
 <style lang="scss" scoped>
 .country-code {
   display: flex;
   align-items: center;
+  position: relative;
+  width: 78px;
   .icon {
-    $size: 24px;
+    $size: 26px;
     width: $size;
     height: $size;
     margin-right: 5px;
@@ -98,6 +96,16 @@ const list = [
   span {
     font-size: 15px;
     color: #000;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 4px;
+    height: 20px;
+    width: 1px;
+    background: #eee;
   }
 }
 .popup {
@@ -127,7 +135,7 @@ const list = [
         align-items: center;
         justify-content: space-between;
         font-size: 14px;
-        margin-bottom:25px;
+        margin-bottom: 25px;
         .left {
           display: flex;
           align-items: center;

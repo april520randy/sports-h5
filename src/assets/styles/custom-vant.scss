@@ -1,7 +1,9 @@
+/* vant样式自定义 */
 :root:root {
   /* 整体主题色 */
   --van-primary-color: var(--color-primary);
   /* Tab */
   --van-tab-font-size: 17px;
   --van-checkbox-size: 18px;
+  --van-tabs-nav-background: transparent;
 }

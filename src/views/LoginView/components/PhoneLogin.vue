@@ -2,7 +2,7 @@
   <form class="form" @submit="submit">
     <div class="phone-wrapper">
       <div class="country-code-wrapper">
-        <CountryCode />
+        <CountryCode @getCountryCode="getCountryCode" />
       </div>
 
       <CustomInput
@@ -14,7 +14,7 @@
         :maxlength="11"
         placeholder="请输入手机号"
         :rule="{
-          reg: Reg.phoneReg,
+          reg: Reg.i18nPhoneReg,
           errorMessage: '手机号格式错误!'
         }"
       />
@@ -43,16 +43,19 @@
 import CustomInput from '@/components/CustomInput/CustomInput.vue'
 import CountryCode from '@/components/CountryCode/CountryCode.vue'
 import SendCode from '@/components/SendCode/SendCode.vue'
-
+import { useUserStore } from '@/stores/user'
 import Reg from '@/utils/reg'
 import { ref, computed } from 'vue'
+const user = useUserStore()
 const phone = ref('')
 const code = ref('')
-
+const countryCode = ref('')
 const isValided = computed(() => {
-  return Reg.phoneReg.test(phone.value) && Reg.codeReg.test(code.value)
+  return Reg.i18nPhoneReg.test(phone.value) && Reg.codeReg.test(code.value)
 })
-
+const getCountryCode = (cCode) => {
+  countryCode.value = cCode
+}
 const submit = (event) => {
   event.preventDefault()
   // 验证数据
@@ -62,9 +65,10 @@ const submit = (event) => {
     const data = {
       phone: phone.value,
       code: code.value,
-      // cuntryCode
+      cuntryCode: countryCode.value
     }
-    user.loginAction(data)
+    console.log(data)
+    user.phoneLoginAction(data)
   }
 }
 </script>
@@ -77,15 +81,6 @@ const submit = (event) => {
     z-index: 100;
     left: 0;
     top: 2px;
-    &::after {
-      content: '';
-      position: absolute;
-      right: -20px;
-      top: 5px;
-      height: 20px;
-      width: 1px;
-      background: #eee;
-    }
   }
 }
 .split {

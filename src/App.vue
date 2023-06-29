@@ -7,6 +7,7 @@
 <script setup>
 import { computed } from 'vue'
 import { RouterView, useRoute } from 'vue-router'
+import Tabbar from '@/components/Tabbar/Tabbar'
 const currentRoute = useRoute()
 const isShowTabbar = computed(() => currentRoute.meta && currentRoute.meta.isShowTabbar)
 const styles = computed(() => ({

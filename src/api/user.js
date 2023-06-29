@@ -17,3 +17,11 @@ export function getUserInfo() {
     }, 10)
   })
 }
+
+export function phoneLogin({ phone, code, countryCode }) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      res({ code: 0, data: { token: 'abcdefg' }, msg: '登录成功' })
+    }, 10)
+  })
+}

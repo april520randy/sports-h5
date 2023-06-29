@@ -18,8 +18,9 @@ const clear = () => {
 }
 // 监听query
 watchEffect(() => {
-  if (query.value) emit('onSearch', query.value)
+   emit('onSearch', query.value)
 })
+defineExpose({clear})
 </script>
 
 <style lang="scss" scoped>

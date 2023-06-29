@@ -1,9 +1,9 @@
 <template>
   <van-tabbar route v-model="active">
-    <van-tabbar-item to="/" icon="photo-o">首页</van-tabbar-item>
+    <van-tabbar-item to="/c-sport" icon="photo-o">滚球</van-tabbar-item>
     <van-tabbar-item to="/activity" icon="photo-o">优惠</van-tabbar-item>
-    <van-tabbar-item @click="play" icon="photo-o">Z体育</van-tabbar-item>
-    <van-tabbar-item to="/sponsor" icon="photo-o">赞助</van-tabbar-item>
+    <van-tabbar-item to="/" icon="photo-o">娱乐城</van-tabbar-item>
+    <van-tabbar-item to="/discover" icon="photo-o">发现</van-tabbar-item>
     <van-tabbar-item to="/user-center" dot>
       <span>我的</span>
       <template #icon="props">

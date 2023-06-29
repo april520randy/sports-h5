@@ -4,5 +4,5 @@ export default async (to) => {
 
 // 统计页面访问信息
 const sendToAnalytics = (fullPath) => {
-  console.log(fullPath)
+  // console.log(fullPath)
 }

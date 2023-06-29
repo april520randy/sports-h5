@@ -4,15 +4,6 @@
       <UserHeader />
     </div>
     <div class="scroll-view">
-      <van-field
-        v-model="username"
-        left-icon="music-o"
-        clearable
-        name="pattern"
-        label=""
-        placeholder="请输入账号"
-        :rules="[{ pattern: usernameReg, message: '账号格式有误' }]"
-      />
       <VIP v-if="user.isLogin" />
       <MyAssets />
       <MyMenu />
@@ -39,8 +30,6 @@ import MyAssets from './components/MyAssets/MyAssets.vue'
 import MyMenu from './components/MyMenu/MyMenu.vue'
 import { showConfirmDialog } from 'vant'
 import { useUserStore } from '@/stores/user'
-import {ref} from 'vue'
-const username = ref('')
 const user = useUserStore()
 const confirmLogOut = () => {
   showConfirmDialog({

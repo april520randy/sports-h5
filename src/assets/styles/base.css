@@ -28,7 +28,9 @@ body {
   display: none;
   width: 0;
 }
-
+input {
+  background: transparent;
+}
 input::placeholder {
   color: #d7d7d7;
 }
