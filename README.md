@@ -70,7 +70,7 @@ npm run lint
 |--.prettierrc.json # Prettier 配置文件
 |--.gitignore # git标识忽略的配置文件
 |--index.html # 应用首页入口文件
-|--package-lock.json # npm自动生成的文件，用来记录依赖包的精准版本号，确保在不同环境与时间点安装的依赖包的版本一致.
+|--package-lock.json # 自动生成文件 记录依赖包的精准版本号，确保在不同环境与时间点安装的依赖包的版本一致.
 |--package.json # 应用依赖包管理文件
 |--postcss.config.js #  PostCSS 配置文件
 |--README.md # 项目说明文档
@@ -81,20 +81,33 @@ npm run lint
 
 ### 分支管理
 
-main: 默认分支, 只有大的版本变更才会同步 release 分支代码
-release: 正式环境分支,
-dev: 开发/测试环境分支
+main: 默认分支 只有大的版本变更才会同步 release 分支代码.
+release: 正式环境分支 线上最新代码.
+dev: 开发/测试环境分支. 
 
 #### 开发流程
 
-假设一个新成员接到一个爆破 BTC 密钥的开发任务： 1.首先他会从 release 分支拉取最新线上代码到本地 2.然后在 release 分支上创建一个本地分支 feature-blast-btc 3.本地开发完成后需要合并到 dev 分支并推送到远程 dev 分支并发布测试 4.经过反复修改测试通过后，再将本地的 feature-blast-btc 分支合并到 release 分支并推送到远程 release 分支然后发布.
+假设一个新成员接到一个爆破 BTC 私钥的开发任务：
+
+1.首先他会从 release 分支拉取最新线上代码到本地
+
+2.然后在 release 分支上创建一个本地分支 feature-blast-btc
+
+3.本地开发完成后需要合并到 dev 分支并推送到远程 dev 分支并发布测试
+
+4.经过反复修改测试通过后，再将本地的 feature-blast-btc 分支合并到 release 分支并推送到远程 release 分支然后发布.
+
 5.feature-blast-btc 分支一旦合并到 release 分支后要立刻删除，避免本地分支膨胀杂乱无章.
 
 ### 开发规范说明
 
 #### 大纲
 
-1.统一使用 vue3 组合式 api 的风格开发组件 2.统一使用 scss 开发组件样式，公共样式可以在@/assets/styles/mixin.scss 中定义，全局共享. 3.组件、目录文件之间的相互引用路径均使用@符合方便管理
+1.统一使用 vue3 组合式 api 的风格开发组件
+
+2.统一使用 scss 开发组件样式，公共样式可以在@/assets/styles/mixin.scss 中定义，全局共享.
+
+3.组件、目录文件之间的相互引用路径均使用@符合方便管理
 
 #### Vue 组件管理
 
@@ -107,19 +120,26 @@ vue 组件均使用文件夹包裹，如：开发一个 Tabbar 组件，则新�
 
 ##### 组件命名规范
 
-1.组件名称必须以大写字母开头并使用大驼峰命名（UpperCamelCase） 2.对于@/views 目录下页面级组件通常可以在组件名称后加 View 稍作区分
+1.组件名称必须以大写字母开头并使用大驼峰命名（UpperCamelCase）
+
+2.对于@/views 目录下页面级组件通常可以在组件名称后加 View 稍作区分
+
 3.js 命名统一使用小驼峰命名（lowerCamelCase）
 
 ##### 组件拆分与路径管理
 
-1.组件拆分原则为拆分越细越好，上限则为单个组件代码最多不要超过 200 行代码. 2.两个大类文件夹用来存放组件，一个是@/components 文件夹，该文件夹下主要放置应用全局可复用的组件,
-第二个是@/views 文件夹，该文件下存放页面级组件，在拆分页面组件时，如果是可复用组件，则把拆分的组件放在@/components 目录方便其他页面复用，如果不是可复用组件，则在当前页面级组件文件夹下新建 component 文件夹，具体参考 HomeView 页面组件.
+1.组件拆分原则为拆分越细越好，上限则为单个组件代码最多不要超过 200 行代码.
+
+2.两个大类文件夹用来存放组件，一个是@/components 文件夹，该文件夹下主要放置应用全局可复用的组件. 第二个是@/views 文件夹，该文件下存放页面级组件，在拆分页面组件时，如果是可复用组件，则把拆分的组件放在@/components 目录方便其他页面复用，否则在当前页面级组件文件夹下新建 component 文件夹，具体参考 HomeView 页面组件.
 
 #### CSS 规范
 
-1.组件 style 标签中必须加 scoped 属性，十分重要！！！ 
-2.对于需要自定义第三方插件样式的需求，比如vant.
-首先需要辨别修改的样式是否全局适用，如果只是在当前页面需要修改 vant 组件的样式（不影响其他页面 vant 组件样式）则新建 style 标签并且不要加 scoped，否则修改 vant 的样式 css 不会生效，然而没有了 scoped 属性势必会对其他页面造成影响，为了消去影响,一定要将修改的样式包裹在你自定义的某个全局独一无二的 classname .如下是将活动页面下的vant按钮组件的背景色改为粉色而不会影响其他页面的vant按钮样式.
+1.html 中的 classname 命名使用“-”连接符如：user-center, main-content,country-code-wrapper 等
+
+2.组件 style 标签中必须加 scoped 属性，十分重要！！！
+
+2.对于需要自定义第三方插件样式的需求，比如 vant.
+首先需要辨别修改的样式是否全局适用，如果只是在当前页面需要修改 vant 组件的样式（不影响其他页面 vant 组件样式）则新建 style 标签并且不要加 scoped，否则修改 vant 的样式 css 不会生效，然而没有了 scoped 属性势必会对其他页面造成影响，为了消去影响,一定要将修改的样式包裹在你自定义的某个全局独一无二的 classname .如下是将活动页面下的 vant 按钮组件的背景色改为粉色而不会影响其他页面的 vant 按钮样式.
 
 ```sh
 <style>
@@ -130,6 +150,5 @@ vue 组件均使用文件夹包裹，如：开发一个 Tabbar 组件，则新�
 }
 </style>
 ```
-而如果你需要修改全局vant组件样式，则可直接在@/assets/styles/custom-vant.scss中修改vant定义的css变量. [具体参考](https://vant-ui.github.io/vant/#/zh-CN/config-provider)
 
-2.html 中的 classname 命名使用“-”连接符如：user-center, main-content,country-code-wrapper 等
+而如果需要修改全局 vant 组件样式，则可直接在@/assets/styles/custom-vant.scss 中修改 vant 定义的 css 变量. [具体参考](https://vant-ui.github.io/vant/#/zh-CN/config-provider)
