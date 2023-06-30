@@ -83,14 +83,14 @@ npm run lint
 
 main: 默认分支 只有大的版本变更才会同步 release 分支代码.  
 release: 正式环境分支 线上最新代码.  
-dev: 开发/测试环境分支.
+test: 测试环境分支.
 
 #### 开发流程
 
-假设一个新成员接到一个爆破 BTC 私钥的开发任务：  
+假设一个新成员接到一个爆破 BTC 私钥的新开发任务：  
 1.首先他会从 release 分支拉取最新线上代码到本地  
 2.然后在 release 分支上创建一个本地分支 feature-blast-btc  
-3.本地开发完成后需要合并到 dev 分支并推送到远程 dev 分支并发布测试.  
+3.本地开发完成后需要把 feature-blast-btc 分支合并到 test 分支并推送到远程 test 分支并发布测试.  
 4.经过反复修改测试通过后，再将本地的 feature-blast-btc 分支合并到 release 分支并推送到远程 release 分支.  
 5.feature-blast-btc 分支合并到 release 分支后要立刻删除，避免本地分支膨胀杂乱无章.
 
