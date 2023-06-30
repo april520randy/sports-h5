@@ -30,5 +30,4 @@ const router = createRouter({
 // 全局路由守卫钩子
 router.beforeEach(beforEach)
 router.afterEach(afterEach)
-// 导出路由
 export default router

@@ -33,3 +33,9 @@ npm run build
 ```sh
 npm run lint
 ``` -->
+
+## 目录说明
+```sh
+|--public #公共静态目录
+```
+
