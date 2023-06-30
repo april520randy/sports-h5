@@ -145,3 +145,5 @@ vue 组件均使用文件夹包裹，如开发一个 Tabbar 组件，则新建�
 
 如果需要修改全局 vant 组件样式，则可直接在@/assets/styles/custom-vant.scss 中修改 vant 定义的 css 变量.  
 [具体参考](https://vant-ui.github.io/vant/#/zh-CN/config-provider)
+
+#### 測試權限push
