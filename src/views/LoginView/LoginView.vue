@@ -9,6 +9,7 @@
       title-inactive-color="#BBB"
       :title-active-color="primaryColor"
       v-model:active="activeName"
+      background="transparent"
       line-width="28px"
       swipeable
       shrink
@@ -36,6 +37,8 @@ import { getCssVariableValue } from '@/utils'
 import UsernameLogin from './components/UsernameLogin.vue'
 import PhoneLogin from './components/PhoneLogin.vue'
 import Bottom from './components/Bottom'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const primaryColor = getCssVariableValue('--van-primary-color')
 const activeName = ref('phone')
 
@@ -73,6 +76,9 @@ const register = () => {
 </style>
 <style lang="scss">
 .login {
+  .van-tab {
+    font-size: 17px;
+  }
   .van-tabs__nav--line.van-tabs__nav--shrink,
   .van-tabs__nav--line.van-tabs__nav--complete {
     padding-left: 0;

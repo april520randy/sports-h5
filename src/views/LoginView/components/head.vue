@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <p @click="back">
+    <p @click="home">
       <IconClose class="icon" />
       <span>先去逛逛</span>
     </p>
@@ -12,8 +12,8 @@
 import IconClose from '@/components/icons/IconClose'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const back = () => {
-  router.back()
+const home = () => {
+  router.push('/')
 }
 const service = () => {
   router.push('/service')
