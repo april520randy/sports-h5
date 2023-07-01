@@ -4,14 +4,17 @@
       <div class="avatar">
         <van-image
           round
-          width="60"
-          height="60"
+          width="50"
+          height="50"
           src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
         />
       </div>
       <div class="info">
-        <h4>Hi {{ user.userInfo.username }}</h4>
-        <p>加入Z体育第100天</p>
+        <div class="info-name">
+          <div></div>
+          Hi {{ user.userInfo.username }}
+        </div>
+        <div class="info-text">加入Z体育第100天</div>
       </div>
     </div>
     <div @click="service" class="right">
@@ -39,13 +42,22 @@ const service = () => {
     align-items: center;
     .avatar {
       margin-right: 10px;
+      width: 51px;
+      height: 51px;
+      flex-shrink: 0;
+      border-radius: 50px;
+      border: 1px solid #fff;
     }
     .info {
-      h4 {
+      .info-name {
         font-size: 18px;
+        font-weight: 600;
+        font-size: 15px;
+        font-family: PingFang SC;
       }
-      p {
-        color: #999;
+      .info-text {
+        color: #666;
+        font-size: 13px;
       }
     }
   }
