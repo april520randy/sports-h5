@@ -1,4 +1,5 @@
 export default function (app) {
+
   app.directive('number', {
     mounted: function (el) {
       let input = getInput(el)
@@ -22,6 +23,7 @@ export default function (app) {
       }
     }
   })
+
 }
 const getInput = (el) => {
   let input = null

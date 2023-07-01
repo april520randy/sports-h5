@@ -4,7 +4,7 @@
       <IconClose class="icon" />
       <span>先去逛逛</span>
     </p>
-    <img @click="service" src="./img/service.png" alt="" />
+    <img @click="service" src="@/assets/img/icon-service.png" alt="" />
   </div>
 </template>
 
@@ -34,7 +34,7 @@ const service = () => {
     margin-right: 5px;
   }
   img {
-    height: 34px;
+    width: 30px;
   }
 }
 </style>

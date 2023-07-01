@@ -80,7 +80,7 @@ const submit = (event) => {
     position: absolute;
     z-index: 100;
     left: 0;
-    top: 2px;
+    top: 0px;
   }
 }
 .split {
