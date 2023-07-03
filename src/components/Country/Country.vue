@@ -1,9 +1,10 @@
 <template>
-  <div class="country-code" @click="openDialog">
+  <div class="country" @click="openDialog" :class="{ 'has-split-line': type === 1 }">
     <div class="icon">
       <img :src="currentCountry.icon" alt="" />
     </div>
-    <span>+{{ currentCountry.code }}</span>
+    <span v-if="type === 1">+{{ currentCountry.code }}</span>
+    <span v-else-if="type === 2">{{ currentCountry.title }}</span>
   </div>
 
   <Teleport to="body">
@@ -43,11 +44,18 @@ import { ref } from 'vue'
 import IconClose from '@/components/icons/IconClose'
 import Search from '@/components/Search/Search'
 import list from './list'
+defineProps({
+  type: {
+    type: Number,
+    default: 1 // 1显示区号，2显示国家名称
+  }
+})
+
 const open = ref(false)
 const currentCountry = ref({})
 const filterList = ref(JSON.parse(JSON.stringify(list)))
 const searchRef = ref(null) // 搜索组件
-const emit = defineEmits(['getCountryCode'])
+const emit = defineEmits(['getCountry'])
 // 触发搜索
 const onSearch = (query) => {
   filterList.value = list.filter((item) => item.title.includes(query))
@@ -61,7 +69,7 @@ const selectCountry = (item) => {
 // 设置当前国家
 const setCurrentCountry = (item) => {
   currentCountry.value = item
-  emit('getCountryCode', item.code)
+  emit('getCountry', item)
 }
 const closeDialog = () => {
   open.value = false
@@ -79,16 +87,16 @@ setCurrentCountry(list[0])
 </script>
 
 <style lang="scss" scoped>
-.country-code {
+.country {
   display: flex;
   align-items: center;
   position: relative;
-  width: 78px;
+  // width:100%;
   .icon {
     $size: 26px;
     width: $size;
     height: $size;
-    margin-right: 5px;
+    margin-right: 8px;
     img {
       width: 100%;
     }
@@ -98,7 +106,7 @@ setCurrentCountry(list[0])
     color: #000;
   }
 
-  &::after {
+  &.has-split-line::after {
     content: '';
     position: absolute;
     right: 0px;

@@ -14,10 +14,10 @@
     <p v-if="hasErrorTip" class="error-tip">{{ errorMessage }}</p>
 
     <div class="icon-wrapper">
-      <IconClear v-if="modelValue && clearable" @click="clear" class="icon" />
+      <IconClear v-if="modelValue && clearable" @click="clear" class="icon-clear" />
       <span v-if="modelValue && isPwd" @click="toggle">
-        <IconEyeClose v-show="type === 'password'" class="icon" />
-        <IconEyeOpen v-show="type === 'text'" class="icon" />
+        <IconEyeClose v-show="type === 'password'" class="icon-eye-close" />
+        <IconEyeOpen v-show="type === 'text'" class="icon-eye-open" />
       </span>
     </div>
   </div>
@@ -137,6 +137,12 @@ if (props.isPwd) {
     top: 5px;
     .icon {
       margin-left: 10px;
+    }
+    .icon-clear{
+      fill:#999;
+    }
+    .icon-eye-close,.icon-eye-open{
+      fill:#bbb;
     }
   }
   &.error {

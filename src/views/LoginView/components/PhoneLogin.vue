@@ -1,8 +1,8 @@
 <template>
   <form class="form" @submit="submit">
     <div class="phone-wrapper">
-      <div class="country-code-wrapper">
-        <CountryCode @getCountryCode="getCountryCode" />
+      <div class="country-wrapper">
+        <Country @getCountry="getCountry" />
       </div>
 
       <CustomInput
@@ -41,7 +41,6 @@
 
 <script setup>
 import CustomInput from '@/components/CustomInput/CustomInput.vue'
-import CountryCode from '@/components/CountryCode/CountryCode.vue'
 import SendCode from '@/components/SendCode/SendCode.vue'
 import { useUserStore } from '@/stores/user'
 import Reg from '@/utils/reg'
@@ -49,12 +48,12 @@ import { ref, computed } from 'vue'
 const user = useUserStore()
 const phone = ref('')
 const code = ref('')
-const countryCode = ref('')
+const country = ref('')
 const isValided = computed(() => {
   return Reg.i18nPhoneReg.test(phone.value) && Reg.codeReg.test(code.value)
 })
-const getCountryCode = (cCode) => {
-  countryCode.value = cCode
+const getCountry = (c) => {
+  country.value = c
 }
 const submit = (event) => {
   event.preventDefault()
@@ -65,7 +64,7 @@ const submit = (event) => {
     const data = {
       phone: phone.value,
       code: code.value,
-      cuntryCode: countryCode.value
+      cuntryCode: country.value.code
     }
     console.log(data)
     user.phoneLoginAction(data)
@@ -76,11 +75,12 @@ const submit = (event) => {
 <style lang="scss" scoped>
 .phone-wrapper {
   position: relative;
-  .country-code-wrapper {
+  .country-wrapper {
     position: absolute;
     z-index: 100;
     left: 0;
     top: 0px;
+    width:78px;
   }
 }
 .split {

@@ -38,7 +38,7 @@ import Bottom from './components/Bottom'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const primaryColor = getCssVariableValue('--van-primary-color')
-const activeName = ref('phone')
+const activeName = ref('username')
 
 const register = () => {
   router.push('/register')

@@ -19,9 +19,17 @@ export function getUserInfo() {
 }
 
 export function phoneLogin({ phone, code, countryCode }) {
-  return new Promise((res, rej) => {
+  return new Promise((res) => {
     setTimeout(() => {
       res({ code: 0, data: { token: 'abcdefg' }, msg: '登录成功' })
+    }, 10)
+  })
+}
+
+export function register({ username, password, country }) {
+  return new Promise((res) => {
+    setTimeout(() => {
+      res({ code: 0, data: { token: 'abcdefg' }, msg: '注册成功' })
     }, 10)
   })
 }
