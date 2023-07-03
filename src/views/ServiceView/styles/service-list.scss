@@ -1,0 +1,56 @@
+.service-list{
+  width:345px;
+  height:481px;
+  padding-top:17px;
+  padding-left:15px;
+  background:#FFF;
+  border-radius: 12px;
+  .normal-question{
+    width:68px;
+  }
+  :deep .van-tabs__line{
+    bottom: 25px;
+  }
+  :deep .van-tab--active span{
+    font-weight:600;
+    font-size:14px;
+  }
+  :deep .van-cell{
+    padding-left:0;
+    height:54px;
+  }
+  :deep .van-cell:after{
+    margin-left:-15px;
+  }
+  :deep .van-cell__title{
+    color:#111;
+    font-size:15px;
+    font-weight: 600;
+    font-style: normal;
+  }
+  .tab-service-list{
+    height:54px;
+    margin-right:15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:1px solid #EEE;
+    .tab-service-content{
+      .title{
+        font-size: 15px;
+        color: #111;
+      }
+      .title-index{
+        color:#999;
+        margin-right: 12px;
+      }
+    }
+    .is-link img{
+      width:12px;
+      height:12px;
+    }
+  }
+  .tab-service-list:nth-child(1){
+    border-top:1px solid #EEE;
+  }
+}
