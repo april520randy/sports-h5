@@ -1,10 +1,14 @@
 :root {
   /* 主题色 */
-  --color-primary: #ff5000; 
+  --color-primary: #ff5000;
   /* 红色、警告色 */
   --color-danger: #f53f3f;
   /* 文本颜色 */
   --color-text: #555;
   /* 默认背景色 */
   --color-background: #fff;
- }
+  /* 黄色 */
+  --color-yellow: #ffaf56;
+  /* 灰色 */
+  --color-grey: #666666;
+}

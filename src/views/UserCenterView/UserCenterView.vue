@@ -49,6 +49,7 @@ const confirmLogOut = () => {
 .wrapper {
   padding: 10px 15px;
   background: url('./img/bg.png') no-repeat;
+
   background-size: 100% 100%;
 }
 .header-wrapper {
@@ -57,9 +58,11 @@ const confirmLogOut = () => {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 15px;
+  height: 73px;
+  padding: 10px 15px 0px 15px;
+  box-sizing: border-box;
 }
 .scroll-view {
-  padding-top: 77px;
+  padding-top: 52px;
 }
 </style>

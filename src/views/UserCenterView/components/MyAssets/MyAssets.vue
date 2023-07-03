@@ -1,8 +1,30 @@
 <template>
   <div class="my-assets">
-    <h3>我的资产</h3>
     <div class="box">
-      <div class="block">
+      <div class="asset-top">
+        <div>总资产</div>
+        <div class="more-btn">更多VIP特权</div>
+      </div>
+      <div class="asset-mid flex">
+        <div class="amount">79009</div>
+        <div class="stor-btn">
+          <div class="pick acces">提款</div>
+          <div class="save acces">存款</div>
+        </div>
+      </div>
+      <div class="asset-bar">
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+      </div>
+      <div class="asset-bot">
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+      </div>
+
+      <!-- <div class="block">
         <div class="label">
           <span>中心钱包</span>
           <div class="icon" @click="toggle">
@@ -13,14 +35,12 @@
         <div class="amount">
           <h3>{{ filterAmount }}</h3>
         </div>
-      </div>
-      <van-button @click="oneKeyRecevie" size="small">一键回收</van-button>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script setup>
-
 import { showLoadingToast } from 'vant'
 import { ref, computed } from 'vue'
 import { useUserStore } from '@/stores/user'
@@ -40,33 +60,69 @@ const isShowAmount = ref(true)
 const filterAmount = computed(() => {
   return isShowAmount.value ? `￥${user.userInfo.balance || 0}` : '******'
 })
-
 </script>
 
 <style lang="scss" scoped>
 .my-assets {
-  margin-top: 10px;
+  margin-top: 13px;
 }
 .box {
-  height: 100px;
-  background: #eee;
+  background: url('../../img/Rectangle.png') no-repeat;
+  box-shadow: 1px 1px 1px 0px #fffaf3 inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  background-size: 100% 100%;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-  position: relative;
+  padding: 15px 15px 10px 15px;
+  .asset-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    .more-btn {
+      color: var(--color-grey);
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+  .asset-mid {
+    .amount {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .acces {
+      width: 50px;
+      height: 28px;
+      border-radius: 6px;
+      line-height: 28px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .stor-btn {
+      display: flex;
+      .pick {
+        color: var(--color-primary);
+        border: 1px solid var(--color-primary);
+      }
+      .save {
+        color: #fff;
+        background: linear-gradient(93deg, #ff9000 0%, #ff5000 100%);
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        margin-left: 14px;
+      }
+    }
+  }
+  .asset-bar {
+    display: flex;
+  }
+  .asset-bot {
+    display: flex;
+  }
+
   .label {
     display: flex;
     align-items: center;
     span {
       margin-right: 10px;
-    }
-    .icon {
-      display: flex;
-      align-items: center;
-      .van-icon {
-        font-size: 20px;
-      }
     }
   }
   .amount {
