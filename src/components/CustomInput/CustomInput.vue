@@ -125,7 +125,7 @@ if (props.isPwd) {
     font-size: 16px;
     color: #111;
     border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+    padding-bottom: 14px;
     padding-right: 30px;
     &.phone {
       text-indent: 90px;
@@ -147,8 +147,8 @@ if (props.isPwd) {
   .error-tip {
     color: var(--color-danger);
     font-size: 12px;
-    margin-top: 4px;
-    height: 20px;
+    margin-top: 6px;
+    height: 18px;
   }
 }
 </style>
