@@ -24,7 +24,7 @@
 
     <div class="auxfun">
       <p>
-        <van-checkbox v-model="remember"><span>记住密码</span></van-checkbox>
+        <van-checkbox v-model="remember"><span class="forget">记住密码</span></van-checkbox>
       </p>
       <p>忘了密码？</p>
     </div>
@@ -72,6 +72,10 @@ const submit = (event) => {
   color: #888;
   span {
     color: #888;
+  }
+  .forget{
+    position: relative;
+    top:-1px;
   }
 }
 </style>

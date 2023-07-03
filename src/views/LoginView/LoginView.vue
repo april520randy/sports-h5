@@ -1,9 +1,7 @@
 <template>
   <div class="wrapper login">
     <Head />
-
     <h3 class="tit">欢迎来到C体育</h3>
-
     <!-- 登录方式 -->
     <van-tabs
       title-inactive-color="#BBB"
@@ -55,12 +53,13 @@ const register = () => {
     font-size: 25px;
     font-weight: 600;
     color: #111;
-    margin-top: 40px;
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
   }
   .register {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 17px;
+    line-height: 22px;
     span {
       color: var(--color-primary);
     }

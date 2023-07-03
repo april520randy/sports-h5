@@ -12,7 +12,6 @@
         </div>
         <div class="amount">
           <h3>{{ filterAmount }}</h3>
-          <IconRefresh @click="refresh" class="svg-icon" />
         </div>
       </div>
       <van-button @click="oneKeyRecevie" size="small">一键回收</van-button>
@@ -21,7 +20,6 @@
 </template>
 
 <script setup>
-import IconRefresh from '@/components/icons/IconRefresh.vue'
 
 import { showLoadingToast } from 'vant'
 import { ref, computed } from 'vue'
@@ -43,10 +41,6 @@ const filterAmount = computed(() => {
   return isShowAmount.value ? `￥${user.userInfo.balance || 0}` : '******'
 })
 
-let angle = 0
-const refresh = ($event) => {
-  $event.target.style.transform = `rotate(${(angle += 360)}deg)`
-}
 </script>
 
 <style lang="scss" scoped>
