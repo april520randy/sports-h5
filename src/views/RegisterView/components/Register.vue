@@ -4,7 +4,7 @@
       clearable
       hasErrorTip
       v-model="username"
-      placeholder="请输入账号"
+      placeholder="请输入6-16个字母及数字组成的账号"
       :rule="{
         reg: Reg.usernameReg,
         errorMessage: '账号由6-16位数字+字母组成!'
@@ -15,21 +15,23 @@
       isPwd
       hasErrorTip
       v-model="password"
-      placeholder="请输入密码"
+      placeholder="请输入8-20个字母及数字组成的密码"
       :rule="{
         reg: Reg.passwordReg,
         errorMessage: '密码由6-16位数字+字母组成!'
       }"
     />
 
-    <div class="auxfun">
-      <p>
-        <van-checkbox v-model="remember"><span class="forget">记住密码</span></van-checkbox>
-      </p>
-      <p @click="forgetPwd">忘了密码？</p>
+    <!-- 国家 -->
+    <div class="country-wrapper">
+      <div class="sub-country-wrapper">
+        <Country :type="2" @getCountry="getCountry" />
+      </div>
+      <IconArrowDown class="icon-arrow-down" />
     </div>
+    <p class="tip">选定国家后不能修改，如有问题找客服协助</p>
 
-    <VButton :disabled="!isValided">登录</VButton>
+    <VButton :disabled="!isValided">注册</VButton>
   </form>
 </template>
 
@@ -38,15 +40,16 @@ import CustomInput from '@/components/CustomInput/CustomInput'
 import { ref, computed } from 'vue'
 import Reg from '@/utils/reg'
 import { useUserStore } from '@/stores/user'
-import { useRouter } from 'vue-router'
-const router = useRouter()
 const user = useUserStore()
-const username = ref('admin123')
-const password = ref('zzz111')
-const remember = ref(true)
+const username = ref('')
+const password = ref('')
+const country = ref('')
 const isValided = computed(() => {
   return Reg.usernameReg.test(username.value) && Reg.passwordReg.test(password.value)
 })
+const getCountry = (c) => {
+  country.value = c
+}
 const submit = (event) => {
   event.preventDefault()
   // 验证数据
@@ -55,32 +58,42 @@ const submit = (event) => {
     console.log('验证通过')
     const data = {
       username: username.value,
-      password: password.value
+      password: password.value,
+      country:country.value.title
     }
-    user.loginAction(data)
+    console.log(data)
+    user.registerAction(data)
   }
 }
-const forgetPwd = () => {
-  router.push('/forget')
-}
+
+
 </script>
 
 <style lang="scss" scoped>
-.split {
-  padding: 6px 0;
-}
-.auxfun {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
-  margin-bottom: 40px;
-  color: #888;
-  span {
-    color: #888;
-  }
-  .forget {
+.country-wrapper {
+  position: relative;
+  border-bottom: 1px solid #eee;
+  padding-bottom:14px;
+  margin-top:10px;
+  .sub-country-wrapper{
     position: relative;
-    top: -1px;
+    z-index: 2;
   }
+  .icon-arrow-down {
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    top: 7px;
+    fill:#999;
+  }
+}
+.split{
+  padding:5px 0;
+}
+.tip{
+  line-height: 22px;
+  margin-top:6px;
+  font-size:12px;
+  margin-bottom:22px;
 }
 </style>

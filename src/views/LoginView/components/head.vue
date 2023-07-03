@@ -30,7 +30,7 @@ const service = () => {
     align-items: center;
   }
   .icon {
-    fill: #555;
+    fill: var(--color-text);
     margin-right: 5px;
   }
   img {

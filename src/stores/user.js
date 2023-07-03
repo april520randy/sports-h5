@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { getToken, setToken, removeToken } from '@/utils/cache'
-import { login, getUserInfo, phoneLogin } from '@/api/user'
+import { login, getUserInfo, phoneLogin, register } from '@/api/user'
 import { ERR_OK } from '@/utils/config'
 import router from '@/router'
 export const useUserStore = defineStore('user', () => {
@@ -25,6 +25,19 @@ export const useUserStore = defineStore('user', () => {
   const phoneLoginAction = async ({ phone, code, countryCode }) => {
     try {
       const res = await phoneLogin({ phone, code, countryCode })
+      if (res.code === ERR_OK) {
+        token.value = res.data.token
+        setToken(token.value)
+        router.push('/')
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  // 用户注册
+  const registerAction = async ({ username, password, country }) => {
+    try {
+      const res = await register({ username, password, country })
       if (res.code === ERR_OK) {
         token.value = res.data.token
         setToken(token.value)
@@ -58,6 +71,7 @@ export const useUserStore = defineStore('user', () => {
     loginAction,
     phoneLoginAction,
     logOutAction,
-    getUserInfoAction
+    getUserInfoAction,
+    registerAction
   }
 })
