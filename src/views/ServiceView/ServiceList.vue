@@ -3,17 +3,11 @@
     <img src="./img/normalQuestion.png" alt="error" class="normal-question">
     <van-tabs v-model:active="active"
       line-width="25"
-      ellipsis="false"
+      :ellipsis="false"
       title-active-color="#111"
       title-inactive-color="#999">
     <van-tab title="取款问题">
-      <!-- <van-cell
-       v-for="item in obj.serviceList"
-       is-link
-       :key="item.id"
-       :title="item.title">
-
-      </van-cell> -->
+      <div class="border-list"></div>
       <div class="tab-service-list" 
         v-for="(item,index) in obj.serviceList"
         :key="item.id">
@@ -21,7 +15,7 @@
           <span class="title-index">{{ index + 1 }}</span>
           <span class="title">{{ item.title }}</span>
         </div>
-        <div class="is-link">
+        <div class="is-link" @click="checkMore">
           <img src="./img/is-link.png" alt="error">
         </div>
       </div>
@@ -29,15 +23,21 @@
     <van-tab title="投注结算">内容 2</van-tab>
     <van-tab title="存款问题">内容 3</van-tab>
     <van-tab title="优惠问题">内容 4</van-tab>
-    <van-tab title="福利中心">内容 4</van-tab>
-    <van-tab title="优惠问题">内容 6</van-tab>
-  </van-tabs>
+    <van-tab title="福利中心">内容 5</van-tab>
+    <!-- <van-tab title="优惠问题">内容 6</van-tab> -->
+    </van-tabs>
+    <div class="more">
+      <span class="more-title" @click="checkMore">查看更多</span>
+      <img src="./img/is-link.png" alt="error">
+    </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const active = ref(0)
 const obj = reactive({
   serviceList:[
@@ -49,6 +49,15 @@ const obj = reactive({
     {title:'我取款未到账？',id:666},
   ]
 })
+
+const checkMore = ()=>{
+  router.push({
+    path:'/common',
+    query:{
+      active:active.value
+    }
+  })
+}
 </script>
 
 <style lang="scss" scoped>

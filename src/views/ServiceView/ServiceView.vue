@@ -20,6 +20,27 @@
     </div>
     <div class="rect-angle-center"></div>
     <ServiceList />
+    <div class="new-education">
+      <img src="./img/new-edu.png" alt="error" class="img-edu">
+      <div class="new-edu-content">
+        <div class="content-item">
+          <img src="./img/store-edu.png" alt="error">
+          <p>存款教程</p>
+        </div>
+        <div class="content-item">
+          <img src="./img/take-edu.png" alt="error">
+          <p>提款教程</p>
+        </div>
+        <div class="content-item">
+          <img src="./img/bet-edu.png" alt="error">
+          <p>投注教程</p>
+        </div>
+        <div class="content-item">
+          <img src="./img/sport-rule.png" alt="error" class="sport-rule">
+          <p>体育规则</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

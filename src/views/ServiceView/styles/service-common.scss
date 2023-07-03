@@ -1,12 +1,18 @@
-.service-list{
-  width:345px;
-  // height:481px;
-  padding-top:17px;
-  padding-left:15px;
-  background:#FFF;
-  border-radius: 12px;
-  .normal-question{
-    width:68px;
+.common-problem{
+  @include mobile-padding();
+  padding-top:15px;
+  .common-navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .common-title{
+      color:#333;
+      font-size:16px;
+      font-weight: 400;
+    }
+    .service-common{
+      width:30px;
+    }
   }
   :deep .van-tabs__line{
     bottom: 25px;
@@ -47,34 +53,17 @@
       }
     }
     .is-link img{
-      margin-left: 10px;
       width:12px;
       height:12px;
     }
   }
-  .border-list{
-    height:1px;
-    // width:375px;
-    margin:0 -15px;
-    background: #F5F5F5; 
-  }
   // .tab-service-list:nth-child(1){
   //   border-top:1px solid #EEE;
   // }
-  .more{
-    height:48.5px;
-    // text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .more-title{
-      color:#888;
-      font-size:14px;
-      margin-right:4px;
-    }
-  }
-  .more img{
-    width: 12px;
-    height: 12px;
+  .border-common{
+    height:1px;
+    // width:375px;
+    margin:0 -15px;
+    background: #F5F5F5;
   }
 }
