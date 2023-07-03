@@ -5,6 +5,7 @@
       <span class="common-title">常见问题</span>
       <img src="./img/service-common.png" alt="error" class="service-common" />
     </div>
+    <div class="border-common"></div>
     <van-tabs
       v-model:active="activeTab"
       line-width="25"
