@@ -42,7 +42,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const user = useUserStore()
 const username = ref('admin123')
-const password = ref('zzz111')
+const password = ref('zzzz1111')
 const remember = ref(true)
 const isValided = computed(() => {
   return Reg.usernameReg.test(username.value) && Reg.passwordReg.test(password.value)
@@ -73,7 +73,7 @@ const forgetPwd = () => {
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
-  margin-bottom: 40px;
+  margin-bottom: 17px;
   color: #888;
   span {
     color: #888;
