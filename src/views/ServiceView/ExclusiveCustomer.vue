@@ -10,15 +10,27 @@
       <img src="./img/Ellipse.png" alt="" class="img-ellipse">
       <span class="download-app">下载专属客服APP-68</span>
       <span class="add-manager">
-        添加您在C体育专属服务经理
+        <span>添加您在C体育专属服务经理</span>
+        <van-field
+          v-model="sms"
+          center
+          clearable
+          placeholder=""
+          class="copy-content"
+        >
+        </van-field>
+        <div class="copy-btn">复制</div>
       </span>
       <span class="unlock-welfare">解锁更多福利</span>
-      <van-button>下载安装</van-button>
+      <van-button class="download-btn">下载安装</van-button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const sms = ref('12345678901')
 
 </script>
 

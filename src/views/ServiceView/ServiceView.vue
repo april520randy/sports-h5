@@ -18,7 +18,7 @@
         <span class="group-title">{{ coperation }}</span>
       </div>
     </div>
-    <div class="rect-angle-center"></div>
+    <div class="rect-angle-center" @click="goExclusive"></div>
     <ServiceList />
     <div class="new-education">
       <img src="./img/new-edu.png" alt="error" class="img-edu">
@@ -47,6 +47,9 @@
 <script setup>
 import ServiceList from './ServiceList.vue'
 import { ref } from 'vue';
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // import { useRouter } from 'vue-router'
 // const router = useRouter()
@@ -62,6 +65,10 @@ import { ref } from 'vue';
 const serviceOnline = ref('在线客服')
 const serviceAllTime = ref('24小时随时贴心在线服务')
 const coperation = ref('合营招商')
+
+const goExclusive = ()=>{
+  router.push('/serviceCustomer')
+}
 </script>
 
 <style scoped lang="scss">
