@@ -92,7 +92,7 @@ const submit = (event) => {
   .send-code {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 4px;
   }
 }
 </style>
