@@ -47,7 +47,7 @@ const register = () => {
 
 <style lang="scss" scoped>
 .wrapper {
-  padding: 20px 25px 0;
+  padding: 10px 25px 0;
   background: #fefdfc;
   .tit {
     font-size: 25px;

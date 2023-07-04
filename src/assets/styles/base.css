@@ -29,6 +29,7 @@ body {
   width: 0;
 }
 input {
+  caret-color: var(--color-primary);
   background: transparent;
   border: none;
   outline: none;
