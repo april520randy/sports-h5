@@ -196,6 +196,7 @@
     box-shadow: 5px 0px 15px 0px #E5E5E5;
     margin:24px -15px 0;
     padding-top: 20px;
+    padding-bottom: 20px;
     .open-header{
       display:flex;
       justify-content: space-between;
@@ -227,7 +228,7 @@
       margin:13px 23px 29px 18px;
     }
     .open-v-button{
-      margin:0 25px 20px;
+      margin:0 25px;
     }
   }
 }
