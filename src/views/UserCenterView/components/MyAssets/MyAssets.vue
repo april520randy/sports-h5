@@ -175,12 +175,11 @@ const filterAmount = computed(() => {
           width: 100%;
           height: 8px;
           border-radius: 4px;
-          background-color: rgb(222, 228, 247);
           display: flex;
           align-items: center;
         }
         .bg-line {
-          background-color: rgb(222, 228, 247);
+          background: rgba(0, 0, 0, 0.1);
         }
 
         .inner {
