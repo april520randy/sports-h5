@@ -3,7 +3,10 @@
     <div class="box">
       <div class="asset-top">
         <div>总资产</div>
-        <div class="more-btn">更多VIP特权</div>
+        <div class="more-btn">
+          更多VIP特权
+          <IcoArrowRight class="svg-icon" />
+        </div>
       </div>
       <div class="asset-mid flex">
         <div class="amount" v-if="user.isLogin">79009</div>
@@ -30,25 +33,25 @@
       <div class="asset-bot">
         <div class="bot">
           <div class="bot-icon">
-            <img src="../../img/right.png" alt="" />
+            <IconRight class="svg-icon" />
           </div>
           <div>晋级礼金</div>
         </div>
         <div class="bot">
           <div class="bot-icon">
-            <img src="../../img/right.png" alt="" />
+            <IconRight class="svg-icon" />
           </div>
           <div>每周礼金</div>
         </div>
         <div class="bot">
           <div class="bot-icon">
-            <img src="../../img/right.png" alt="" />
+            <IconRight class="svg-icon" />
           </div>
           <div>生日礼金</div>
         </div>
         <div class="bot">
           <div class="bot-icon">
-            <img src="../../img/right.png" alt="" />
+            <IconRight class="svg-icon" />
           </div>
           <div>高额返水</div>
         </div>
@@ -110,6 +113,10 @@ const filterAmount = computed(() => {
         color: var(--color-grey);
         font-size: 12px;
         font-weight: 400;
+        .svg-icon {
+          width: 8px;
+          height: 8px;
+        }
       }
     }
     .asset-mid {
@@ -210,9 +217,10 @@ const filterAmount = computed(() => {
           background: var(--color-orange);
           margin-right: 4px;
           text-align: center;
-          img {
+          .svg-icon {
             width: 8px;
             height: 8px;
+            fill: var(--color-background);
           }
         }
       }

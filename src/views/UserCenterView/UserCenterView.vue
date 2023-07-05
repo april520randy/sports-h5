@@ -26,13 +26,22 @@
       </div>
       <div class="cell-group">
         <van-cell-group>
-          <van-cell icon="photo-o" is-link>
+          <van-cell icon="" is-link>
             <template #title>
-              <span class="custom-title">设置</span>
+              <div class="cell-item">
+                <img src="./img/set.png" alt="" />
+                <span class="custom-title">设置</span>
+              </div>
             </template>
           </van-cell>
-
-          <van-cell title="意见反馈" icon="shop-o" is-link to="/about-us"> </van-cell>
+          <van-cell icon="" is-link to="/about-us">
+            <template #title>
+              <div class="cell-item">
+                <img src="./img/option.png" alt="" />
+                <span class="custom-title">意见反馈</span>
+              </div>
+            </template>
+          </van-cell>
         </van-cell-group>
         <van-button v-if="user.isLogin" @click="confirmLogOut" type="default" block plain
           >退出登录</van-button
@@ -133,8 +142,18 @@ const confirmLogOut = () => {
     }
   }
   .cell-group {
+    font-size: 14px;
     border-radius: 8px;
     background-color: aqua;
+    .cell-item {
+      display: flex;
+      align-items: center;
+      img {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+      }
+    }
   }
 }
 </style>

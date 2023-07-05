@@ -10,16 +10,17 @@
           src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
         /> -->
       </div>
+      <!--  -->
       <div class="info" v-if="user.isLogin">
         <div class="info-box">
           <div class="info-name">Hi {{ user.userInfo.username }}</div>
           <div class="more-btn">
-            <van-icon name="arrow" />
+            <IcoArrowRight class="svg-icon" />
           </div>
         </div>
         <div class="info-text">加入Z体育第100天</div>
       </div>
-      <div class="login">点击登录/注册</div>
+      <div class="login" v-else>点击登录/注册</div>
     </div>
     <div @click="service" class="right">
       <div class="">
@@ -88,6 +89,11 @@ const service = () => {
           background-color: var(--color-yellow);
           color: var(--color-background);
           font-size: 8px;
+          .svg-icon {
+            fill: #fff;
+            width: 8px;
+            height: 8px;
+          }
         }
       }
       .info-text {

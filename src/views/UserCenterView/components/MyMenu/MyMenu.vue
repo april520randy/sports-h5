@@ -3,7 +3,8 @@
     <div class="list">
       <div @click="selectMenu(item)" class="menu-item" v-for="item in list" :key="item.title">
         <p>
-          <van-icon name="photo-o" />
+          <!-- <van-icon name="photo-o" /> -->
+          <img src="../../img/touzhu.png" alt="" />
         </p>
         <p>
           <span>{{ item.title }}</span>
@@ -19,7 +20,8 @@ const router = useRouter()
 const list = [
   {
     title: '投注记录',
-    path: '/deposit'
+    path: '/deposit',
+    Imgpath: '../../img/touzhu.png'
   },
   {
     title: '资金明细',
@@ -73,9 +75,14 @@ const selectMenu = (item) => {
         font-size: 12px;
         color: #111;
       }
-      .van-icon {
-        font-size: 24px;
+      img {
+        width: 42px;
+        height: 36px;
+        margin-bottom: 6px;
       }
+      // .van-icon {
+      //   font-size: 24px;
+      // }
     }
   }
 }

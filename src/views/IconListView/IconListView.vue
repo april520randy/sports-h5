@@ -50,6 +50,7 @@ const getAllIcons = async () => {
     })
   )
   list.value = iconsArray
+  console.log(list)
 }
 getAllIcons()
 </script>
