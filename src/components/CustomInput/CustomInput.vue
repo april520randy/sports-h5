@@ -9,7 +9,6 @@
       :type="type"
       :class="{ phone: isPhone }"
       autocomplete
-      name="username"
     />
     <p v-if="hasErrorTip" class="error-tip">{{ errorMessage }}</p>
 

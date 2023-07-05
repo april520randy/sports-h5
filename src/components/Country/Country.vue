@@ -44,10 +44,14 @@ import { ref } from 'vue'
 import IconClose from '@/components/icons/IconClose'
 import Search from '@/components/Search/Search'
 import list from './list'
-defineProps({
+const props = defineProps({
   type: {
     type: Number,
     default: 1 // 1显示区号，2显示国家名称
+  },
+  disabled:{
+    type:Boolean,
+    default:false
   }
 })
 
@@ -76,6 +80,7 @@ const closeDialog = () => {
   clearSearch()
 }
 const openDialog = () => {
+  if(props.disabled) return 
   open.value = true
 }
 // 清空搜索框

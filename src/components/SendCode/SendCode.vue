@@ -28,14 +28,14 @@ const onFinish = () => {
   available.value = true
 }
 const sendCode = () => {
-  if (!props.phone) {
-    showToast('请输入手机号')
-    return
-  }
-  if (!Reg.phoneReg.test(props.phone)) {
-    showToast('手机号格式错误')
-    return
-  }
+  // if (!props.phone) {
+  //   showToast('请输入手机号')
+  //   return
+  // }
+  // if (!Reg.phoneReg.test(props.phone)) {
+  //   showToast('手机号格式错误')
+  //   return
+  // }
   // 发送验证码请求
   available.value = false
 }
