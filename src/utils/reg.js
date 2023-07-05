@@ -1,6 +1,6 @@
 export default {
   usernameReg: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,16}$/, // 用户名
-  passwordReg: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/,//密码
+  passwordReg: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$/,//密码
   oldUsernameReg: /^[A-Za-z0-9]+$/,
   phoneReg: /^\d{11}$/,// 中国手机号
   i18nPhoneReg: /^\d+$/,// 国际手机号

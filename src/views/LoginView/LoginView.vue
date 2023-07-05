@@ -38,7 +38,7 @@ import Bottom from './components/Bottom'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const primaryColor = getCssVariableValue('--van-primary-color')
-const activeName = ref('phone')
+const activeName = ref('username')
 
 const register = () => {
   router.push('/register')
@@ -47,7 +47,7 @@ const register = () => {
 
 <style lang="scss" scoped>
 .wrapper {
-  padding: 20px 25px 0;
+  padding: 10px 25px 0;
   background: #fefdfc;
   .tit {
     font-size: 25px;

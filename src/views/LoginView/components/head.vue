@@ -24,13 +24,15 @@ const service = () => {
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height:44px;
   p {
     font-size: 15px;
     display: flex;
     align-items: center;
   }
   .icon {
-    fill: #555;
+    fill: var(--color-text);
     margin-right: 5px;
   }
   img {
