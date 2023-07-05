@@ -1,7 +1,7 @@
 <template>
   <div class="my-menu">
     <div class="list">
-      <div @click="selectMenu(item)" class="item" v-for="item in list" :key="item.title">
+      <div @click="selectMenu(item)" class="menu-item" v-for="item in list" :key="item.title">
         <p>
           <van-icon name="photo-o" />
         </p>
@@ -18,52 +18,36 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const list = [
   {
-    title: '存款',
+    title: '投注记录',
     path: '/deposit'
   },
   {
-    title: '取款',
+    title: '资金明细',
     path: '/withdraw'
   },
   {
-    title: '转账',
+    title: '福利中心',
     path: '/transfer'
   },
   {
-    title: '个人中心',
+    title: '优惠活动',
     path: '/personal-center'
   },
   {
-    title: '消息中心',
+    title: '商务合作',
     path: '/message'
   },
   {
-    title: '交易记录',
+    title: '赞助信息',
     path: '/transaction-record'
   },
   {
-    title: '投注记录',
+    title: '常见教程',
     path: '/bet-record'
   },
   {
-    title: '福利中心',
+    title: '安全中心',
     path: '/welfare'
-  },
-  {
-    title: '新手帮助',
-    path: '/help'
-  },
-  {
-    title: '意见反馈',
-    path: '/feedback'
-  },
-  {
-    title: '邀请好友',
-    path: '/invite'
-  },
-  {
-    title: '合营计划',
-    path: '/agent'
   }
 ]
 const selectMenu = (item) => {
@@ -75,19 +59,19 @@ const selectMenu = (item) => {
 
 <style lang="scss" scoped>
 .my-menu {
-  background: #eee;
-  border-radius: 8px;
-  margin-top: 10px;
+  border-radius: 0 0 8px 8px;
   padding: 15px 0 0;
+  background: #fff;
   .list {
     overflow: hidden;
-    .item {
+    .menu-item {
       float: left;
       width: 25%;
       text-align: center;
       margin-bottom: 15px;
       span {
-        font-size: 14px;
+        font-size: 12px;
+        color: #111;
       }
       .van-icon {
         font-size: 24px;

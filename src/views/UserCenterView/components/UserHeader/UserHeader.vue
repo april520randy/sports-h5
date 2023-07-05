@@ -10,7 +10,7 @@
           src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
         /> -->
       </div>
-      <div class="info">
+      <div class="info" v-if="user.isLogin">
         <div class="info-box">
           <div class="info-name">Hi {{ user.userInfo.username }}</div>
           <div class="more-btn">
@@ -19,6 +19,7 @@
         </div>
         <div class="info-text">加入Z体育第100天</div>
       </div>
+      <div class="login">点击登录/注册</div>
     </div>
     <div @click="service" class="right">
       <div class="">
@@ -71,7 +72,6 @@ const service = () => {
         display: flex;
         margin-bottom: 6px;
         .info-name {
-          font-size: 18px;
           font-weight: 600;
           font-size: 15px;
           font-family: PingFang SC;
@@ -94,6 +94,10 @@ const service = () => {
         color: #666;
         font-size: 13px;
       }
+    }
+    .login {
+      font-weight: 600;
+      font-size: 15px;
     }
   }
   .right {
