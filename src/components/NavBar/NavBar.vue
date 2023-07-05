@@ -1,22 +1,21 @@
 <template>
-  <van-nav-bar @click-left="onClickLeft">
-    <template v-if="isShowLeft" #left>
+  <div class="custom-nav-bar">
+    <div @click="onClickLeft" class="left">
       <IconArrowLeft />
-    </template>
-    <template #title>
-      <h3 class="van-ellipsis">{{ title }}</h3>
-    </template>
-    <template v-if="isShowRight" #right>
-      <van-icon @click="router.push('/service')" name="service-o" size="24" />
-    </template>
-  </van-nav-bar>
+    </div>
+    <h2 class="van-ellipsis">{{ title }}</h2>
+    <div class="right">
+      <img @click="service" src="@/assets/img/icon-service.png" alt="" />
+    </div>
+  </div>
 </template>
 
 <script setup>
 import IconArrowLeft from '@/components/icons/IconArrowLeft.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-defineProps({
+const emit = defineEmits(['onClickLeft'])
+const props = defineProps({
   title: {
     type: String,
     defualt: '标题'
@@ -27,20 +26,53 @@ defineProps({
   },
   isShowRight: {
     type: Boolean,
-    default: false
+    default: true
+  },
+  isBack: {
+    type: Boolean,
+    default: true
   }
 })
-const onClickLeft = ()=>{
-  router.back()
+const onClickLeft = () => {
+  if (props.isBack) {
+    router.back()
+  } else {
+    emit('onClickLeft')
+  }
+}
+const service = () => {
+  router.push('/service')
 }
 </script>
 
 <style lang="scss" scoped>
-h3 {
-  font-weight: 600;
-  font-size: 17px;
-}
-.van-icon {
-  color: #666;
+$navbarHeight: 44px;
+.custom-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $navbarHeight;
+  // @include mobile-padding();
+  &.fixed {
+    padding-bottom: $navbarHeight;
+  }
+  .left {
+    @include mobile-padding();
+    svg {
+      font-size:100px;
+      transform: scale(1.3);
+    }
+  }
+  h2 {
+    font-size: 16px;
+    color: #333;
+    // padding:0 15px;
+  }
+  .right {
+    @include mobile-padding();
+    img {
+      width: 30px;
+    }
+  }
 }
 </style>

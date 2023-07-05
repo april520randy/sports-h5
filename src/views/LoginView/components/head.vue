@@ -24,6 +24,8 @@ const service = () => {
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height:44px;
   p {
     font-size: 15px;
     display: flex;

@@ -7,7 +7,7 @@
         <div class="icon">
           <component :is="item.component" />
         </div>
-        <p>{{ item.name  }}</p>
+        <p>{{ item.name }}</p>
       </div>
     </div>
 
@@ -36,16 +36,20 @@ import vClipboard from '@/directives/clipboard'
 const list = ref([])
 const getAllIcons = async () => {
   const context = import.meta.glob('@/components/icons/*.vue')
-  for (const path in context) {
-    const regex = /([^/]*)\.vue$/
-    const name = path.match(regex)[1]
-    let component = markRaw((await import(path)).default)
-    list.value.push({
-      component,
-      name,
-      code: `<${name}/>`
+  const iconsArray = await Promise.all(
+    Object.entries(context).map(async ([path, loader]) => {
+      const regex = /([^/]*)\.vue$/
+      const name = path.match(regex)[1]
+      let { default: component } = await loader()
+      component = markRaw(component)
+      return {
+        component,
+        name,
+        code: `<${name}/>`
+      }
     })
-  }
+  )
+  list.value = iconsArray
 }
 getAllIcons()
 </script>
