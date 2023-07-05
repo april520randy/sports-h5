@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { getToken, setToken, removeToken } from '@/utils/cache'
 import { login, getUserInfo, phoneLogin, register } from '@/api/user'
 import { ERR_OK } from '@/utils/config'
+import {showToast} from 'vant'
 import router from '@/router'
 export const useUserStore = defineStore('user', () => {
   const token = ref(getToken())
@@ -16,9 +17,12 @@ export const useUserStore = defineStore('user', () => {
         token.value = res.data.token
         setToken(token.value)
         router.push('/')
+      }else{
+        showToast(res.msg)
       }
     } catch (e) {
       console.log(e)
+      showToast(e.msg)
     }
   }
   // 手机号登录
