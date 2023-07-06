@@ -10,6 +10,7 @@
   }
   :deep .van-tabs__line{
     bottom: 25px;
+    left:-10px;
   }
   :deep .van-tab--active span{
     font-weight:600;
@@ -27,6 +28,13 @@
     font-size:15px;
     font-weight: 600;
     font-style: normal;
+  }
+  :deep .van-tab--grow{
+    padding-left: 0;
+    padding-right: 20px;
+  }
+  :deep .van-tabs__nav--line.van-tabs__nav--complete{
+    padding-left:2px;
   }
   .tab-service-list{
     height:56.5px;
