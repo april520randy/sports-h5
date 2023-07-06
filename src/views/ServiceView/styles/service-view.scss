@@ -104,11 +104,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-right: 15px;
+      // display: grid;
+      // grid-template-columns: 1fr 1fr 1fr 1fr;
+      // gap:10px;
       margin-top: 23px;
       .content-item {
         display: flex;
         flex-direction: column;
-        flex:1;
+        // flex:1;
         justify-content: center;
         align-items: center;
         img {
@@ -117,9 +121,13 @@
         p{
           margin-top:9px;
           margin-bottom: 14px;
+          font-size:12px;
         }
       }
-      .sport-rule {
+      // .sport-rule {
+      //   width: 40px !important;
+      // }
+      .content-item:nth-child(4) img{
         width: 40px !important;
       }
     }

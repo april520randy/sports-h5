@@ -3,7 +3,7 @@
   <div class="service-view">
     <div class="header">
       <img src="./img/arrow-left.png" alt="error" class="arrow-left">
-      <span class="cellphone">电话回拨</span>
+      <span class="cellphone" @click="goCallTel">{{ callTel }}</span>
     </div>
     <p class="service-online">{{ serviceOnline }}</p>
     <p class="service-all-time">{{ serviceAllTime }}</p>
@@ -23,21 +23,12 @@
     <div class="new-education">
       <img src="./img/new-edu.png" alt="error" class="img-edu">
       <div class="new-edu-content">
-        <div class="content-item">
-          <img src="./img/store-edu.png" alt="error">
-          <p>存款教程</p>
-        </div>
-        <div class="content-item">
-          <img src="./img/take-edu.png" alt="error">
-          <p>提款教程</p>
-        </div>
-        <div class="content-item">
-          <img src="./img/bet-edu.png" alt="error">
-          <p>投注教程</p>
-        </div>
-        <div class="content-item">
-          <img src="./img/sport-rule.png" alt="error" class="sport-rule">
-          <p>体育规则</p>
+        <div class="content-item"
+         v-for="item in list"
+         :key="item.id"
+        >
+          <img :src="imgPath(item.src)" alt="error">
+          <p>{{ item.title }}</p>
         </div>
       </div>
     </div>
@@ -46,28 +37,35 @@
 
 <script setup>
 import ServiceList from './ServiceList.vue'
-import { ref } from 'vue';
+import {  ref } from 'vue';
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-// import { useRouter } from 'vue-router'
-// const router = useRouter()
-// import { jumpExternalLink } from '@/utils'
-// const service = () => {
-//   jumpExternalLink({
-//     url: 'https://chatx88.bm1sdgic10.com/login?configKey=lRKbXKCds9AnbCCuArj9a2hfbVqkq8GeynQjJWSL5IcArfqjrQoEkW59M-QAYUBeb7bOYTP76KWPCdcVix4l7LIO36oEHz6vqyVxpWUsFhirk1ucGhQ49DDlSNnFrasy_6GKp35_fz3z0hEgPJtck7vV6olB2o2dLtQ9403cZRu7Ff24O1hCbxJ4ff-w8bU4dWsX2wR-rfJT5PK5-dcfKOR_3wgbWahXErLFL1oKF_l30wAuNogGkiIu3ajKUel_1CZEKhGuU-EXsHyNZKt_iYTGpU5C-vie3KBqJ7yqTflYvjmodBcggy5lMYBCa3infXci6kyYrqXuNDBk3pubAQ'
-//   })
-// }
-// const agent = ()=>{
-//   router.push('/agent')
-// }
 const serviceOnline = ref('在线客服')
 const serviceAllTime = ref('24小时随时贴心在线服务')
 const coperation = ref('合营招商')
+const callTel = ref('电话回拨')
+const list = ref([
+  {id:11111,title:'存款教程',src:'./img/store-edu.png'},
+  {id:22222,title:'提款教程',src:'./img/take-edu.png'},
+  {id:33333,title:'投注教程',src:'./img/bet-edu.png'},
+  {id:44444,title:'体育规则',src:'./img/sport-rule.png'},
+])
 
+//图片循环之后的路径转换
+const imgPath = (fileName)=>{
+  return new URL(fileName,import.meta.url).href
+}
+
+//跳转专属客服页面
 const goExclusive = ()=>{
   router.push('/serviceCustomer')
+}
+
+//电话回拨按钮
+const goCallTel = ()=>{
+
 }
 </script>
 
