@@ -74,7 +74,7 @@ const username = ref('')
 const phone = ref('189****1111')
 const code = ref('')
 const password = ref('')
-const step = ref(2)
+const step = ref(1)
 const isVeriry = computed(() => {
   return username.value
 })
