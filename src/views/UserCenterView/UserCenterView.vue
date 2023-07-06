@@ -1,3 +1,4 @@
+<!-- 个人中心页面 -->
 <template>
   <div class="wrapper">
     <div class="header-wrapper">
@@ -34,7 +35,7 @@
               </div>
             </template>
           </van-cell>
-          <van-cell icon="" is-link to="/about-us">
+          <van-cell icon="" is-link to="/feedback">
             <template #title>
               <div class="cell-item">
                 <img src="./img/option.png" alt="" />

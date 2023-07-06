@@ -20,6 +20,8 @@ const AgentView = () => import('@/views/AgentView/AgentView.vue')
 const AboutUsView = () => import('@/views/AboutUsView/AboutUsView.vue')
 const ForgetView = () => import('@/views/ForgetView/ForgetView.vue')
 const SponsorDetailView = () => import('@/views/SponsorDetailView/SponsorDetailView.vue')
+const AnchorInforView = () => import('@/views/AnchorInforView/AnchorInforView.vue')
+
 const list = [
   {
     path: '/sponsor',
@@ -162,6 +164,11 @@ const list = [
     path: '/forget',
     name: 'forget',
     component: ForgetView
+  },
+  {
+    path: '/anchor-infor',
+    name: 'anchor-infor',
+    component: AnchorInforView
   }
 ]
 

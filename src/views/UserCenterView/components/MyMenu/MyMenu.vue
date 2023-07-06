@@ -4,7 +4,7 @@
       <div @click="selectMenu(item)" class="menu-item" v-for="item in list" :key="item.title">
         <p>
           <!-- <van-icon name="photo-o" /> -->
-          <img src="../../img/touzhu.png" alt="" />
+          <img :src="imgPath(item.Imgpath)" alt="" />
         </p>
         <p>
           <span>{{ item.title }}</span>
@@ -16,46 +16,59 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 const router = useRouter()
-const list = [
+const list = ref([
   {
     title: '投注记录',
     path: '/deposit',
-    Imgpath: '../../img/touzhu.png'
+    Imgpath: `../../img/touzhu.png`
   },
   {
     title: '资金明细',
-    path: '/withdraw'
+    path: '/withdraw',
+    Imgpath: `../../img/zijin.png`
   },
   {
     title: '福利中心',
-    path: '/transfer'
+    path: '/transfer',
+    Imgpath: `../../img/fuli.png`
   },
   {
     title: '优惠活动',
-    path: '/personal-center'
+    path: '/personal-center',
+    Imgpath: `../../img/youhui.png`
   },
   {
     title: '商务合作',
-    path: '/message'
+    path: '/message',
+    Imgpath: `../../img/shangwu.png`
   },
   {
     title: '赞助信息',
-    path: '/transaction-record'
+    path: '/transaction-record',
+    Imgpath: `../../img/zanzhu.png`
   },
   {
     title: '常见教程',
-    path: '/bet-record'
+    path: '/bet-record',
+    Imgpath: `../../img/jiaocheng.png`
   },
   {
     title: '安全中心',
-    path: '/welfare'
+    path: '/welfare',
+    Imgpath: `../../img/anquan.png`
   }
-]
+])
+
 const selectMenu = (item) => {
   if (item.path) {
     router.push(item.path)
   }
+}
+// 引用静态图片
+const imgPath = (fileName) => {
+  return new URL(fileName, import.meta.url).href
 }
 </script>
 

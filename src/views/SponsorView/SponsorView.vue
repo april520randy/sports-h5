@@ -31,6 +31,7 @@ const sList = [
 ]
 const selectSponsor = (item) => {
   router.push(`/sponsor/${item.id}`)
+  console.log(item, '999')
 }
 </script>
 
