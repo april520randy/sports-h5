@@ -1,6 +1,10 @@
 <template>
   <div class="router-view-wrapper" :style="styles">
-    <RouterView />
+    <router-view v-slot="{ Component, route }">
+      <transition :name="route.meta.transition || 'fade'" mode="out-in">
+        <component :is="Component" :key="route.path" />
+      </transition>
+    </router-view>
   </div>
   <Tabbar v-if="isShowTabbar" />
 </template>
@@ -11,9 +15,8 @@ import Tabbar from '@/components/Tabbar/Tabbar'
 const currentRoute = useRoute()
 const isShowTabbar = computed(() => currentRoute.meta && currentRoute.meta.isShowTabbar)
 const styles = computed(() => ({
-  'padding-bottom': isShowTabbar.value ? '55px' : 0
+  'padding-bottom': isShowTabbar.value ? '65px' : 0
 }))
-
 /*
 最大网络接口响应时长为10s, timeout设置为10s
 */
@@ -22,9 +25,14 @@ const tagAppStarting = () => {
   let timer = setTimeout(() => {
     window.isAppLongRunStatus = true
     clearTimeout(timer)
-  }, 10*1000)
+  }, 10 * 1000)
 }
 tagAppStarting()
 </script>
 
-<style scoped></style>
+<style scoped>
+.router-view-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+</style>

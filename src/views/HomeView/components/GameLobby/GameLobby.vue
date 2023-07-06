@@ -167,7 +167,7 @@ const play = (item) => {
   }
   .scroll-wrapper{
     overflow auto
-    height calc(100vh - 50px - 144px - 40px - 80px - 50px - 50px - 10px)
+    height calc(100vh - 50px - 144px - 40px - 80px - 50px - 60px - 10px)
     border-radius 8px
     z-index 2
     .game-list{

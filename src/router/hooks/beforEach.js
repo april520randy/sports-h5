@@ -1,5 +1,12 @@
 import { useUserStore } from '@/stores/user'
 export default async (to) => {
+  if (isBack) {
+    to.meta.transition = 'slide-back'
+    console.log('后退')
+  } else {
+    to.meta.transition = 'slide'
+    console.log('前进')
+  }
   const store = useUserStore()
   const isLogin = store.isLogin
   if (isLogin) {
@@ -20,3 +27,4 @@ export default async (to) => {
   }
 }
 
+window.addEventListener('popstate')

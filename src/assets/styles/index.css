@@ -1,6 +1,8 @@
 @import './var.css';
 @import './base.css';
 @import './custom-vant.scss';
+@import './transition.scss';
+
 #app {
   max-width: 100vh;
   font-weight: normal;

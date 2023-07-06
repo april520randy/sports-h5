@@ -1,4 +1,5 @@
 export default async (to) => {
+  
   sendToAnalytics(to.fullPath)
 }
 

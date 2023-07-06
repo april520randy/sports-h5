@@ -1,37 +1,82 @@
 <template>
-  <van-tabbar route v-model="active">
-    <van-tabbar-item to="/c-sport" icon="photo-o">滚球</van-tabbar-item>
-    <van-tabbar-item to="/activity" icon="photo-o">优惠</van-tabbar-item>
-    <van-tabbar-item to="/" icon="photo-o">娱乐城</van-tabbar-item>
-    <van-tabbar-item to="/discover" icon="photo-o">发现</van-tabbar-item>
-    <van-tabbar-item to="/user-center" dot>
-      <span>我的</span>
-      <template #icon="props">
-        <!-- <img :src="props.active ? icon.active : icon.inactive" /> -->
-        <van-icon name="photo-o" :color="props.active ? '#1989fa' : '#000'" />
-      </template>
-    </van-tabbar-item>
-  </van-tabbar>
+  <div>
+    <van-tabbar :border="false" class="tabbar-wrapper" route v-model="active">
+      <van-tabbar-item v-for="item in list" :key="item.path" :to="item.path" :badge="item.badge">
+        <span class="label">{{item.title}}</span>
+        <template #icon="props">
+          <div :class="{center:item.isCenter,rubberBand:props.active}" class="icon-box">
+            <img :src="props.active ? item.activeIcon : item.inactiveIcon" />
+          </div>
+        </template>
+      </van-tabbar-item>
+    </van-tabbar>
+  </div>
 </template>
 <script setup>
 import { ref } from 'vue'
-import { jumpExternalLink } from '@/utils'
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { resolvePath } from '@/utils'
+// import { useRouter } from 'vue-router'
+// const router = useRouter()
 const active = ref(0)
-// const icon = {
-//   active: 'https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png',
-//   inactive: 'https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png'
-// }
-const play = () => {
-  let url = 'https://gci.btyzrgame66.com/403.html'
-  jumpExternalLink({
-    url,
-    type: 1,
-    title: 'Z体育',
-    router
-  })
-}
+const list = [
+  {
+    title: '滚球',
+    path: '/sports',
+    activeIcon: resolvePath('./img/sports-active.png', import.meta.url),
+    inactiveIcon: resolvePath('./img/sports-inactive.png', import.meta.url)
+  },
+  {
+    title: '优惠',
+    path: '/activity',
+    activeIcon: resolvePath('./img/activity-active.png', import.meta.url),
+    inactiveIcon: resolvePath('./img/activity-inactive.png', import.meta.url)
+  },
+  {
+    title: '娱乐城',
+    path: '/',
+    activeIcon: resolvePath('./img/home-active.png', import.meta.url),
+    inactiveIcon: resolvePath('./img/home-inactive.png', import.meta.url),
+    isCenter:true
+  },
+  {
+    title: '发现',
+    path: '/discover',
+    activeIcon: resolvePath('./img/discover-active.png', import.meta.url),
+    inactiveIcon: resolvePath('./img/discover-inactive.png', import.meta.url)
+  },
+  {
+    badge:2,
+    title: '我的',
+    path: '/user-center',
+    activeIcon: resolvePath('./img/user-active.png', import.meta.url),
+    inactiveIcon: resolvePath('./img/user-inactive.png', import.meta.url)
+  }
+]
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.tabbar-wrapper {
+  box-shadow: 2px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  .label {
+    font-size: 12px;
+  }
+  .icon-box {
+    $iconSize: 30px;
+    width: $iconSize;
+    height: $iconSize;
+    // border:1px solid red;
+    img{
+      width:100%;
+      height:100%;
+    }
+    &.center{
+      $iconBigSize:58px;
+      width:$iconBigSize;
+      height:$iconBigSize;
+      // transform: scale(1.8);
+      margin-top:-28px;
+
+    }
+  }
+}
+</style>

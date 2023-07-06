@@ -2,7 +2,7 @@ const HomeView = () => import('@/views/HomeView/HomeView.vue')
 const ActivityView = () => import('@/views/ActivityView/ActivityView.vue')
 const DiscoverView = () => import('@/views/DiscoverView/DiscoverView.vue')
 const UserCenterView = () => import('@/views/UserCenterView/UserCenterView.vue')
-const CSportView = () => import('@/views/CSportView/CSportView.vue')
+const SportsView = () => import('@/views/SportsView/SportsView.vue')
 
 const list = [
   {
@@ -38,9 +38,9 @@ const list = [
     }
   },
   {
-    path: '/c-sport',
-    name: 'c-sport',
-    component: CSportView,
+    path: '/sports',
+    name: 'sports',
+    component: SportsView,
     meta: {
       isShowTabbar: true
     }
