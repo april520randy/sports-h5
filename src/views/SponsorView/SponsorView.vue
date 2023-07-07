@@ -15,18 +15,17 @@
 
 <script setup>
 import { ref } from 'vue'
-import { resolvePath } from '@/utils'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const active = ref(0)
 const sList = [
   {
     id: 1,
-    img: resolvePath('./img/s1.jpg', import.meta.url)
+    img: new URL('./img/s1.jpg', import.meta.url).href
   },
   {
     id: 2,
-    img: resolvePath('./img/s2.jpg', import.meta.url)
+    img: new URL('./img/s2.jpg', import.meta.url).href
   }
 ]
 const selectSponsor = (item) => {

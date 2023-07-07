@@ -14,25 +14,19 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import { resolvePath } from '@/utils'
-// import { useRouter } from 'vue-router'
-// const router = useRouter()
-import sportsActive from './img/sports-active.png'
-import sportsInActive from './img/sports-inactive.png'
-
 const active = ref(0)
 const list = [
   {
     title: '滚球',
     path: '/sports',
-    activeIcon: sportsActive,
-    inactiveIcon: sportsInActive
+    activeIcon: new URL('./img/sports-active.png', import.meta.url).href,
+    inactiveIcon: new URL('./img/sports-inactive.png', import.meta.url).href
   },
   {
     title: '优惠',
     path: '/activity',
-    activeIcon: resolvePath('./img/activity-active.png', import.meta.url),
-    inactiveIcon: resolvePath('./img/activity-inactive.png', import.meta.url)
+    activeIcon: new URL('./img/activity-active.png', import.meta.url).href,
+    inactiveIcon: new URL('./img/activity-inactive.png', import.meta.url).href
   },
   {
     title: '娱乐城',
@@ -44,15 +38,15 @@ const list = [
   {
     title: '发现',
     path: '/discover',
-    activeIcon: resolvePath('./img/discover-active.png', import.meta.url),
-    inactiveIcon: resolvePath('./img/discover-inactive.png', import.meta.url)
+    activeIcon: new URL('./img/discover-active.png', import.meta.url).href,
+    inactiveIcon: new URL('./img/discover-inactive.png', import.meta.url).href
   },
   {
     badge:2,
     title: '我的',
     path: '/user-center',
-    activeIcon: resolvePath('./img/user-active.png', import.meta.url),
-    inactiveIcon: resolvePath('./img/user-inactive.png', import.meta.url)
+    activeIcon: new URL('./img/user-active.png', import.meta.url).href,
+    inactiveIcon: new URL('./img/user-inactive.png', import.meta.url).href
   }
 ]
 </script>

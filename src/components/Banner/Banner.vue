@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-import { resolvePath } from '@/utils'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const currentPath = import.meta.url
@@ -17,11 +16,11 @@ const currentPath = import.meta.url
 const images = [
   {
     id: 1,
-    img: resolvePath('./img/banner-1.png', currentPath)
+    img: new URL('./img/banner-1.png', currentPath).href
   },
   {
     id: 2,
-    img: resolvePath('./img/banner-2.png', currentPath)
+    img: new URL('./img/banner-2.png', currentPath).href
   }
 ]
 const selectBanner = (item) => {
