@@ -40,3 +40,8 @@ input::placeholder {
 svg {
   fill: var(--color-text);
 }
+/* flex两端对齐*/
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
