@@ -34,8 +34,8 @@ const list = [
   {
     title: '娱乐城',
     path: '/',
-    activeIcon: resolvePath('./img/home-active.png', import.meta.url),
-    inactiveIcon: resolvePath('./img/home-inactive.png', import.meta.url),
+    activeIcon: new URL('./img/home-active.png',import.meta.url).href,
+    inactiveIcon: new URL('./img/home-inactive.png',import.meta.url).href,
     isCenter:true
   },
   {
