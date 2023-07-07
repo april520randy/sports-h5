@@ -93,7 +93,7 @@ const list = ref([
   }
   .ava-tab {
     .tab-item {
-      padding: 16px 12px;
+      padding: 0 12px;
     }
   }
 }
