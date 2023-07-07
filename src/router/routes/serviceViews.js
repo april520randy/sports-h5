@@ -21,7 +21,7 @@ const list = [
     component: ServiceDetail
   },
   {
-    path: '/serviceCustomer',
+    path: '/service-customer',
     name: 'serviceCustomer',
     component: ExclusiveCustomer
   },

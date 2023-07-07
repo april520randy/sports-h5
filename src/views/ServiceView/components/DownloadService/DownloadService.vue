@@ -3,9 +3,11 @@
 </template>
 
 <script setup>
+import {useRouter} from 'vue-router'
+const router = useRouter()
 //跳转专属客服页面
 const goExclusive = () => {
-  router.push('/serviceCustomer')
+  router.push('/service-customer')
 }
 </script>
 

@@ -16,7 +16,7 @@
 import { useRouter } from 'vue-router';
 const router = useRouter()
 const goBusiness = ()=>{
-  router.push('/serviceBusiness')
+  router.push('/service-business')
 }
 </script>
 
