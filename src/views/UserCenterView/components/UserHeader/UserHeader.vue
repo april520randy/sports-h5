@@ -1,14 +1,8 @@
 <template>
-  <div class="header">
+  <div class="header" :class="{ 'has-bg': !isTop }">
     <div class="left" @click="router.push('/personal-center')">
       <div class="avatar">
         <img src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
-        <!-- <van-image
-          round
-          width="50"
-          height="50"
-          src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
-        /> -->
       </div>
       <!--  -->
       <div class="info" v-if="user.isLogin">
@@ -22,11 +16,11 @@
       </div>
       <div class="login" v-else>点击登录/注册</div>
     </div>
-    <div @click="service" class="right">
-      <div class="">
+    <div class="right">
+      <div  @click="service">
         <van-image :src="headerUrl" width="30" height="22.8"></van-image>
       </div>
-      <div class="msg-box">
+      <div @click="router.push('/message')" class="msg-box">
         <van-image :src="headmsg" width="30" height="22.8"></van-image>
       </div>
     </div>
@@ -38,18 +32,37 @@ import { useUserStore } from '@/stores/user'
 import { useRouter } from 'vue-router'
 import headerUrl from '@/assets/img/icon-service.png'
 import headmsg from '@/assets/img/letter.png'
-
+import { ref, onMounted } from 'vue'
 const user = useUserStore()
 const router = useRouter()
 const service = () => {
   router.push('/service')
 }
+const isTop = ref(true)
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY === 0 || document.documentElement.scrollTop === 0) {
+      isTop.value = true
+    } else {
+      isTop.value = false
+    }
+  })
+})
 </script>
 
 <style lang="scss" scoped>
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 10px 15px;
+  &.has-bg {
+    background: rgba(255, 255, 255, 0.8);
+  }
   .left {
     display: flex;
     align-items: center;
@@ -109,7 +122,7 @@ const service = () => {
   .right {
     display: flex;
     .msg-box {
-      margin-left: 20px;
+      margin-left: 15px;
     }
   }
 }

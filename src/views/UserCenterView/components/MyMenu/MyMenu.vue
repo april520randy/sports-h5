@@ -3,8 +3,7 @@
     <div class="list">
       <div @click="selectMenu(item)" class="menu-item" v-for="item in list" :key="item.title">
         <p>
-          <!-- <van-icon name="photo-o" /> -->
-          <img :src="imgPath(item.Imgpath)" alt="" />
+          <img :src="item.Imgpath" alt="" />
         </p>
         <p>
           <span>{{ item.title }}</span>
@@ -16,50 +15,49 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
-import { ref } from 'vue'
 const router = useRouter()
-const list = ref([
+const list = [
   {
     title: '投注记录',
-    path: '/deposit',
-    Imgpath: `../../img/touzhu.png`
+    path: '/bet-record',
+    Imgpath: new URL('./img/touzhu.png', import.meta.url).href
   },
   {
     title: '资金明细',
-    path: '/withdraw',
-    Imgpath: `../../img/zijin.png`
+    path: '/transaction-record',
+    Imgpath: new URL('./img/zijin.png', import.meta.url).href
   },
   {
     title: '福利中心',
-    path: '/transfer',
-    Imgpath: `../../img/fuli.png`
+    path: '/welfare',
+    Imgpath: new URL('./img/fuli.png', import.meta.url).href
   },
   {
     title: '优惠活动',
-    path: '/personal-center',
-    Imgpath: `../../img/youhui.png`
+    path: '/activity',
+    Imgpath: new URL('./img/youhui.png', import.meta.url).href
   },
   {
     title: '商务合作',
-    path: '/message',
-    Imgpath: `../../img/shangwu.png`
+    path: '/service-business',
+    Imgpath: new URL('./img/shangwu.png', import.meta.url).href
   },
   {
     title: '赞助信息',
-    path: '/transaction-record',
-    Imgpath: `../../img/zanzhu.png`
+    path: '/sponsor',
+    Imgpath: new URL('./img/zanzhu.png', import.meta.url).href
   },
   {
     title: '常见教程',
-    path: '/bet-record',
-    Imgpath: `../../img/jiaocheng.png`
+    path: '/help',
+    Imgpath: new URL('./img/jiaocheng.png', import.meta.url).href
   },
   {
     title: '安全中心',
-    path: '/welfare',
-    Imgpath: `../../img/anquan.png`
+    path: '/personal-center',
+    Imgpath: new URL('./img/anquan.png', import.meta.url).href
   }
-])
+]
 
 const selectMenu = (item) => {
   if (item.path) {
@@ -67,9 +65,6 @@ const selectMenu = (item) => {
   }
 }
 // 引用静态图片
-const imgPath = (fileName) => {
-  return new URL(fileName, import.meta.url).href
-}
 </script>
 
 <style lang="scss" scoped>

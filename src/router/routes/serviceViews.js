@@ -26,7 +26,7 @@ const list = [
     component: ExclusiveCustomer
   },
   {
-    path: '/serviceBusiness',
+    path: '/service-business',
     name: 'serviceBusiness',
     component: ExclusiveBusiness
   },

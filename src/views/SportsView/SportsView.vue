@@ -1,6 +1,5 @@
 <template>
   <div>
-    C体育
   </div>
 </template>
 

@@ -3,22 +3,22 @@
     <div class="box">
       <div class="asset-top">
         <div>总资产</div>
-        <div class="more-btn">
+        <div class="more-btn" @click="router.push('/vip')">
           更多VIP特权
           <IcoArrowRight class="svg-icon" />
         </div>
       </div>
       <div class="asset-mid flex">
         <div class="amount" v-if="user.isLogin">79009</div>
-        <div class="amount-more" v-else>登录后查看</div>
+        <div @click="router.push('/login')" class="amount-more" v-else>登录后查看</div>
         <div class="stor-btn">
-          <div class="pick acces">提款</div>
-          <div class="save acces">存款</div>
+          <div @click="router.push('/withdraw')" class="pick acces">提款</div>
+          <div @click="router.push('/deposit')" class="save acces">存款</div>
         </div>
       </div>
       <div class="asset-bar">
         <div class="v-left">
-          <img src="../../img/v1.png" />
+          <img src="./img/v1.png" />
         </div>
         <div class="progress-box">
           <div class="progress-text">晋级还需 <text>￥400000.00</text> 流水</div>
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="v-left">
-          <img src="../../img/v2.png" />
+          <img src="./img/v2.png" />
         </div>
       </div>
       <div class="asset-bot">
@@ -56,50 +56,22 @@
           <div>高额返水</div>
         </div>
       </div>
-
-      <!-- <div class="block">
-        <div class="label">
-          <span>中心钱包</span>
-          <div class="icon" @click="toggle">
-            <van-icon v-if="!isShowAmount" name="closed-eye" />
-            <van-icon v-if="isShowAmount" name="eye-o" />
-          </div>
-        </div>
-        <div class="amount">
-          <h3>{{ filterAmount }}</h3>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
 
 <script setup>
-import { showLoadingToast } from 'vant'
-import { ref, computed } from 'vue'
 import { useUserStore } from '@/stores/user'
+import {useRouter} from 'vue-router'
+const router = useRouter()
 const user = useUserStore()
-// 一键回收
-const oneKeyRecevie = () => {
-  showLoadingToast({
-    forbidClick: true,
-    duration: 1500
-  })
-}
-// 切换金额
-const toggle = () => {
-  isShowAmount.value = !isShowAmount.value
-}
-const isShowAmount = ref(true)
-const filterAmount = computed(() => {
-  return isShowAmount.value ? `￥${user.userInfo.balance || 0}` : '******'
-})
 </script>
 
 <style lang="scss" scoped>
 .my-assets {
   margin-top: 13px;
   .box {
-    background: url('../../img/Rectangle.png') no-repeat;
+    background: url('./img/Rectangle.png') no-repeat;
     background-size: 100% 100%;
     border-radius: 8px;
     padding: 15px 15px 10px 15px;
@@ -124,10 +96,12 @@ const filterAmount = computed(() => {
       .amount {
         font-size: 22px;
         font-weight: 700;
+        color:#000;
       }
       .amount-more {
         font-size: 16px;
         font-weight: 600;
+        color:#000;
       }
       .acces {
         width: 50px;

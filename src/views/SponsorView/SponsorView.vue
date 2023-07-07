@@ -1,5 +1,7 @@
 <template>
-  <van-tabs title-active-color="#1989fa" v-model:active="active" sticky animated swipeable>
+  <div>
+    <NavBar title="赞助"/>
+    <van-tabs title-active-color="#1989fa" v-model:active="active" sticky animated swipeable>
     <van-tab title="赞助伙伴">
       <div class="s-list">
         <div @click="selectSponsor(item)" v-for="item in sList" :key="item.id" class="item">
@@ -11,6 +13,7 @@
       <van-empty description="暂无主播" />
     </van-tab>
   </van-tabs>
+  </div>
 </template>
 
 <script setup>
