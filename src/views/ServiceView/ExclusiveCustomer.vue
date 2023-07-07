@@ -1,7 +1,7 @@
 <template>
   <div class="exclusive-customer">
     <div class="exclusive-navbar">
-      <img src="./img/arrow-left.png" alt="error" class="arrow-left" />
+      <img src="./img/arrow-left.png" alt="error" class="arrow-left" @click="goBack" />
       <span class="exclusive-title">专属客服</span>
     </div>
     <div class="border-exclusive"></div>
@@ -29,8 +29,18 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const sms = ref('12345678901')
+
+const goBack = ()=>{
+  router.back()
+}
+
+const download = ()=>{
+
+}
 
 </script>
 

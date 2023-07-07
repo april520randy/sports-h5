@@ -1,7 +1,7 @@
 <template>
   <div class="service-detail">
     <div class="detail-navbar">
-      <img src="./img/arrow-left.png" alt="error" class="arrow-left" />
+      <img src="./img/arrow-left.png" alt="error" class="arrow-left" @click="goBack" />
       <span class="detail-title">{{ title }}</span>
       <img src="./img/service-common.png" alt="error" class="service-common" />
     </div>
@@ -16,10 +16,15 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+const router = useRouter()
 
 const titleFirst = ref('')
 const titleSecond = ref('')
+
+const goBack = ()=>{
+  router.back()
+}
 
 onMounted(()=>{
   const route = useRoute()

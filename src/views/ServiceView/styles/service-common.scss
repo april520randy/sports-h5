@@ -15,25 +15,35 @@
       width:30px;
     }
   }
-  :deep .van-tabs__line{
-    bottom: 25px;
+  :deep() .van-tabs__line{
+    bottom: 28px;
+    left:-10px;
+    height:6px;
+    opacity: 0.8;
   }
-  :deep .van-tab--active span{
+  :deep().van-tab--active span{
     font-weight:600;
     font-size:14px;
   }
-  :deep .van-cell{
+  :deep() .van-cell{
     padding-left:0;
     height:54px;
   }
-  :deep .van-cell:after{
+  :deep() .van-cell:after{
     margin-left:-15px;
   }
-  :deep .van-cell__title{
+  :deep() .van-cell__title{
     color:#111;
     font-size:15px;
     font-weight: 600;
     font-style: normal;
+  }
+  :deep() .van-tab--grow{
+    padding-left: 0;
+    padding-right: 20px;
+  }
+  :deep() .van-tabs__nav--line.van-tabs__nav--complete{
+    padding-left:2px;
   }
   .tab-service-list{
     height:56.5px;

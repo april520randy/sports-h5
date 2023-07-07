@@ -1,12 +1,13 @@
 <template>
   <div class="common-problem">
     <div class="common-navbar">
-      <img src="./img/arrow-left.png" alt="error" class="arrow-left" />
+      <img src="./img/arrow-left.png" alt="error" class="arrow-left" @click="goBack" />
       <span class="common-title">常见问题</span>
       <img src="./img/service-common.png" alt="error" class="service-common" />
     </div>
     <div class="border-common"></div>
     <van-tabs
+      swipeable
       v-model:active="activeTab"
       line-width="25"
       :ellipsis="false"
@@ -56,8 +57,11 @@ const obj = reactive({
   ]
 })
 
+const goBack = ()=>{
+  router.back()
+}
 const onClickTab = ()=>{
-  console.log(activeTab.value)
+  
 }
 const goDetail = (title)=>{
   router.push({
@@ -71,7 +75,6 @@ const goDetail = (title)=>{
 onMounted(() => {
   const route = useRoute()
   activeTab.value = Number(route.query.active)
-  console.log('active.value',typeof activeTab.value,typeof route.query.active)
 })
 </script>
 
