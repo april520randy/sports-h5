@@ -17,13 +17,16 @@ import { ref } from 'vue'
 import { resolvePath } from '@/utils'
 // import { useRouter } from 'vue-router'
 // const router = useRouter()
+import sportsActive from './img/sports-active.png'
+import sportsInActive from './img/sports-inactive.png'
+
 const active = ref(0)
 const list = [
   {
     title: '滚球',
     path: '/sports',
-    activeIcon: resolvePath('./img/sports-active.png', import.meta.url),
-    inactiveIcon: resolvePath('./img/sports-inactive.png', import.meta.url)
+    activeIcon: sportsActive,
+    inactiveIcon: sportsInActive
   },
   {
     title: '优惠',
