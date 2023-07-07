@@ -2,6 +2,7 @@
   <div class="service-list">
     <img src="./img/normalQuestion.png" alt="error" class="normal-question">
     <van-tabs v-model:active="active"
+      swipeable
       line-width="25"
       :ellipsis="false"
       title-active-color="#111"

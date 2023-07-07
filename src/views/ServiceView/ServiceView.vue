@@ -1,7 +1,7 @@
 <template>
   <div class="service-view">
     <div class="header">
-      <img @click="back" src="./img/arrow-left.png" alt="error" class="arrow-left" />
+      <img src="./img/arrow-left.png" alt="error" class="arrow-left" @click="goBack">
       <span class="cellphone" @click="goCallTel">{{ callTel }}</span>
     </div>
     <p class="service-online">{{ serviceOnline }}</p>
@@ -13,8 +13,8 @@
       </div>
       <div class="middle"></div>
       <div class="group-img-box">
-        <img src="./img/Group.png" alt="error" class="group-img" />
-        <span class="group-title">{{ coperation }}</span>
+        <img src="./img/Group.png" alt="error" class="group-img">
+        <span class="group-title" @click="goBusiness">{{ coperation }}</span>
       </div>
     </div>
     <div class="rect-angle-center" @click="goExclusive"></div>
@@ -49,6 +49,9 @@ const list = ref([
   { id: 44444, title: '体育规则', src: './img/sport-rule.png' }
 ])
 
+const goBack = ()=>{
+  router.back()
+}
 //图片循环之后的路径转换
 const imgPath = (fileName) => {
   return new URL(fileName, import.meta.url).href
@@ -56,6 +59,12 @@ const imgPath = (fileName) => {
 const back = () => {
   router.back()
 }
+
+//跳转专属商务服务
+const goBusiness = ()=>{
+  router.push('./serviceBusiness')
+}
+
 //跳转专属客服页面
 const goExclusive = () => {
   router.push('/serviceCustomer')

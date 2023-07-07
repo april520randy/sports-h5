@@ -1,7 +1,7 @@
 <template>
   <div class="exclusive-business">
     <div class="exclusive-navbar">
-      <img src="./img/arrow-left.png" alt="error" class="arrow-left" />
+      <img src="./img/arrow-left.png" alt="error" class="arrow-left" @click="goBack" />
       <span class="exclusive-title">专属商务服务</span>
     </div>
     <div class="exclusive-main">
@@ -182,11 +182,16 @@
 <script setup>
 import vClipboard from '@/directives/clipboard'
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
 
 const copyContent = ref('111')
 const copyTelegram = ref('https:/t.me/bbjya1')
 const openAccount = ()=>{
   
+}
+const goBack = ()=>{
+  router.back()
 }
 </script>
 
