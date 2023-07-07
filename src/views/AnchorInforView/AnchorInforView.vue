@@ -15,7 +15,7 @@
         <van-tab v-for="item in list" :key="item.value" :title="item.title">
           <template v-if="item.value == '1'">
             <div class="tab-item">
-              <HerDynamic />
+              <HerDynamic @handImgClick="handImgClick" />
             </div>
           </template>
           <template v-if="item.value == '2'">
@@ -26,11 +26,21 @@
         </van-tab>
       </van-tabs>
     </div>
+    <van-image-preview
+      v-model:show="show"
+      :images="images"
+      @change="onChange"
+      :showIndicators="true"
+      :showIndex="false"
+    >
+      <template v-slot:index>第{{ index + 1 }}页</template>
+    </van-image-preview>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { toRaw } from '@vue/reactivity'
 import HerDynamic from './components/HerDynamic.vue'
 import HerInformation from './components/HerInformation.vue'
 const active = ref(0)
@@ -44,6 +54,23 @@ const list = ref([
     value: 2
   }
 ])
+// 图片预览
+const show = ref(false)
+const index = ref(0)
+const images = [
+  'https://fastly.jsdelivr.net/npm/@vant/assets/apple-1.jpeg',
+  'https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg',
+  'https://fastly.jsdelivr.net/npm/@vant/assets/apple-1.jpeg',
+  'https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg'
+]
+const onChange = (newIndex) => {
+  index.value = newIndex
+}
+function handImgClick(param) {
+  var preList = toRaw(param)
+  show.value = true
+  console.log(preList, '444')
+}
 </script>
 
 <style lang="scss" scoped>
