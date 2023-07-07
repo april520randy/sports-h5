@@ -31,5 +31,7 @@ const list = [
     component: ExclusiveBusiness
   },
 ]
-
+list.forEach(item=>{
+  item.meta = {}
+})
 export default list
