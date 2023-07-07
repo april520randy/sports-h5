@@ -1,0 +1,95 @@
+.exclusive-customer{
+  min-height: 100vh;
+  @include mobile-padding();
+  padding-top:15px;
+  .exclusive-navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom:10px;
+    .exclusive-title{
+      color:#333;
+      font-size:16px;
+      font-weight: 400;
+      margin-right:155px;
+    }
+  }
+  .border-exclusive{
+    height:1px;
+    margin:0 -15px;
+    background: #F5F5F5;
+  }
+  .exclusive-welfare{
+    background: url('./img/customer-service.png') no-repeat center 5px;
+    background-size: 100%;
+    // width:375px;
+    height: 474px;
+    margin:0 -15px;
+  }
+  .download-customer{
+    // background: url('./img/download-customer.png') no-repeat center;
+    // background-size: 100%;
+    // // width:375px;
+    // height: 250px;
+    margin:0 -15px;
+    border-radius: 20px 20px 0 0;
+    background: #FFF;
+    box-shadow: 5px 0px 15px 0px #E5E5E5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .img-ellipse{
+      margin-top:20px;
+      width:50px;
+    }
+    .download-app{
+      color:#111;
+      font-size: 16px;
+      font-weight:600;
+      line-height: 28px;
+      margin-top:9px;
+    }
+    .add-manager{
+      color:#111;
+      font-size: 13px;
+      font-weight:400;
+      line-height: 28px;
+      margin-top:6px;
+      display: flex;
+      align-items: center;
+      .copy-content{
+        margin-left:5px;
+        width:92px;
+        padding:0;
+        border:1px solid #F53F3F;
+        border-radius: 90px 0px 0px 90px;
+      }
+      .copy-btn{
+        width:42px;
+        height:26px;
+        border-radius:0 90px 90px 0;
+        background: #F53F3F;
+        color: #FFF;
+        font-size:13px;
+        text-align: center;
+        line-height: 24px;
+      }
+    }
+    .unlock-welfare{
+      color:#111;
+      font-size: 13px;
+      font-weight:400;
+      line-height: 28px;
+    }
+    .download-btn{
+      // width:100%;
+      width:325px;
+      margin:13px 17px 20px 33px;
+      border-radius: 6px;
+      height:50px;
+      background: linear-gradient(90deg, #FF9000 0%, #FF5000 100%);
+
+    }
+  }
+}
