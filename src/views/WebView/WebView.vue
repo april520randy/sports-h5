@@ -1,17 +1,19 @@
 <template>
-  <NavBar :title="title" />
-  <div class="iframe-wrapper" id="iframeWrapper">
-    <iframe
-      v-if="url"
-      :src="url"
-      id="iframe"
-      width="100%"
-      height="100%"
-      frameborder="0"
-      name="iframe"
-    ></iframe>
+  <div>
+    <NavBar :title="title" />
+    <div class="iframe-wrapper" id="iframeWrapper">
+      <iframe
+        v-if="url"
+        :src="url"
+        id="iframe"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        name="iframe"
+      ></iframe>
+    </div>
+    <van-loading v-if="loading" />
   </div>
-  <van-loading v-if="loading" />
 </template>
 
 <script setup>
@@ -33,12 +35,12 @@ defineProps({
 })
 onMounted(() => {
   handleLoad()
-  setIframeHeight()
+  // setIframeHeight()
 })
 const handleLoad = () => {
   let iframeDom = document.getElementById('iframe')
   showLoadingToast({
-    duration:0,
+    duration: 0,
     forbidClick: true
   })
   let iframeLoad = () => {
@@ -48,14 +50,15 @@ const handleLoad = () => {
   }
   iframeDom.addEventListener('load', iframeLoad, true)
 }
-const setIframeHeight = () => {
-  const headerHeight = 46
-  document.getElementById('iframeWrapper').style.height = window.innerHeight - headerHeight + 'px'
-}
+// const setIframeHeight = () => {
+//   const headerHeight = 44
+//   document.getElementById('iframeWrapper').style.height = window.innerHeight - headerHeight + 'px'
+// }
 </script>
 
 <style lang="scss" scoped>
 #iframeWrapper {
   overflow: hidden;
+  height: calc(100vh - 44px);
 }
 </style>

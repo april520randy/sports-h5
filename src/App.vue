@@ -1,5 +1,5 @@
 <template>
-  <div class="router-view-wrapper" :style="styles">
+  <div class="router-view-wrapper" :class="{ 'padding-bottom': isShowTabbar }">
     <router-view v-slot="{ Component, route }">
       <transition :name="route.meta.transition" mode="out-in">
         <component :is="Component" :key="route.path" />
@@ -14,9 +14,6 @@ import { RouterView, useRoute } from 'vue-router'
 import Tabbar from '@/components/Tabbar/Tabbar'
 const currentRoute = useRoute()
 const isShowTabbar = computed(() => currentRoute.meta && currentRoute.meta.isShowTabbar)
-const styles = computed(() => ({
-  'padding-bottom': isShowTabbar.value ? '90px' : 0
-}))
 /*
 最大网络接口响应时长为10s, timeout设置为10s
 */
@@ -31,4 +28,7 @@ tagAppStarting()
 </script>
 
 <style scoped>
+.padding-bottom {
+  padding-bottom: 90px;
+}
 </style>

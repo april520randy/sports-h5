@@ -28,7 +28,7 @@ const goLogin = () => {
 <style lang="scss" scoped>
 .wrapper {
   padding: 20px 25px 0;
-  background: #fefdfc;
+  // background: #fefdfc;
   .tit {
     font-size: 25px;
     font-weight: 600;

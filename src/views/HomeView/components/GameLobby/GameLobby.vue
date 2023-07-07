@@ -9,7 +9,7 @@
         :key="item.name"
         @click="chooseGameType(idx)"
       >
-        <p>
+        <p class="icon-box">
           <van-icon name="photo-o" size="24" />
         </p>
         <p>
@@ -142,75 +142,95 @@ const play = (item) => {
 }
 </script>
 
-<style lang="stylus" scoped>
-.game-lobby{
-  .tab{
-    display flex
-    justify-content space-between
-    padding-bottom 10px
-    .item{
-      text-align center
-      width 50px
-      height 50px
-      border-radius 5px
-      transition all .2s ease-in
-      &.active{
-        background #333
-        color #fff
+<style lang="scss" scoped>
+.game-lobby {
+  .tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    height: 60px;
+    // border:1px solid green;
+    .item {
+      text-align: center;
+      width: 50px;
+      border-radius: 5px;
+      transition: all 0.2s ease-in;
+      // border:1px solid red;
+      padding: 5px 0;
+      .icon-box {
+        // border:1px solid blue;
+        width: 24px;
+        height: 24px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &.active {
+        background: #333;
+        color: #fff;
       }
     }
   }
-  .game-view{
-    position relative
-    background #eee
+  .game-view {
+    position: relative;
+    background: #eee;
   }
-  .scroll-wrapper{
-    overflow auto
-    height calc(100vh - 50px - 144px - 40px - 80px - 50px - 60px - 10px)
-    border-radius 8px
-    z-index 2
-    .game-list{
-      padding-bottom 200px
-      .item{
-        height 100px
-        width @height
-        background #ccc
-        margin-bottom 10px
-        display flex
-        align-items center
-        justify-content center
-        &.active{
-          background #333
-          color #fff
+  .scroll-wrapper {
+    $bannerHeight: 144px;
+    $noticeHeight: 40px;
+    $userCenterHeight: 60px;
+    $tabHeight: 60px;
+    $paddingBottomHeight: 90px;
+    $scrollHeight: calc(
+      100vh - $bannerHeight - $noticeHeight - $userCenterHeight - $tabHeight - $paddingBottomHeight
+    );
+    overflow: auto;
+    height: $scrollHeight;
+    border-radius: 8px;
+    z-index: 2;
+    .game-list {
+      padding-bottom: calc($scrollHeight - 200px);
+      .item {
+        $height: 100px;
+        height: $height;
+        width: $height;
+        background: #ccc;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.active {
+          background: #333;
+          color: #fff;
         }
-
       }
     }
   }
 
-  .current-game-view{
-      position absolute
-      top 0
-      right 0
-      z-index 1
-      padding-left 100px
-      background #666
-      color #fff
-      border-radius 8px
-      width 100%
-      height 100%
-      display flex
-      justify-content center
-      align-items center
-      .title{
-        font-size 40px
-      }
+  .current-game-view {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    padding-left: 100px;
+    background: #666;
+    color: #fff;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .title {
+      font-size: 40px;
     }
-    .van-button{
-        position absolute
-        z-index 999
-        bottom 30px
-        left 50%
-      }
+  }
+  .van-button {
+    position: absolute;
+    z-index: 999;
+    bottom: 30px;
+    left: 50%;
+  }
 }
 </style>
