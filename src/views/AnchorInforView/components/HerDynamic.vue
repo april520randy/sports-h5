@@ -11,6 +11,7 @@
           :class="{ 'img-box': item.imgList.length > 1, 'img-box-one': item.imgList.length == 1 }"
           v-for="itemr in item.imgList"
           :key="itemr.id"
+          @click="ImgClick(item.imgList)"
         >
           <img :src="imgPath(itemr.path)" alt="" />
         </div>
@@ -74,8 +75,14 @@ const msglist = ref([
 const imgPath = (fileName) => {
   return new URL(fileName, import.meta.url).href
 }
+// 点赞时间
 const iconClick = (item) => {
   item.status = !item.status
+}
+// 图片预览点击
+const emit = defineEmits(['handImgClick'])
+function ImgClick(imgList) {
+  emit('handImgClick', imgList)
 }
 </script>
 
