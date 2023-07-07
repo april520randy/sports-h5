@@ -1,13 +1,22 @@
 import { useUserStore } from '@/stores/user'
+import { useRouterStore } from '@/stores/router'
+
 export default async (to) => {
-  if (isBack) {
+  // 设置前进后退动效
+  const routerStore = useRouterStore()
+  if (routerStore.isBack) {
     to.meta.transition = 'slide-back'
-    console.log('后退')
   } else {
-    to.meta.transition = 'slide'
-    console.log('前进')
+    // 没有设置任何转场动效则使用默认slide滑入动效
+    if (!to.meta.transition) {
+      to.meta.transition = 'slide'
+    }
   }
+  // 使用回退动效后 重置回退标识
+  routerStore.setIsBackStatus(false)
   const store = useUserStore()
+
+  // 权限控制
   const isLogin = store.isLogin
   if (isLogin) {
     // 已登录状态 访问登录注册页 则跳转首页
@@ -26,5 +35,3 @@ export default async (to) => {
     }
   }
 }
-
-window.addEventListener('popstate')

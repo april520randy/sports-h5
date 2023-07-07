@@ -48,7 +48,6 @@ import { debounce, throttle } from 'lodash'
 import { useRouter } from 'vue-router'
 import { jumpExternalLink } from '@/utils'
 const router = useRouter()
-console.log(gameData)
 // 游戏列表
 const tabList = [...gameData]
 const gameList = gameData.reduce((accumulator, item) => {

@@ -47,4 +47,8 @@ const list = [
   }
 ]
 
+list.forEach(item=>{
+  item.meta.transition = 'blank'
+})
+
 export default list

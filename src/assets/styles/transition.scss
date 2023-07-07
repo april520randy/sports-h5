@@ -58,22 +58,46 @@
   transform: translateX(30px);
 }
 
-.slide-enter-active, .slide-leave-active {
-  transition: all 0.3s ease;
-}
-
-.slide-enter, .slide-leave-to {
+/* 滑入滑出 */ 
+.slide-enter {
   transform: translateX(100%);
 }
-
-.slide-back-enter-active, .slide-back-leave-active {
-  transition: all 0.3s ease;
+.slide-enter-active {
+  transition: transform 0.3s ease;
+}
+.slide-enter-to {
+  transform: translateX(0);
 }
 
-.slide-back-enter, .slide-back-leave-to {
+.slide-leave {
+  transform: translateX(0);
+}
+.slide-leave-active {
+  transition: transform 0.3s ease;
+}
+.slide-leave-to {
   transform: translateX(-100%);
 }
 
+.slide-back-enter {
+  transform: translateX(-100%);
+}
+.slide-back-enter-active {
+  transition: transform 0.3s ease;
+}
+.slide-back-enter-to {
+  transform: translateX(0);
+}
+
+.slide-back-leave {
+  transform: translateX(0);
+}
+.slide-back-leave-active {
+  transition: transform 0.3s ease;
+}
+.slide-back-leave-to {
+  transform: translateX(100%);
+}
 
 /* 水果冻动效 */ 
 @keyframes rubberBand {

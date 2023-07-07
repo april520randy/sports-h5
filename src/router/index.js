@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import beforEach from './hooks/beforEach'
 import afterEach from './hooks/afterEach'
+import { useRouterStore } from '@/stores/router'
 const Error404View = () => import('@/views/Error404View/Error404View.vue')
 
 // 获取routes配置
@@ -15,9 +16,17 @@ const getRoutes = () => {
 }
 const routes = getRoutes()
 
+// 监听路由回退事件
+const history = createWebHashHistory()
+history.listen((path) => {
+  if (path) {
+    const routerStore = useRouterStore()
+    routerStore.setIsBackStatus(true)
+  }
+})
 // 创建路由实例
 const router = createRouter({
-  history: createWebHashHistory(),
+  history,
   routes: [
     ...routes,
     {
