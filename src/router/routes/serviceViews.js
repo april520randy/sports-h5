@@ -11,13 +11,13 @@ const list = [
     component: ServiceView
   },
   {
-    path: '/common',
-    name: 'common',
+    path: '/service-question/:idx',
+    name: 'service-question',
     component: CommonProblem
   },
   {
-    path: '/serviceDetail',
-    name: 'serviceDetail',
+    path: '/service-detail/:type/:idx',
+    name: 'service-detail',
     component: ServiceDetail
   },
   {

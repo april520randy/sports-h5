@@ -1,55 +1,68 @@
 <template>
   <div class="service-detail">
-    <div class="detail-navbar">
-      <img src="./img/arrow-left.png" alt="error" class="arrow-left" @click="goBack" />
-      <span class="detail-title">{{ title }}</span>
-      <img src="./img/service-common.png" alt="error" class="service-common" />
+    <NavBar :border="true" :title="title" />
+    <div class="content">
+      <h1 class="detail-second-title">{{ titleSecond }}</h1>
+      <img src="./img/money-less.png" alt="error" class="detail-money" />
+      <p class="detail-describe">
+        如违反我可游戏规则,系统检测后会扣除您的盈利金额以及彩金,保留本金,提款后冻结账户。如果有异议可随时联系7*24小时在线客服
+      </p>
     </div>
-    <div class="border-detail"></div>
-    <h1 class="detail-second-title">{{ titleSecond }}</h1>
-    <img src="./img/money-less.png" alt="error" class="detail-money">
-    <p class="detail-describe">
-      如违反我可游戏规则,系统检测后会扣除您的盈利金额以及彩金,保留本金,提款后冻结账户。如果有异议可随时联系7*24小时在线客服
-    </p>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import listData from './question-list-data'
+
 const router = useRouter()
 
-const titleFirst = ref('')
-const titleSecond = ref('')
-
-const goBack = ()=>{
+const goBack = () => {
   router.back()
 }
 
-onMounted(()=>{
+const title = computed(() => {
   const route = useRoute()
-  titleFirst.value = route.query.active
-  titleSecond.value = route.query.title
+  const type = route.params.type
+  const o = listData.find((item) => item.type === type)
+  if (o) {
+    return o.title
+  }
+  return ''
 })
 
-const title = computed(() => {
-  switch (titleFirst.value) {
-    case '0':
-      return '取款问题';
-    case '1':
-      return '投注结算';
-    case '2':
-      return '存款问题';
-    case '3':
-      return '优惠问题';
-    case '4':
-      return '福利中心';
-    default:
-      return '福利中心';
+const titleSecond = computed(() => {
+  const route = useRoute()
+  const type = route.params.type
+  const idx = route.params.idx
+  const o = listData.find((item) => item.type === type)
+  if (o) {
+    return o.subList[idx].title
   }
-});
+  return ''
+})
 </script>
 
 <style lang="scss" scoped>
-@import './styles/service-detail.scss'
+.content{
+  @include mobile-padding();
+}
+.detail-second-title {
+  color: #111;
+  font-size: 15px;
+  line-height: 28px;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 13px;
+}
+.detail-money {
+  width: 345px;
+}
+.detail-describe {
+  margin-top: 10px;
+  color: #111;
+  font-size: 14px;
+  line-height: 28px;
+}
 </style>
