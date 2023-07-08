@@ -49,13 +49,13 @@ const props = defineProps({
     type: Number,
     default: 1 // 1显示区号，2显示国家名称
   },
-  disabled:{
-    type:Boolean,
-    default:false
+  disabled: {
+    type: Boolean,
+    default: false
   }
 })
 
-const open = ref(false)
+const open = ref(true)
 const currentCountry = ref({})
 const filterList = ref(JSON.parse(JSON.stringify(list)))
 const searchRef = ref(null) // 搜索组件
@@ -80,7 +80,7 @@ const closeDialog = () => {
   clearSearch()
 }
 const openDialog = () => {
-  if(props.disabled) return 
+  if (props.disabled) return
   open.value = true
 }
 // 清空搜索框
@@ -138,9 +138,10 @@ setCurrentCountry(list[0])
   .content {
     margin-top: 25px;
     .list-wrapper {
-      height: 250px;
+      height: 255px;
       margin-top: 15px;
       overflow-y: auto;
+      // border:1px solid red;
     }
     .list {
       .item {
@@ -149,6 +150,9 @@ setCurrentCountry(list[0])
         justify-content: space-between;
         font-size: 14px;
         margin-bottom: 25px;
+        &:last-child {
+          margin-bottom: 0;
+        }
         .left {
           display: flex;
           align-items: center;

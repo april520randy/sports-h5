@@ -17,21 +17,21 @@ export default [
   {
     title: '阿联酋',
     icon: new URL('./img/other2.png', import.meta.url).href,
-    code: '376'
+    code: '378'
   },
   {
     title: '阿富汗',
     icon: new URL('./img/other3.png', import.meta.url).href,
-    code: '376'
+    code: '673'
   },
   {
     title: '安提瓜和巴布达',
     icon: new URL('./img/other4.png', import.meta.url).href,
-    code: '376'
+    code: '55'
   },
   {
     title: '安圭拉',
     icon: new URL('./img/other1.png', import.meta.url).href,
-    code: '376'
+    code: '234'
   }
 ]
