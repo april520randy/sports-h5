@@ -1,12 +1,17 @@
 <template>
-  <div class="router-view-wrapper" :class="{ 'padding-bottom': isShowTabbar }">
+  <div class="router-view-wrapper">
     <router-view v-slot="{ Component, route }">
       <transition :name="route.meta.transition" mode="out-in">
-        <component :is="Component" :key="route.path" />
+        <component
+          :class="{ 'padding-bottom': isShowTabbar }"
+          class="router-view"
+          :is="Component"
+          :key="route.path"
+        />
       </transition>
     </router-view>
+    <Tabbar v-if="isShowTabbar" />
   </div>
-  <Tabbar v-if="isShowTabbar" />
 </template>
 <script setup>
 import { computed } from 'vue'

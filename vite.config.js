@@ -4,10 +4,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
-// import tinify from 'tinify'
-// import fs from 'fs'
-// import path from 'path'
-// tinify.key = 'zDScpf7z3yLMKypDs19qKDCgdC2xCbrR'
+import tinify from 'tinify'
+import fs from 'fs'
+import path from 'path'
+tinify.key = 'zDScpf7z3yLMKypDs19qKDCgdC2xCbrR'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/sports-h5/dist/' : '',
@@ -16,14 +16,14 @@ export default defineConfig({
     Components({
       resolvers: [VantResolver()]
     }),
-    // {
-    //   name: 'tinyPNG',
-    //   apply: 'build',
-    //   generateBundle() {
-    //     const projectDirectory = path.resolve(__dirname, './src')
-    //     compressImages(projectDirectory)
-    //   }
-    // }
+    {
+      name: 'tinyPNG',
+      apply: 'build',
+      generateBundle() {
+        const projectDirectory = path.resolve(__dirname, './src')
+        compressImages(projectDirectory)
+      }
+    }
   ],
   resolve: {
     alias: {

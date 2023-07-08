@@ -36,16 +36,16 @@
 }
 
 .fade-enter-active {
-  animation: fadeIn 0.3s  forwards;
+  animation: fadeIn 0.3s forwards;
 }
 .fade-leave-active {
-  animation: fadeOut 0.3s  forwards;
+  animation: fadeOut 0.3s forwards;
 }
 
 /* 方案3：fade-transform */
 .fade-transform-leave-active,
 .fade-transform-enter-active {
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .fade-transform-enter {
@@ -58,7 +58,9 @@
   transform: translateX(30px);
 }
 
-/* 滑入滑出 */ 
+/* 滑入滑出
+
+*/
 .slide-enter {
   transform: translateX(100%);
 }
@@ -99,7 +101,7 @@
   transform: translateX(100%);
 }
 
-/* 水果冻动效 */ 
+/* 水果冻动效 */
 @keyframes rubberBand {
   from {
     -webkit-transform: scale3d(1, 1, 1);
