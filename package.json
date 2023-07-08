@@ -30,6 +30,7 @@
     "sass": "^1.62.1",
     "stylus": "^0.59.0",
     "stylus-loader": "^7.1.0",
+    "tinify": "^1.7.1",
     "unplugin-vue-components": "^0.24.1",
     "vconsole": "^3.15.1",
     "vite": "^4.3.4",
