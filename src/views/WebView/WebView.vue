@@ -59,6 +59,6 @@ const handleLoad = () => {
 <style lang="scss" scoped>
 #iframeWrapper {
   overflow: hidden;
-  height: calc(100vh - 44px);
+  height: calc(var(--app-height) - 44px);
 }
 </style>

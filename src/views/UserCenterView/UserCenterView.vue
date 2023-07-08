@@ -23,13 +23,12 @@ import BottomLink from './components/BottomLink/BottomLink.vue'
 
 <style lang="scss" scoped>
 .user-center-view {
-  background: #fafafa url('@/assets/img/bg.png') center top no-repeat;
+  background: url('@/assets/img/bg.png') center top no-repeat;
   background-size: contain;
   @include clearfix();
 }
 .scroll-view {
   @include mobile-padding();
-  padding-top:60px;
- 
+  padding-top: 60px;
 }
 </style>

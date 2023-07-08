@@ -11,7 +11,7 @@
     <van-popup round v-model:show="open" position="bottom" :style="{ height: '60%' }">
       <div class="popup">
         <div class="tit">
-          <h2>选择区号</h2>
+          <h2>选择{{ type===2?'国家':'区号' }}</h2>
           <IconClose @click="open = false" class="close" />
         </div>
         <div class="content">
@@ -29,7 +29,7 @@
                   <p><img :src="item.icon" alt="" /></p>
                   <span>{{ item.title }}</span>
                 </div>
-                <p class="code">+{{ item.code }}</p>
+                <p v-if="type === 1" class="code">+{{ item.code }}</p>
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@ const props = defineProps({
   }
 })
 
-const open = ref(true)
+const open = ref(false)
 const currentCountry = ref({})
 const filterList = ref(JSON.parse(JSON.stringify(list)))
 const searchRef = ref(null) // 搜索组件

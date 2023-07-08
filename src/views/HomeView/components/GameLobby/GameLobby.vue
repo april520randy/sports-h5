@@ -177,13 +177,14 @@ const play = (item) => {
     background: #eee;
   }
   .scroll-wrapper {
+    $viewportHeight:var(--app-height);
     $bannerHeight: 144px;
     $noticeHeight: 40px;
     $userCenterHeight: 60px;
     $tabHeight: 60px;
     $paddingBottomHeight: 90px;
     $scrollHeight: calc(
-      100vh - $bannerHeight - $noticeHeight - $userCenterHeight - $tabHeight - $paddingBottomHeight
+      $viewportHeight - $bannerHeight - $noticeHeight - $userCenterHeight - $tabHeight - $paddingBottomHeight
     );
     overflow: auto;
     height: $scrollHeight;
