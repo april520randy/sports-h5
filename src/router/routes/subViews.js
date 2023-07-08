@@ -21,8 +21,14 @@ const AboutUsView = () => import('@/views/AboutUsView/AboutUsView.vue')
 const ForgetView = () => import('@/views/ForgetView/ForgetView.vue')
 const SponsorDetailView = () => import('@/views/SponsorDetailView/SponsorDetailView.vue')
 const AnchorInforView = () => import('@/views/AnchorInforView/AnchorInforView.vue')
+const SettingsView = () => import('@/views/SettingsView/SettingsView.vue')
 
 const list = [
+  {
+    path: '/settings',
+    name: 'settings',
+    component: SettingsView
+  },
   {
     path: '/sponsor',
     name: 'sponsor',

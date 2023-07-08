@@ -93,15 +93,15 @@ onMounted(() => {
         }
         .more-btn {
           display: inline-block;
-          // vertical-align: middle;
           width: 14px;
           height: 14px;
-          line-height: 14px;
-          text-align: center;
           border-radius: 14px;
           background-color: var(--color-yellow);
           color: var(--color-background);
           font-size: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           .svg-icon {
             fill: #fff;
             width: 8px;
