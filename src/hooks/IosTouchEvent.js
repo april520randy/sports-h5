@@ -1,7 +1,5 @@
-import { useRouter } from 'vue-router'
 import { useRouterStore } from '@/stores/router'
-export default function useTouchEvent() {
-  const router = useRouter()
+export default function useIOSTouchEvent() {
   const routerStore = useRouterStore()
   let touchStartX = 0
   let touchEndX = 0
@@ -16,14 +14,10 @@ export default function useTouchEvent() {
     if (Math.abs(diffX) > Math.abs(diffY)) {
       // 检查是否是水平滑动
       if (diffX > 0 && touchStartX < threshold) {
-        console.log('Swiped right')
         routerStore.setIsIosTouchEventBack(true)
-        router.back()
       }
       if (diffX < 0 && touchStartX > window.innerWidth - threshold) {
-        console.log('Swiped left')
         routerStore.setIsIosTouchEventForward(true)
-        router.go(1)
       }
     }
   }
@@ -37,13 +31,10 @@ export default function useTouchEvent() {
     false
   )
 
-  window.addEventListener(
-    'touchend',
-    (event) => {
-      touchEndX = event.changedTouches[0].pageX
-      touchEndY = event.changedTouches[0].pageY
-      handleGesture()
-    },
-    false
-  )
+
+  window.addEventListener('touchmove', (event) => {
+    touchEndX = event.changedTouches[0].pageX
+    touchEndY = event.changedTouches[0].pageY
+    handleGesture()
+  })
 }

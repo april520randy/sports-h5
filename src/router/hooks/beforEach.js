@@ -1,30 +1,10 @@
 import { useUserStore } from '@/stores/user'
-import { useRouterStore } from '@/stores/router'
-
+import handleRouterAnimation from './handleRouterAnimation'
 export default async (to) => {
-  // 设置前进后退动效
-  const routerStore = useRouterStore()
-  if (routerStore.isIosTouchEventBack || routerStore.isIosTouchEventForward) {
-    to.meta.transition = 'blank'
-  } else {
-    if (routerStore.isBack) {
-      to.meta.transition = 'slide-right'
-    } else {
-      // 没有设置任何转场动效则使用默认slide滑入动效
-      if (!to.meta.transition) {
-        to.meta.transition = 'slide-left'
-      }
-    }
-  }
-
-  // 使用过渡动效后 重置动效标识
-  routerStore.setIsBackStatus(false)
-  routerStore.setIsIosTouchEventBack(false)
-  routerStore.setIsIosTouchEventForward(false)
-
-  const store = useUserStore()
-
+  // 处理路由切换动效
+  handleRouterAnimation(to)
   // 权限控制
+  const store = useUserStore()
   const isLogin = store.isLogin
   if (isLogin) {
     // 已登录状态 访问登录注册页 则跳转首页

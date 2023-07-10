@@ -16,11 +16,11 @@
 import { computed ,onMounted} from 'vue'
 import { RouterView, useRoute } from 'vue-router'
 import Tabbar from '@/components/Tabbar/Tabbar'
-import useTouchEvent from '@/hooks/IosTouchEvent'
+import useIOSTouchEvent from '@/hooks/IosTouchEvent'
 const currentRoute = useRoute()
 const isShowTabbar = computed(() => currentRoute.meta && currentRoute.meta.isShowTabbar)
 onMounted(()=>{
-  useTouchEvent()
+  useIOSTouchEvent()
 })
 /*
 最大网络接口响应时长为10s, timeout设置为10s
