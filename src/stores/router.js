@@ -14,5 +14,12 @@ export const useRouterStore = defineStore('router', () => {
   const setIsIosTouchEventForward = (bool) => {
     isIosTouchEventForward.value = bool
   }
-  return { isBack, setIsBackStatus, setIsIosTouchEventBack, setIsIosTouchEventForward }
+  return {
+    isBack,
+    isIosTouchEventBack,
+    isIosTouchEventForward,
+    setIsBackStatus,
+    setIsIosTouchEventBack,
+    setIsIosTouchEventForward
+  }
 })

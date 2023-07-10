@@ -18,12 +18,12 @@ export default function useTouchEvent() {
       if (diffX > 0 && touchStartX < threshold) {
         console.log('Swiped right')
         routerStore.setIsIosTouchEventBack(true)
-        // router.back()
+        router.back()
       }
       if (diffX < 0 && touchStartX > window.innerWidth - threshold) {
         console.log('Swiped left')
         routerStore.setIsIosTouchEventForward(true)
-        // router.go(1)
+        router.go(1)
       }
     }
   }

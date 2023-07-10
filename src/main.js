@@ -9,6 +9,8 @@ import App from './App.vue'
 import router from './router'
 import registerComponents from '@/utils/registerComponents'
 import registerDirectives from '@/directives/registerDirectives'
+import loadPlugin from '@/utils/plugin'
+loadPlugin()
 const pinia = createPinia()
 const app = createApp(App)
 // 注册全局组件
