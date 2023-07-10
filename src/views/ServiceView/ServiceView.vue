@@ -29,5 +29,7 @@ import Guidebook from './components/Guidebook/Guidebook.vue'
   @include mobile-padding();
   padding-top: 15px;
   padding-bottom: 15px;
+  // position: absolute;
+  // width:100%;
 }
 </style>

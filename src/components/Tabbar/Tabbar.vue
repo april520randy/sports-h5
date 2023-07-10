@@ -1,10 +1,19 @@
 <template>
   <div>
-    <van-tabbar :border="false" class="tabbar-wrapper" route v-model="active">
-      <van-tabbar-item v-for="item in list" :key="item.path" :to="item.path" :badge="item.badge">
-        <span class="label">{{item.title}}</span>
+    <van-tabbar :border="false" class="tabbar-wrapper" route>
+      <van-tabbar-item
+        @touchstart="doIconAnimation(item)"
+        v-for="item in list"
+        :key="item.path"
+        :to="item.path"
+        :badge="item.badge"
+      >
+        <span class="label">{{ item.title }}</span>
         <template #icon="props">
-          <div :class="{center:item.isCenter,rubberBand:props.active}" class="icon-box">
+          <div
+            :class="{ center: item.isCenter, rubberBand: item.isShowAnimation }"
+            class="icon-box"
+          >
             <img :src="props.active ? item.activeIcon : item.inactiveIcon" />
           </div>
         </template>
@@ -14,8 +23,7 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-const active = ref(0)
-const list = [
+const list = ref([
   {
     title: '滚球',
     path: '/sports',
@@ -31,9 +39,9 @@ const list = [
   {
     title: '娱乐城',
     path: '/',
-    activeIcon: new URL('./img/home-active.png',import.meta.url).href,
-    inactiveIcon: new URL('./img/home-inactive.png',import.meta.url).href,
-    isCenter:true
+    activeIcon: new URL('./img/home-active.png', import.meta.url).href,
+    inactiveIcon: new URL('./img/home-inactive.png', import.meta.url).href,
+    isCenter: true
   },
   {
     title: '发现',
@@ -42,13 +50,21 @@ const list = [
     inactiveIcon: new URL('./img/discover-inactive.png', import.meta.url).href
   },
   {
-    badge:2,
+    badge: 2,
     title: '我的',
     path: '/user-center',
     activeIcon: new URL('./img/user-active.png', import.meta.url).href,
     inactiveIcon: new URL('./img/user-inactive.png', import.meta.url).href
   }
-]
+])
+const doIconAnimation = (item) => {
+  item.isShowAnimation = false
+  let t = setTimeout(() => {
+    item.isShowAnimation = true
+    clearTimeout(t)
+    t = null
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -62,17 +78,16 @@ const list = [
     width: $iconSize;
     height: $iconSize;
     // border:1px solid red;
-    img{
-      width:100%;
-      height:100%;
+    img {
+      width: 100%;
+      height: 100%;
     }
-    &.center{
-      $iconBigSize:58px;
-      width:$iconBigSize;
-      height:$iconBigSize;
+    &.center {
+      $iconBigSize: 58px;
+      width: $iconBigSize;
+      height: $iconBigSize;
       // transform: scale(1.8);
-      margin-top:-28px;
-
+      margin-top: -28px;
     }
   }
 }

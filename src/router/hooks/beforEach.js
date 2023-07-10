@@ -5,11 +5,11 @@ export default async (to) => {
   // 设置前进后退动效
   const routerStore = useRouterStore()
   if (routerStore.isBack) {
-    to.meta.transition = 'slide-back'
+    to.meta.transition = 'slide-right'
   } else {
     // 没有设置任何转场动效则使用默认slide滑入动效
     if (!to.meta.transition) {
-      to.meta.transition = 'slide'
+      to.meta.transition = 'slide-left'
     }
   }
   // 使用回退动效后 重置回退标识

@@ -1,13 +1,12 @@
 <template>
   <div class="router-view-wrapper">
-    <router-view v-slot="{ Component, route }">
-      <transition :name="route.meta.transition" mode="out-in">
-        <component
-          :class="{ 'padding-bottom': isShowTabbar }"
-          class="router-view"
-          :is="Component"
-          :key="route.path"
-        />
+    <router-view
+      v-slot="{ Component, route }"
+      :class="{ 'padding-bottom': isShowTabbar }"
+      class="router-view"
+    >
+      <transition :name="route.meta.transition">
+        <component :is="Component" :key="route.path" />
       </transition>
     </router-view>
     <Tabbar v-if="isShowTabbar" />
@@ -32,7 +31,14 @@ const tagAppStarting = () => {
 tagAppStarting()
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.router-view {
+  // 页面切换动效辅助属性
+  background: var(--color-background);
+  min-height: var(--app-height);
+  position: absolute;
+  width: 100%;
+}
 .padding-bottom {
   padding-bottom: 90px;
 }
