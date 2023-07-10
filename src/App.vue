@@ -13,11 +13,15 @@
   </div>
 </template>
 <script setup>
-import { computed } from 'vue'
+import { computed ,onMounted} from 'vue'
 import { RouterView, useRoute } from 'vue-router'
 import Tabbar from '@/components/Tabbar/Tabbar'
+import useTouchEvent from '@/hooks/IosTouchEvent'
 const currentRoute = useRoute()
 const isShowTabbar = computed(() => currentRoute.meta && currentRoute.meta.isShowTabbar)
+onMounted(()=>{
+  useTouchEvent()
+})
 /*
 最大网络接口响应时长为10s, timeout设置为10s
 */
@@ -29,6 +33,8 @@ const tagAppStarting = () => {
   }, 10 * 1000)
 }
 tagAppStarting()
+
+
 </script>
 
 <style lang="scss" scoped>
