@@ -2,8 +2,9 @@
   <div class="input-wrapper" :class="{ error: errorMessage }">
     <input
       :value="modelValue"
-      @input="input"
-      @blur="verify"
+      @input.stop="onInput"
+      @blur.stop="onBlur"
+      @focus.stop="onFocus"
       :placeholder="placeholder"
       :maxlength="maxlength"
       :type="type"
@@ -12,8 +13,8 @@
     />
     <p v-if="hasErrorTip" class="error-tip">{{ errorMessage }}</p>
 
-    <div class="icon-wrapper">
-      <IconClear v-if="modelValue && clearable" @click="clear" class="icon-clear" />
+    <div class="icon-wrapper" :class="{ 'verify-code-icon-right': verifyCodeIconRight }">
+      <IconClear v-if="isFocus && modelValue && clearable" @click.stop="clear" class="icon-clear" />
       <span v-if="modelValue && isPwd" @click="toggle">
         <IconEyeClose v-show="type === 'password'" class="icon-eye-close" />
         <IconEyeOpen v-show="type === 'text'" class="icon-eye-open" />
@@ -79,16 +80,31 @@ const props = defineProps({
   placeholder: {
     type: String,
     default: ''
-  }
+  },
+  verifyCodeIconRight: {
+    type: Boolean,
+    default: false
+  },
 })
 const emit = defineEmits(['update:modelValue'])
 
 const errorMessage = ref('')
 const type = ref('text')
-const input = (e) => {
+const isFocus = ref(false)
+const onInput = (e) => {
   emit('update:modelValue', e.target.value)
   // 重置表单验证状态
   errorMessage.value = ''
+}
+const onFocus = () => {
+  isFocus.value = true
+}
+const onBlur = (e) => {
+  let t = setTimeout(() => {
+    isFocus.value = false
+    clearTimeout(t)
+  })
+  verify(e)
 }
 const verify = (e) => {
   if (!e.target.value) {
@@ -132,16 +148,21 @@ if (props.isPwd) {
   }
   .icon-wrapper {
     position: absolute;
-    right: 3px;
-    top: 5px;
-    .icon {
+    right: 0;
+    top: -6px;
+    padding: 10px;
+    &.verify-code-icon-right{
+      right:70px;
+    }
+    svg {
       margin-left: 10px;
     }
-    .icon-clear{
-      fill:#999;
+    .icon-clear {
+      fill: #999;
     }
-    .icon-eye-close,.icon-eye-open{
-      fill:#bbb;
+    .icon-eye-close,
+    .icon-eye-open {
+      fill: #bbb;
     }
   }
   &.error {

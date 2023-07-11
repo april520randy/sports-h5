@@ -17,7 +17,7 @@
       <div class="login" v-else>点击登录/注册</div>
     </div>
     <div class="right">
-      <div  @click="service">
+      <div @click="service">
         <van-image :src="headerUrl" width="30" height="22.8"></van-image>
       </div>
       <div @click="router.push('/message')" class="msg-box">
@@ -38,16 +38,20 @@ const router = useRouter()
 const service = () => {
   router.push('/service')
 }
-const isTop = ref(true)
+const isTop = ref(getIsTop())
 onMounted(() => {
   window.addEventListener('scroll', () => {
-    if (window.scrollY === 0 || document.documentElement.scrollTop === 0) {
+    if (getIsTop()) {
       isTop.value = true
     } else {
       isTop.value = false
     }
   })
 })
+
+function getIsTop() {
+  return window.scrollY === 0 || document.documentElement.scrollTop === 0
+}
 </script>
 
 <style lang="scss" scoped>

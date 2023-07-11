@@ -10,6 +10,7 @@ import router from './router'
 import registerComponents from '@/utils/registerComponents'
 import registerDirectives from '@/directives/registerDirectives'
 import loadPlugin from '@/utils/plugin'
+// 载入插件
 loadPlugin()
 const pinia = createPinia()
 const app = createApp(App)

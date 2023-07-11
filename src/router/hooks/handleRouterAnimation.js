@@ -20,3 +20,12 @@ export default function (to) {
   routerStore.setIsIosTouchEventBack(false)
   routerStore.setIsIosTouchEventForward(false)
 }
+
+export function listenHistory(history) {
+  history.listen((path) => {
+    if (path) {
+      const routerStore = useRouterStore()
+      routerStore.setIsBackStatus(true)
+    }
+  })
+}

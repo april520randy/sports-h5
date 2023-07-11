@@ -24,6 +24,8 @@
       <CustomInput
         v-number
         hasErrorTip
+        clearable
+        verifyCodeIconRight
         v-model="code"
         :maxlength="6"
         placeholder="请输入验证码"

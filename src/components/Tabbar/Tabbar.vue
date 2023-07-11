@@ -11,7 +11,7 @@
         <span class="label">{{ item.title }}</span>
         <template #icon="props">
           <div
-            :class="{ center: item.isCenter, rubberBand: item.isShowAnimation  }"
+            :class="{ center: item.isCenter, rubberBand: item.isShowAnimation && props.active  }"
             class="icon-box"
           >
             <img :src="props.active ? item.activeIcon : item.inactiveIcon" />

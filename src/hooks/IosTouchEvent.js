@@ -5,7 +5,7 @@ export default function useIOSTouchEvent() {
   let touchEndX = 0
   let touchStartY = 0
   let touchEndY = 0
-  const threshold = 50
+  const threshold = 50 // 阈值
 
   function handleGesture() {
     let diffX = touchEndX - touchStartX

@@ -12,6 +12,7 @@
     />
     <div class="split"></div>
     <CustomInput
+      clearable
       isPwd
       hasErrorTip
       v-model="password"
