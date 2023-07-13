@@ -1,5 +1,7 @@
 <template>
-  <van-tabs title-active-color="#1989fa" v-model:active="active" sticky animated swipeable>
+  <div>
+    <NavBar title="赞助"/>
+    <van-tabs title-active-color="#1989fa" v-model:active="active" sticky animated swipeable>
     <van-tab title="赞助伙伴">
       <div class="s-list">
         <div @click="selectSponsor(item)" v-for="item in sList" :key="item.id" class="item">
@@ -11,26 +13,27 @@
       <van-empty description="暂无主播" />
     </van-tab>
   </van-tabs>
+  </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { resolvePath } from '@/utils'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const active = ref(0)
 const sList = [
   {
     id: 1,
-    img: resolvePath('./img/s1.jpg', import.meta.url)
+    img: new URL('./img/s1.jpg', import.meta.url).href
   },
   {
     id: 2,
-    img: resolvePath('./img/s2.jpg', import.meta.url)
+    img: new URL('./img/s2.jpg', import.meta.url).href
   }
 ]
 const selectSponsor = (item) => {
   router.push(`/sponsor/${item.id}`)
+  console.log(item, '999')
 }
 </script>
 

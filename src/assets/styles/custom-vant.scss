@@ -2,8 +2,12 @@
 :root:root {
   /* 整体主题色 */
   --van-primary-color: var(--color-primary);
-  /* Tab */
-  --van-tab-font-size: 17px;
+  --van-danger-color:var(--color-danger);
+  /* checkbox */
   --van-checkbox-size: 18px;
-  --van-tabs-nav-background: transparent;
+  /* navbar高度 */
+  --van-nav-bar-height: 44px;
+  /* tabbar高度 */
+  --van-tabbar-height: 60px;
+  --van-tabbar-item-text-color:#666;
 }

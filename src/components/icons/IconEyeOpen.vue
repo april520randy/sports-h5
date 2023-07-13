@@ -11,8 +11,3 @@
 
 <script setup></script>
 
-<style lang="scss" scoped>
-svg {
-  fill: #bbb;
-}
-</style>

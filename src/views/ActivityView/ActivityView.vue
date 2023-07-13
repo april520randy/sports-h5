@@ -1,15 +1,22 @@
 <template>
-  <van-tabs title-active-color="#1989fa" v-model:active="active" sticky animated swipeable>
-    <van-tab v-for="tab in tabs" :title="tab.name" :key="tab.name">
-      <div class="list">
-        <div @click="onClickActivity(item)" v-for="item in tab.list" :key="item.actId" class="item">
-          <div class="img-box">
-            <img :src="activityImg" alt="" />
+  <div class="activity-view">
+    <van-tabs title-active-color="#1989fa" v-model:active="active" sticky animated swipeable>
+      <van-tab v-for="tab in tabs" :title="tab.name" :key="tab.name">
+        <div class="list">
+          <div
+            @click="onClickActivity(item)"
+            v-for="item in tab.list"
+            :key="item.actId"
+            class="item"
+          >
+            <div class="img-box">
+              <img :src="activityImg" alt="" />
+            </div>
           </div>
         </div>
-      </div>
-    </van-tab>
-  </van-tabs>
+      </van-tab>
+    </van-tabs>
+  </div>
 </template>
 
 <script setup>
@@ -69,7 +76,9 @@ const onClickActivity = (item) => {
 }
 </style>
 <style lang="scss">
-.van-tab__panel {
-  min-height: calc(100vh - 44px - 55px);
+.activity-view {
+  .van-tab__panel {
+    min-height: calc(100vh - 44px - 55px);
+  }
 }
 </style>

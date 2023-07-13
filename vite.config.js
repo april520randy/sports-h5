@@ -1,10 +1,9 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
-// import styleImport from 'vite-plugin-style-import'
+import tinifyConfig from './build/tinify'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/sports-h5/dist/' : '',
@@ -13,7 +12,8 @@ export default defineConfig({
     Components({
       resolvers: [VantResolver()]
     }),
-  ], 
+    tinifyConfig
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -23,8 +23,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/assets/styles/mixin.scss";`,
-      },
-    },
-  },
+        additionalData: `@import "./src/assets/styles/mixin.scss";`
+      }
+    }
+  }
 })

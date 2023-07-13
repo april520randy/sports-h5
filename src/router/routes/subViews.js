@@ -2,7 +2,7 @@ const ActivityDetailView = () => import('@/views/ActivityDetailView/ActivityDeta
 const GameView = () => import('@/views/GameView/GameView.vue')
 const SponsorView = () => import('@/views/SponsorView/SponsorView.vue')
 const WebView = () => import('@/views/WebView/WebView.vue')
-const ServiceView = () => import('@/views/ServiceView/ServiceView.vue')
+
 const DepositView = () => import('@/views/DepositView/DepositView.vue')
 const WithdrawView = () => import('@/views/WithdrawView/WithdrawView.vue')
 const TransferView = () => import('@/views/TransferView/TransferView.vue')
@@ -20,7 +20,15 @@ const AgentView = () => import('@/views/AgentView/AgentView.vue')
 const AboutUsView = () => import('@/views/AboutUsView/AboutUsView.vue')
 const ForgetView = () => import('@/views/ForgetView/ForgetView.vue')
 const SponsorDetailView = () => import('@/views/SponsorDetailView/SponsorDetailView.vue')
+const AnchorInforView = () => import('@/views/AnchorInforView/AnchorInforView.vue')
+const SettingsView = () => import('@/views/SettingsView/SettingsView.vue')
+
 const list = [
+  {
+    path: '/settings',
+    name: 'settings',
+    component: SettingsView
+  },
   {
     path: '/sponsor',
     name: 'sponsor',
@@ -56,11 +64,7 @@ const list = [
       isAuth: true
     }
   },
-  {
-    path: '/service',
-    name: 'service',
-    component: ServiceView
-  },
+ 
   {
     path: '/deposit',
     name: 'deposit',
@@ -162,6 +166,11 @@ const list = [
     path: '/forget',
     name: 'forget',
     component: ForgetView
+  },
+  {
+    path: '/anchor-infor',
+    name: 'anchor-infor',
+    component: AnchorInforView
   }
 ]
 

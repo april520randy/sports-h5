@@ -1,0 +1,80 @@
+.common-problem{
+  @include mobile-padding();
+  padding-top:15px;
+  .common-navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom:10px;
+    .common-title{
+      color:#333;
+      font-size:16px;
+      font-weight: 400;
+    }
+    .service-common{
+      width:30px;
+    }
+  }
+  :deep() .van-tabs__line{
+    bottom: 28px;
+    left:-10px;
+    height:6px;
+    opacity: 0.8;
+  }
+  :deep().van-tab--active span{
+    font-weight:600;
+    font-size:14px;
+  }
+  :deep() .van-cell{
+    padding-left:0;
+    height:54px;
+  }
+  :deep() .van-cell:after{
+    margin-left:-15px;
+  }
+  :deep() .van-cell__title{
+    color:#111;
+    font-size:15px;
+    font-weight: 600;
+    font-style: normal;
+  }
+  :deep() .van-tab--grow{
+    padding-left: 0;
+    padding-right: 20px;
+  }
+  :deep() .van-tabs__nav--line.van-tabs__nav--complete{
+    padding-left:2px;
+  }
+  .tab-service-list{
+    height:56.5px;
+    margin-right:15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:1px solid #EEE;
+    .tab-service-content{
+      .title{
+        font-size: 15px;
+        color: #111;
+      }
+      .title-index{
+        color:#999;
+        margin-right: 12px;
+        font-size: 20px;
+      }
+    }
+    .is-link img{
+      width:12px;
+      height:12px;
+    }
+  }
+  // .tab-service-list:nth-child(1){
+  //   border-top:1px solid #EEE;
+  // }
+  .border-common{
+    height:1px;
+    // width:375px;
+    margin:0 -15px;
+    background: #F5F5F5;
+  }
+}

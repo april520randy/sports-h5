@@ -1,27 +1,25 @@
 <template>
   <div class="swiper-wrapper">
-    <van-swipe indicator-color="#d42f21" :autoplay="3000" lazy-render :height="144">
+    <van-swipe indicator-color="#d42f21" :autoplay="3000" lazy-render height="auto">
       <van-swipe-item @click="selectBanner(item)" v-for="(item, idx) in images" :key="idx">
-        <img :src="item.img" />
+        <div class="img-bg" :style="{ backgroundImage: `url(${item.img})` }"></div>
       </van-swipe-item>
     </van-swipe>
   </div>
 </template>
 
 <script setup>
-import { resolvePath } from '@/utils'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const currentPath = import.meta.url
 // 轮播图
 const images = [
   {
     id: 1,
-    img: resolvePath('./img/banner-1.png', currentPath)
+    img: new URL('./img/banner-1.png', import.meta.url).href
   },
   {
     id: 2,
-    img: resolvePath('./img/banner-2.png', currentPath)
+    img: new URL('./img/banner-2.png', import.meta.url).href
   }
 ]
 const selectBanner = (item) => {
@@ -33,10 +31,11 @@ const selectBanner = (item) => {
 <style lang="scss" scoped>
 .swiper-wrapper {
   .van-swipe {
-    img {
-      width: 100%;
-      border-radius: 10px;
+    .img-bg {
       height: 144px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
   }
 }

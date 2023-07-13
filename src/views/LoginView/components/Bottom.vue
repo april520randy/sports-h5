@@ -32,8 +32,9 @@
   justify-content: space-around;
   .item {
     text-align: center;
+    line-height: 1.5;
     img {
-      width: 32px;
+      width: 50px;
     }
     .tit1 {
       color: #070707;

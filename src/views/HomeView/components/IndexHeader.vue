@@ -4,7 +4,6 @@
       <div @click="openMenu" class="icon-menu">
         <van-icon name="bars" size="24" />
       </div>
-      <IconSport @click.stop class="icon-sport" />
     </div>
     <div class="right">
       <van-icon @click="router.push('/service')" name="service-o" size="24" />
@@ -14,7 +13,6 @@
 </template>
 
 <script setup>
-import IconSport from '@/components/icons/IconSport.vue'
 import Menu from '@/components/Menu/Menu.vue'
 import { ref } from 'vue'
 import {useRouter} from 'vue-router'

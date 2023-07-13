@@ -1,10 +1,10 @@
 <template>
   <div class="header">
-    <p @click="back">
+    <p @click="home">
       <IconClose class="icon" />
       <span>先去逛逛</span>
     </p>
-    <img @click="service" src="./img/service.png" alt="" />
+    <img @click="service" src="@/assets/img/icon-service.png" alt="" />
   </div>
 </template>
 
@@ -12,8 +12,8 @@
 import IconClose from '@/components/icons/IconClose'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const back = () => {
-  router.back()
+const home = () => {
+  router.push('/')
 }
 const service = () => {
   router.push('/service')
@@ -24,17 +24,19 @@ const service = () => {
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height:44px;
   p {
     font-size: 15px;
     display: flex;
     align-items: center;
   }
   .icon {
-    fill: #555;
+    fill: var(--color-text);
     margin-right: 5px;
   }
   img {
-    height: 34px;
+    width: 30px;
   }
 }
 </style>

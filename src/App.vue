@@ -1,19 +1,27 @@
 <template>
-  <div class="router-view-wrapper" :style="styles">
-    <RouterView />
+  <div class="router-view-wrapper">
+    <router-view
+      v-slot="{ Component, route }"
+      :class="{ 'padding-bottom': isShowTabbar }"
+      class="router-view"
+    >
+      <transition :name="route.meta.transition">
+        <component :is="Component" :key="route.path" />
+      </transition>
+    </router-view>
+    <Tabbar v-if="isShowTabbar" />
   </div>
-  <Tabbar v-if="isShowTabbar" />
 </template>
 <script setup>
-import { computed } from 'vue'
+import { computed ,onMounted} from 'vue'
 import { RouterView, useRoute } from 'vue-router'
 import Tabbar from '@/components/Tabbar/Tabbar'
+import useIOSTouchEvent from '@/hooks/IosTouchEvent'
 const currentRoute = useRoute()
 const isShowTabbar = computed(() => currentRoute.meta && currentRoute.meta.isShowTabbar)
-const styles = computed(() => ({
-  'padding-bottom': isShowTabbar.value ? '55px' : 0
-}))
-
+onMounted(()=>{
+  useIOSTouchEvent()
+})
 /*
 最大网络接口响应时长为10s, timeout设置为10s
 */
@@ -22,9 +30,22 @@ const tagAppStarting = () => {
   let timer = setTimeout(() => {
     window.isAppLongRunStatus = true
     clearTimeout(timer)
-  }, 10*1000)
+  }, 10 * 1000)
 }
 tagAppStarting()
+
+
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.router-view {
+  // 页面切换动效辅助属性
+  background: var(--color-background);
+  min-height: var(--app-height);
+  position: absolute;
+  width: 100%;
+}
+.padding-bottom {
+  padding-bottom: 90px;
+}
+</style>

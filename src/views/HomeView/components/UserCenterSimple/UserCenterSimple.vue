@@ -1,12 +1,17 @@
 <template>
   <div class="user-center-simple">
-    <div class="info">
+    <div class="info" v-if="user.isLogin">
       <div class="user">
         <span class="username">{{ user.userInfo.username }}</span>
         <van-tag style="margin-left: 5px" type="primary">VIP{{ user.userInfo.level }}</van-tag>
       </div>
       <h3 class="amount">￥{{ user.userInfo.balance }}</h3>
     </div>
+    <div v-else class="info logout" @click="login">
+      <p>您还未登录</p>
+      <p>登录/注册后查看</p>
+    </div>
+
     <div class="fast-way">
       <div
         @click="router.push(item.path)"
@@ -49,16 +54,20 @@ const fastWayList = [
     path: '/vip'
   }
 ]
+const login = ()=>{
+  router.push('/login')
+}
 </script>
 
 <style lang="stylus" scoped>
 .user-center-simple{
-  // background #ddd
   display flex
   justify-content space-between
   align-items center
-  padding 10px 0
-  height 80px
+  height 60px
+  .logout{
+    line-height:1.5
+    }
   span.username{
     margin-right 5px
     font-size 16px
@@ -75,7 +84,6 @@ const fastWayList = [
         margin-right 0
       }
     }
-
   }
 }
 </style>

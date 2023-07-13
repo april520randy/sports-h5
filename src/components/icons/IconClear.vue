@@ -5,8 +5,3 @@
     />
   </svg>
 </template>
-<style lang="scss" scoped>
-svg {
-  fill: #999999;
-}
-</style>
