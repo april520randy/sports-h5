@@ -1,1 +1,0 @@
-import{_ as n,o as t,a as o,h as c,am as a}from"./index-884313af.js";const _={};function s(r,i){const e=a;return t(),o("div",null,[c(e,{title:"设置"})])}const m=n(_,[["render",s]]);export{m as default};

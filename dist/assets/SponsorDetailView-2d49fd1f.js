@@ -1,1 +1,0 @@
-import{_,o,P as n,am as t}from"./index-884313af.js";const a={};function s(c,r){const e=t;return o(),n(e,{title:"赞助信息"})}const i=_(a,[["render",s],["__scopeId","data-v-4f2f36a9"]]);export{i as default};

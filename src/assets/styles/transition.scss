@@ -3,7 +3,7 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.2s ease-in;
+  transition: all 0.15s ease-in;
   will-change: transform;
   position: absolute;
   width: 100%;
@@ -45,7 +45,7 @@
 /* 滑出-返回 动效 */
 .slide-right-enter-active,
 .slide-right-leave-active {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 .slide-right-enter-active {
   z-index: 1;
@@ -69,7 +69,7 @@
 /* 滑入-进入新页面 动效 */
 .slide-left-enter-active,
 .slide-left-leave-active {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 .slide-left-enter-active {
   z-index: 2;
