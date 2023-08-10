@@ -8,8 +8,8 @@
       <h3 class="amount">￥{{ user.userInfo.balance }}</h3>
     </div>
     <div v-else class="info logout" @click="login">
-      <p>您还未登录</p>
-      <p>登录/注册后查看</p>
+      <p class="no-login">您还未登录</p>
+      <p class="login-register">登录/注册后查看</p>
     </div>
 
     <div class="fast-way">
@@ -20,10 +20,10 @@
         :key="item.title"
       >
         <p>
-          <van-icon name="photo-o" size="24" />
+          <img :src="item.imgSrc" alt="">
         </p>
         <p>
-          <span>{{ item.title }}</span>
+          <span class="title">{{ item.title }}</span>
         </p>
       </div>
     </div>
@@ -39,19 +39,22 @@ const user = useUserStore()
 const fastWayList = [
   {
     title: '存款',
-    path: '/deposit'
+    path: '/deposit',
+    imgSrc:new URL('../../img/banner/cunkuan.png', import.meta.url).href
   },
   {
-    title: '取款',
-    path: '/withdraw'
+    title: '提款',
+    path: '/withdraw',
+    imgSrc:new URL('../../img/banner/tikuan.png', import.meta.url).href
   },
-  {
-    title: '转账',
-    path: '/transfer'
-  },
+  // {
+  //   title: '转账',
+  //   path: '/transfer'
+  // },
   {
     title: 'VIP',
-    path: '/vip'
+    path: '/vip',
+    imgSrc:new URL('../../img/banner/VIP.png', import.meta.url).href
   }
 ]
 const login = ()=>{
@@ -61,12 +64,30 @@ const login = ()=>{
 
 <style lang="stylus" scoped>
 .user-center-simple{
+  margin-top:12px;
+  padding:20px;
   display flex
   justify-content space-between
   align-items center
   height 60px
   .logout{
-    line-height:1.5
+    line-height:1.5;
+    .no-login{
+      color: #666;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px;
+    }
+    .login-register{
+      color: #111;
+      text-align: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 16px;
+      margin-top:6px;
+    }
     }
   span.username{
     margin-right 5px
@@ -83,6 +104,17 @@ const login = ()=>{
       &:last-child{
         margin-right 0
       }
+      .title{
+        color: #666;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+      }
+    }
+    img{
+      width:36.5px;
+      height:31px;
     }
   }
 }

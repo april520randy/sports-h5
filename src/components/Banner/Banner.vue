@@ -1,6 +1,6 @@
 <template>
   <div class="swiper-wrapper">
-    <van-swipe indicator-color="#d42f21" :autoplay="3000" lazy-render height="auto">
+    <van-swipe  :autoplay="3000" lazy-render height="auto">
       <van-swipe-item @click="selectBanner(item)" v-for="(item, idx) in images" :key="idx">
         <div class="img-bg" :style="{ backgroundImage: `url(${item.img})` }"></div>
       </van-swipe-item>
@@ -30,6 +30,7 @@ const selectBanner = (item) => {
 
 <style lang="scss" scoped>
 .swiper-wrapper {
+  margin-bottom:5px;
   .van-swipe {
     .img-bg {
       height: 144px;
@@ -37,6 +38,15 @@ const selectBanner = (item) => {
       background-position: center;
       background-repeat: no-repeat;
     }
+  }
+  :deep() .van-swipe__indicator--active{
+    background: #FF5000;
+    width:10px;
+    height:4px;
+  }
+  :deep() .van-swipe__indicators{
+    position: absolute;
+    bottom: 0;
   }
 }
 </style>

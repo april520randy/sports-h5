@@ -6,6 +6,9 @@
     color="#1989fa"
     background="#ecf9ff"
   >
+    <template #left-icon>
+      <img src="../../img/banner/volumn.png" alt="">
+    </template>
     <div class="notice-list">
       <span
         class="notice-text"
@@ -60,4 +63,24 @@ const selectNotice = (item) => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.van-notice-bar{
+  height:24px;
+  img{
+    width:14px;
+    height:14px;
+    margin-right:4px;
+  }
+}
+.notice-text{
+  color: #666;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+:deep() .van-icon-arrow{
+  display: none;
+}
+</style>

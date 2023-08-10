@@ -3,17 +3,20 @@
     <!-- 游戏分类导航 -->
     <div class="tab">
       <div
-        :class="{ active: currentGameTypeIdx === idx }"
+        :class="{ activeTab: currentGameTypeIdx === idx }"
         class="item"
         v-for="(item, idx) in tabList"
         :key="item.name"
         @click="chooseGameType(idx)"
       >
-        <p class="icon-box">
-          <van-icon name="photo-o" size="24" />
-        </p>
         <p>
-          <span>{{ item.name }}</span>
+          <span class="tab-name" v-if="currentGameTypeIdx !== idx">{{ item.name }}</span>
+          <span v-else class="active-name">
+            <!-- 图片暂时静态引入 -->
+            <img src="../../img/banner/VIP.png" alt="" style="width:20px;height:20px">
+            <!-- <img :src="item.icon" alt=""> -->
+            <span>{{ item.name }}</span>
+          </span>
         </p>
       </div>
     </div>
@@ -147,12 +150,15 @@ const play = (item) => {
   .tab {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    height: 60px;
+    align-items: center;
+    background: url('../../img/banner/tab.png') no-repeat center center;
+    background-size: 100% 100%;
+    height: 45px;
+    padding:0 20px;
     // border:1px solid green;
     .item {
       text-align: center;
-      width: 50px;
+      // width: 50px;
       border-radius: 5px;
       transition: all 0.2s ease-in;
       // border:1px solid red;
@@ -170,6 +176,35 @@ const play = (item) => {
         background: #333;
         color: #fff;
       }
+      .active-name{
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-around;
+        width:69px;
+        height:30px;
+        margin-bottom: 8px;;
+        background: url(../../img/banner/tab-bg.png) no-repeat center center;
+        background-size: 100% 100%;
+        border-radius: 5px;
+        span{
+          color: #FFF;
+          font-family: 'TencentSans';
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+        }
+      }
+    }
+    .tab-name{
+      color: #111;
+      font-family: 'TencentSans';
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      display: inline-block;
+      margin-bottom: 8px;;
     }
   }
   .game-view {
