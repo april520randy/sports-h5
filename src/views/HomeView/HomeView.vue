@@ -1,40 +1,45 @@
 <template>
   <div class="home-wrapper">
-    <!-- 头 -->
-    <IndexHeader />
     <!-- 轮播图 -->
     <Banner />
     <!-- 滚动公告栏 -->
-    <Notice />
+    <div class="login-bg">
+      <Notice />
+      <UserCenterSimple />
+    </div>
+    
     <!-- 用户中心精简版 -->
-    <UserCenterSimple />
-    <!-- 游戏大厅 -->
-    <GameLobby />
+    <div class="mobile-wrapper">
+      <!-- 游戏大厅 -->
+      <GameLobby />
+    </div>
   </div>
 </template>
 <script setup>
-import IndexHeader from './components/IndexHeader.vue'
 import Banner from '@/components/Banner/Banner.vue'
 import Notice from './components/Notice/Notice.vue'
 import UserCenterSimple from './components/UserCenterSimple/UserCenterSimple.vue'
 import GameLobby from './components/GameLobby/GameLobby.vue'
 </script>
 
-<style lang="stylus" scoped>
-.home-wrapper{
-  padding 0 15px
+<style lang="scss" scoped>
+.login-bg{
+  background: url('./img/banner/login-bg.png') no-repeat center center;
+  background-size: 100% 100%;
+  height:115px;
 }
-
-
-.notice-list{
-  display flex
+.mobile-wrapper {
+  // @include mobile-padding();
 }
-.notice-text{
-  height 40px
-  line-height @height
-  margin-right 20px
-  &:last-child{
-    margin-right 0
+.notice-list {
+  display: flex;
+}
+.notice-text {
+  height: 40px;
+  line-height: 40px;
+  margin-right: 20px;
+  &:last-child {
+    margin-right: 0;
   }
 }
 </style>

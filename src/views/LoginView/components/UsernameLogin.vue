@@ -12,6 +12,7 @@
     />
     <div class="split"></div>
     <CustomInput
+      clearable
       isPwd
       hasErrorTip
       v-model="password"
@@ -24,9 +25,9 @@
 
     <div class="auxfun">
       <p>
-        <van-checkbox v-model="remember"><span>记住密码</span></van-checkbox>
+        <van-checkbox v-model="remember"><span class="forget">记住密码</span></van-checkbox>
       </p>
-      <p>忘了密码？</p>
+      <p @click="forgetPwd">忘了密码？</p>
     </div>
 
     <VButton :disabled="!isValided">登录</VButton>
@@ -38,9 +39,11 @@ import CustomInput from '@/components/CustomInput/CustomInput'
 import { ref, computed } from 'vue'
 import Reg from '@/utils/reg'
 import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const user = useUserStore()
 const username = ref('admin123')
-const password = ref('zzz111')
+const password = ref('zzzz1111')
 const remember = ref(true)
 const isValided = computed(() => {
   return Reg.usernameReg.test(username.value) && Reg.passwordReg.test(password.value)
@@ -58,6 +61,9 @@ const submit = (event) => {
     user.loginAction(data)
   }
 }
+const forgetPwd = () => {
+  router.push('/forget')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -68,10 +74,14 @@ const submit = (event) => {
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
-  margin-bottom: 40px;
+  margin-bottom: 17px;
   color: #888;
   span {
     color: #888;
+  }
+  .forget {
+    position: relative;
+    top: -1px;
   }
 }
 </style>

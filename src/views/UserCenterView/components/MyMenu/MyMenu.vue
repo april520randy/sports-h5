@@ -1,9 +1,9 @@
 <template>
   <div class="my-menu">
     <div class="list">
-      <div @click="selectMenu(item)" class="item" v-for="item in list" :key="item.title">
+      <div @click="selectMenu(item)" class="menu-item" v-for="item in list" :key="item.title">
         <p>
-          <van-icon name="photo-o" />
+          <img :src="item.Imgpath" alt="" />
         </p>
         <p>
           <span>{{ item.title }}</span>
@@ -18,80 +18,79 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const list = [
   {
-    title: '存款',
-    path: '/deposit'
-  },
-  {
-    title: '取款',
-    path: '/withdraw'
-  },
-  {
-    title: '转账',
-    path: '/transfer'
-  },
-  {
-    title: '个人中心',
-    path: '/personal-center'
-  },
-  {
-    title: '消息中心',
-    path: '/message'
-  },
-  {
-    title: '交易记录',
-    path: '/transaction-record'
-  },
-  {
     title: '投注记录',
-    path: '/bet-record'
+    path: '/bet-record',
+    Imgpath: new URL('./img/touzhu.png', import.meta.url).href
+  },
+  {
+    title: '资金明细',
+    path: '/transaction-record',
+    Imgpath: new URL('./img/zijin.png', import.meta.url).href
   },
   {
     title: '福利中心',
-    path: '/welfare'
+    path: '/welfare',
+    Imgpath: new URL('./img/fuli.png', import.meta.url).href
   },
   {
-    title: '新手帮助',
-    path: '/help'
+    title: '优惠活动',
+    path: '/activity',
+    Imgpath: new URL('./img/youhui.png', import.meta.url).href
   },
   {
-    title: '意见反馈',
-    path: '/feedback'
+    title: '商务合作',
+    path: '/service-business',
+    Imgpath: new URL('./img/shangwu.png', import.meta.url).href
   },
   {
-    title: '邀请好友',
-    path: '/invite'
+    title: '赞助信息',
+    path: '/sponsor',
+    Imgpath: new URL('./img/zanzhu.png', import.meta.url).href
   },
   {
-    title: '合营计划',
-    path: '/agent'
+    title: '常见教程',
+    path: '/help',
+    Imgpath: new URL('./img/jiaocheng.png', import.meta.url).href
+  },
+  {
+    title: '安全中心',
+    path: '/personal-center',
+    Imgpath: new URL('./img/anquan.png', import.meta.url).href
   }
 ]
+
 const selectMenu = (item) => {
   if (item.path) {
     router.push(item.path)
   }
 }
+// 引用静态图片
 </script>
 
 <style lang="scss" scoped>
 .my-menu {
-  background: #eee;
-  border-radius: 8px;
-  margin-top: 10px;
+  border-radius: 0 0 8px 8px;
   padding: 15px 0 0;
+  background: #fff;
   .list {
     overflow: hidden;
-    .item {
+    .menu-item {
       float: left;
       width: 25%;
       text-align: center;
       margin-bottom: 15px;
       span {
-        font-size: 14px;
+        font-size: 12px;
+        color: #111;
       }
-      .van-icon {
-        font-size: 24px;
+      img {
+        width: 42px;
+        height: 36px;
+        margin-bottom: 6px;
       }
+      // .van-icon {
+      //   font-size: 24px;
+      // }
     }
   }
 }

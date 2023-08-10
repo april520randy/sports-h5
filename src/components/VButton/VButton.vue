@@ -27,6 +27,8 @@ button {
   font-size: 15px;
   &[disabled],&.disabled{
     background: rgba(187, 187, 187, 0.5);
+    pointer-events: none;
+    cursor: not-allowed;
   }
 }
 </style>

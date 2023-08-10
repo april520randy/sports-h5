@@ -18,5 +18,7 @@ const list = [
     }
   },
 ]
-
+list.forEach(item=>{
+  item.meta.transition = 'fade'
+})
 export default list

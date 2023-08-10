@@ -1,119 +1,74 @@
 <template>
-  <div>
-    <h2>注册</h2>
-    <van-form @submit="submit" @failed="onFailed">
-      <van-cell-group inset>
-        <!-- 用户名 -->
-        <van-field
-          v-model="username"
-          name="username"
-          label="用户名"
-          placeholder="请输入用户名"
-          :rules="[{ pattern: usernameReg, message: '用户名格式有误' }]"
-        />
-        <!-- 通过 validator 进行函数校验 -->
-        <van-field
-          v-model="password"
-          type="password"
-          name="validator"
-          label="密码"
-          placeholder="请输入密码"
-          :rules="[{ pattern: passwordReg, message: '密码格式有误' }]"
-        />
-        <van-field
-          v-model="repassword"
-          type="password"
-          name="repassword"
-          label="确认密码"
-          placeholder="请重复输入密码"
-          :rules="[{ validator, message: '两次密码不一致' }]"
-        />
-      </van-cell-group>
+  <div class="wrapper register">
+    <Head />
+    <h3 class="tit">创建账号</h3>
+    <!-- 注册 -->
+    <Register/>
+    <!-- 去注册 -->
+    <div @click="goLogin" class="register">已有账号？<span>去登录</span></div>
 
-      <div style="margin: 16px">
-        <van-button round block type="danger" native-type="submit"> 登录 </van-button>
-      </div>
-    </van-form>
-
-    <!-- 去登录 -->
-    <div @click="login" class="register login">已有账号？<span>立即登录</span></div>
-
-    <div class="bottom">
-      <span @click="router.push('/')"><van-icon name="photo-o" />先去逛逛</span>
-      <span @click="router.push('/service')"><van-icon name="photo-o" />联系客服</span>
-    </div>
+    <!-- <div class="bottom-wrapper">
+      <Bottom />
+    </div> -->
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import Reg from '@/utils/reg'
+import Head from '@/views/LoginView/components/Head'
+import Register from './components/Register.vue'
+// import Bottom from '@/views/LoginView/Bottom'
 import { useRouter } from 'vue-router'
-const { usernameReg, passwordReg } = Reg
 const router = useRouter()
-const username = ref('')
-const password = ref('')
-const repassword = ref('')
 
-// 验证确认密码
-const validator = (val) => {
-  return val === password.value
-}
-
-// 验证失败
-const onFailed = (errorInfo) => {
-  console.log('failed', errorInfo)
-}
-
-// 提交注册
-const submit = () => {
-  const data = {
-    username: username.value,
-    password: password.value
-  }
-  console.log(data)
-}
-
-// 忘了密码
-const forget = () => {
-  router.push('/forget')
-}
-
-const login = () => {
+const goLogin = () => {
   router.push('/login')
 }
 </script>
 
 <style lang="scss" scoped>
-h2 {
-  padding: 50px 0 25px;
-  text-align: center;
-}
-.assist {
-  padding: 0 25px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-.register {
-  text-align: center;
-  color: #999;
-  span {
-    color: #1989fa;
+.wrapper {
+  padding: 20px 25px 0;
+  // background: #fefdfc;
+  .tit {
+    font-size: 25px;
+    font-weight: 600;
+    color: #111;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+  .register {
+    text-align: center;
+    margin-top: 17px;
+    line-height: 22px;
+    span {
+      color: var(--color-primary);
+    }
   }
 }
-.bottom {
-  position: fixed;
-  bottom: 30px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  span:first-child {
-    margin-right: 100px;
+.bottom-wrapper {
+  margin-top: 50px;
+  // position: fixed;
+  // width:100%;
+  // left:0;
+  // bottom :20px;
+}
+</style>
+<style lang="scss">
+.login {
+  .van-tab {
+    font-size: 17px;
   }
-  .van-icon {
-    margin-right: 4px;
+  .van-tabs__nav--line.van-tabs__nav--shrink,
+  .van-tabs__nav--line.van-tabs__nav--complete {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .van-tab--shrink {
+    padding: 0;
+    margin-right: 25px;
+  }
+  .van-tabs__content--animated {
+    padding-top: 40px;
   }
 }
 </style>

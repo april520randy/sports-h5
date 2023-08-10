@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --host --mode dev",
+    "build:test": "vite build  --mode test",
+    "build:prod": "vite build  --mode prod",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "clipboard": "^2.0.11",
     "good-storage": "^1.1.1",
     "lodash": "^4.17.21",
     "pinia": "^2.0.35",
@@ -29,7 +31,9 @@
     "sass": "^1.62.1",
     "stylus": "^0.59.0",
     "stylus-loader": "^7.1.0",
+    "tinify": "^1.7.1",
     "unplugin-vue-components": "^0.24.1",
+    "vconsole": "^3.15.1",
     "vite": "^4.3.4",
     "vite-plugin-style-import": "^2.0.0"
   }

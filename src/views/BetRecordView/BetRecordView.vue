@@ -1,12 +1,14 @@
 <template>
-  <NavBar title="投注记录" />
-  <van-dropdown-menu>
-    <van-dropdown-item v-model="value1" :options="option1" />
-    <van-dropdown-item v-model="value2" :options="option2" />
-  </van-dropdown-menu>
-
   <div>
-    <van-empty description="暂无数据" />
+    <NavBar title="投注记录" />
+    <van-dropdown-menu>
+      <van-dropdown-item v-model="value1" :options="option1" />
+      <van-dropdown-item v-model="value2" :options="option2" />
+    </van-dropdown-menu>
+
+    <div>
+      <van-empty description="暂无数据" />
+    </div>
   </div>
 </template>
 

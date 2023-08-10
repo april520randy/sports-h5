@@ -1,10 +1,3 @@
-export function resolvePath(relativePath, currentPath) {
-  if (relativePath) {
-    return new URL(relativePath, currentPath).href
-  }
-  return ''
-}
-
 export function jumpExternalLink({ url, type, title, router }) {
   const types = {
     webview: 1, // router 模拟 webview

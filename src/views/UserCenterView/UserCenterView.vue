@@ -1,64 +1,34 @@
+<!-- 个人中心页面 -->
 <template>
-  <div class="wrapper">
-    <div class="header-wrapper">
-      <UserHeader />
-    </div>
+  <div class="user-center-view">
+    <UserHeader />
     <div class="scroll-view">
-      <VIP v-if="user.isLogin" />
       <MyAssets />
+      <Share />
       <MyMenu />
-      <van-cell-group>
-        <van-cell icon="photo-o">
-          <template #title>
-            <span class="custom-title">时区 GMT+08:00</span>
-          </template>
-        </van-cell>
-
-        <van-cell title="关于Z体育" icon="shop-o" is-link to="/about-us"> </van-cell>
-      </van-cell-group>
-      <van-button v-if="user.isLogin" @click="confirmLogOut" type="default" block plain
-        >退出登录</van-button
-      >
+      <MyEvent />
+      <BottomLink />
     </div>
   </div>
 </template>
 
 <script setup>
 import UserHeader from './components/UserHeader/UserHeader.vue'
-import VIP from './components/VIP/VIP.vue'
 import MyAssets from './components/MyAssets/MyAssets.vue'
+import Share from './components/Share/Share.vue'
 import MyMenu from './components/MyMenu/MyMenu.vue'
-import { showConfirmDialog } from 'vant'
-import { useUserStore } from '@/stores/user'
-const user = useUserStore()
-const confirmLogOut = () => {
-  showConfirmDialog({
-    title: '确定退出当前账号吗?'
-  })
-    .then(() => {
-      // on confirm
-      user.logOutAction()
-    })
-    .catch(() => {
-      // on cancel
-    })
-}
+import MyEvent from './components/MyEvent/MyEvent.vue'
+import BottomLink from './components/BottomLink/BottomLink.vue'
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
-  padding: 10px 15px;
-}
-.header-wrapper {
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px 15px;
-  background: #fff;
+.user-center-view {
+  background: url('@/assets/img/bg.png') center top no-repeat;
+  background-size: contain;
+  @include clearfix();
 }
 .scroll-view {
-  padding-top: 77px;
+  @include mobile-padding();
+  padding-top: 60px;
 }
 </style>

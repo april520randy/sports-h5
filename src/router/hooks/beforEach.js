@@ -1,5 +1,9 @@
 import { useUserStore } from '@/stores/user'
+import handleRouterAnimation from './handleRouterAnimation'
 export default async (to) => {
+  // 处理路由切换动效
+  handleRouterAnimation(to)
+  // 权限控制
   const store = useUserStore()
   const isLogin = store.isLogin
   if (isLogin) {
@@ -19,4 +23,3 @@ export default async (to) => {
     }
   }
 }
-
