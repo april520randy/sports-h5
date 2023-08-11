@@ -1,29 +1,31 @@
 <template>
   <div>
-    <NavBar title="投注记录" />
-    <van-dropdown-menu>
-      <van-dropdown-item v-model="value1" :options="option1" />
-      <van-dropdown-item v-model="value2" :options="option2" />
-    </van-dropdown-menu>
-
-    <div>
+    <NavBar @index="getTab" />
+    <!-- <router-view></router-view> -->
+    <!-- <div>
       <van-empty description="暂无数据" />
-    </div>
+    </div> -->
+    <component :is="typeComponentMap[type]"></component>
   </div>
 </template>
 
 <script setup>
-import NavBar from '@/components/NavBar/NavBar'
-import { ref } from 'vue'
-const value1 = ref(0)
-const value2 = ref('a')
-const option1 = [{ text: '全部', value: 0 }]
-const option2 = [
-  { text: '今日', value: 'a' },
-  { text: '昨日', value: 'b' },
-  { text: '近7日', value: 'c' },
-  { text: '近30日', value: 'd' }
-]
+import NavBar from './components/NavBar';
+import SportBet from './components/SportBet.vue';
+import GameBet from './components/GameBet.vue'
+
+import { ref  } from 'vue'
+
+const type = ref(0)
+const typeComponentMap = {
+  0:SportBet,
+  1:GameBet
+}
+
+
+const getTab = (val)=>{
+  type.value = val
+}
 </script>
 
 <style lang="scss" scoped></style>
